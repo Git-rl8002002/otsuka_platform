@@ -1,0 +1,182 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - main content
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            
+            <!--------------------------------- 
+            -
+            - 工廠 ERP - 原物料使用-原物料TO製品
+            -
+            ----------------------------------->    
+            <div id="main_content" class="col-md-3">
+                <div class="card my-2">
+                    <div class="card-header">
+                        <i class="bi bi-chat-left-text"></i> {{ operation_record_title }}
+                    </div>
+                    <div class="card-body">
+                    <!-----------
+                    -
+                    - Nav tabs 
+                    -
+                    ------------->
+                    <ul class="nav nav-tabs my-2">
+                        <li class="nav-item">
+                            <!------ 
+                            - 搜尋 
+                            --------> 
+                            <a class="nav-link active" data-bs-toggle="tab" href="#search"><i class="bi bi-search"></i> 搜尋</a>
+                        </li>
+                        <li class="nav-item">
+                            <!------ 
+                            - 統計 
+                            --------> 
+                            <!--
+                            <a class="nav-link" data-bs-toggle="tab" href="#home"><i class="bi bi-chat-left-text"></i> 統計</a>
+                            -->
+                        </li>
+                        
+                    </ul>
+                    
+                    <!------------
+                    - 
+                    - Tab panes 
+                    -
+                    -------------->
+                    <div class="tab-content">
+                        <!------ 
+                        - 搜尋 
+                        -------->
+                        <div class="tab-pane container active" id="search">
+                            <div class="card">
+                              <div class="card-header"><i class="bi bi-search"></i> 搜尋</div>
+                              <div class="card-body">
+                                
+                                <!-- 產品品號 -->
+                                <div class="input-group my-1">
+                                  <span class="input-group-text text-success">產品品號</span>
+                                  <select class="form-control" id="query_erp_product_num3" onchange="select_erp_realtime_query_product_num()">
+                                    <option></option>
+                                    {% for val in f_query_res_3 %}
+                                    <option>{{ val[0] }}</option>
+                                    {% endfor %}
+                                  </select>
+                                </div>
+                                
+                                <!-- 產品批號 -->
+                                <div id="load_erp_realtime_query_all_num3_1">
+                                  <div class="input-group my-1">
+                                    <span class="input-group-text text-success">產品批號</span>
+                                    <select class="form-control" id="query_erp_product_all_num3">
+                                      <option></option>
+                                    </select>
+                                  </div>
+                                </div>
+                                
+                                <!-- submit -->
+                                <div class="input-group text-center">
+                                  <button type="submit" class="btn btn-primary my-1" id="q_s_submit" name="q_b_w_f_search_submit" onclick="submit_erp_realtime_query_search3()">
+                                    <i class="bi bi-send"></i> 搜尋
+                                  </button>
+                                </div>
+
+                              </div>
+                            </div>
+                        </div>
+                        
+                        <!------ 
+                        - 統計 
+                        -------->
+                        <div class="tab-pane container" id="home">
+                          <!-- 部門 -->
+                          <!--
+                          <ul class="list-group my-2">
+                            <li class="list-group-item list-group-item-action active">{{ dep_id }} (已結案)</li>
+                            {% for val in bpm_statistics_list %}
+                            <li class="list-group-item list-group-item-action" id="{{ dep_id }}/{{ val[0] }}" onclick="bpm_expenditure_detail(id)"><i class="bi bi-arrow-right-short"></i> {{ val[0] }} ({{ val[1] }})</li>
+                            {% endfor %}
+                          </ul>
+                          -->
+                        </div>
+
+                      </div>    
+                    </div>
+                </div>
+                
+            </div>
+
+            <!---------------------------- 
+            -
+            - 工廠 ERP - 製品庫存&生產實績
+            -
+            ------------------------------>    
+            <div class="col-md-9 my-2">
+                <div class="card">
+                    <div class="card-header"><i class="bi bi-chat-left-text"></i> {{ operation_record_title }}</div>
+                    
+                    <div class="card-body" id="query_content">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs my-2">
+                            <!-- 
+                            <li class="nav-item">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#bpm_expenditure_form_list_account"><i class="bi bi-card-list"></i> {{ user }}</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#bpm_expenditure_form_list_account_done_chart"><i class="bi bi-bar-chart-line"></i> {{ user }} 已結案統計圖</a>
+                            </li>
+                            -->
+
+                            <li class="nav-item">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#f_erp_realtime_query"><i class="bi bi-card-list"></i> 即時庫存查詢</a>
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+
+                            <!-----------------
+                            - 
+                            - 即時庫存查詢
+                            -
+                            ------------------>
+                            <div class="tab-pane container active" id="f_erp_realtime_query3"></div>
+
+                        </div>
+                    </div>
+             </div>
+        </div>
+
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+{% endblock content %}
+
+{% block script %}    
+    <!-- date picker & rich editor-->
+    <script>
+        $("#o_c_date").flatpickr();    
+        $("#query_start_date").flatpickr();    
+        $("#query_end_date").flatpickr();    
+        //CKEDITOR.replace('content');
+        </script>
+{% endblock script %}
+    

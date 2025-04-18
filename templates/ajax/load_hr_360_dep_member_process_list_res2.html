@@ -1,0 +1,803 @@
+<!------------------------------------------------------------------------------------------ 
+-
+- 考評人員 
+-
+--------------------------------------------------------------------------------------------> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-hover my-3">
+    <tr><th colspan="10">受評人員 : {{ s_name }}</th></tr>
+    <tr class="text-center align-middle">
+      <th>考評日期</th>
+      <th>考評人員</th>
+      <th>考評等級</th>
+      <th>受評人員</th>
+      <th>管理能力</th>
+      <th>提供支援</th>
+      <th>以身作則</th>
+      <th>效率導向</th>
+      <th>培育人才</th>
+      <th>高效溝通</th>
+    </tr>
+    <!-- 考評人員清單 --> 
+    {% for val in show_hr_360_person_1_check_data %}
+      {% if val[43] == '自己' %}
+        <tr class="text-center align-middle">
+          <td>{{ val[12] }}</td>
+          <td>{{ val[13] }}</td>
+          <td>{{ val[43] }}</td>
+          <td class="text-primary">{{ val[14] }}</td>
+          <td>
+            各題 ({{ val[15] }}/{{ val[16] }}/{{ val[17] }}/{{ val[18] }}/{{ val[19] }}) <br>
+            總分 {{ val[0] }} <br> 
+            平均 {{ val[1] }}
+          </td>
+          <td>
+            各題 ({{ val[20] }}/{{ val[21] }}/{{ val[22] }}/{{ val[23] }}/{{ val[24] }}/{{ val[25] }}) <br>
+            總分 {{ val[2] }} <br> 
+            平均 {{ val[3] }}
+          </td>
+          <td>
+            各題 ({{ val[26] }}/{{ val[27] }}/{{ val[28] }}/{{ val[29] }}/{{ val[30] }}) <br>
+            總分 {{ val[4] }} <br> 
+            平均 {{ val[5] }}
+          </td>
+          <td>
+            各題 ({{ val[31] }}/{{ val[32] }}/{{ val[33] }}/{{ val[34] }}) <br>
+            總分 {{ val[6] }} <br> 
+            平均 {{ val[7] }}
+          </td>
+          <td>
+            各題 ({{ val[35] }}/{{ val[36] }}/{{ val[37] }}) <br>
+            總分 {{ val[8] }} <br> 
+            平均 {{ val[9] }}
+          </td>
+          <td>
+            各題 ({{ val[38] }}/{{ val[39] }}/{{ val[40] }}/{{ val[41] }}/{{ val[42] }}) <br>
+            總分 {{ val[10] }} <br> 
+            平均 {{ val[11] }}</td>
+        </tr>
+      {% elif val[43] == '主管' %}
+        <tr class="text-center align-middle">
+          <td>{{ val[12] }}</td>
+          <td>{{ val[13] }}</td>
+          <td>{{ val[43] }}</td>
+          <td class="text-primary">{{ val[14] }}</td>
+          <td>
+            各題 ({{ val[15] }}/{{ val[16] }}/{{ val[17] }}/{{ val[18] }}/{{ val[19] }}) <br>
+            總分 {{ val[0] }} <br> 
+            平均 {{ val[1] }}
+          </td>
+          <td>
+            各題 ({{ val[20] }}/{{ val[21] }}/{{ val[22] }}/{{ val[23] }}/{{ val[24] }}/{{ val[25] }}) <br>
+            總分 {{ val[2] }} <br> 
+            平均 {{ val[3] }}
+          </td>
+          <td>
+            各題 ({{ val[26] }}/{{ val[27] }}/{{ val[28] }}/{{ val[29] }}/{{ val[30] }}) <br>
+            總分 {{ val[4] }} <br> 
+            平均 {{ val[5] }}
+          </td>
+          <td>
+            各題 ({{ val[31] }}/{{ val[32] }}/{{ val[33] }}/{{ val[34] }}) <br>
+            總分 {{ val[6] }} <br> 
+            平均 {{ val[7] }}
+          </td>
+          <td>
+            各題 ({{ val[35] }}/{{ val[36] }}/{{ val[37] }}) <br>
+            總分 {{ val[8] }} <br> 
+            平均 {{ val[9] }}
+          </td>
+          <td>
+            各題 ({{ val[38] }}/{{ val[39] }}/{{ val[40] }}/{{ val[41] }}/{{ val[42] }}) <br>
+            總分 {{ val[10] }} <br> 
+            平均 {{ val[11] }}</td>
+        </tr>
+      {% elif val[43] == '同輩1' %}
+        <tr class="text-center align-middle">
+          <td>{{ val[12] }}</td>
+          <td>{{ val[13] }}</td>
+          <td>{{ val[43] }}</td>
+          <td class="text-primary">{{ val[14] }}</td>
+          <td>
+            各題 ({{ val[15] }}/{{ val[16] }}/{{ val[17] }}/{{ val[18] }}/{{ val[19] }}) <br>
+            總分 {{ val[0] }} <br> 
+            平均 {{ val[1] }}
+          </td>
+          <td>
+            各題 ({{ val[20] }}/{{ val[21] }}/{{ val[22] }}/{{ val[23] }}/{{ val[24] }}/{{ val[25] }}) <br>
+            總分 {{ val[2] }} <br> 
+            平均 {{ val[3] }}
+          </td>
+          <td>
+            各題 ({{ val[26] }}/{{ val[27] }}/{{ val[28] }}/{{ val[29] }}/{{ val[30] }}) <br>
+            總分 {{ val[4] }} <br> 
+            平均 {{ val[5] }}
+          </td>
+          <td>
+            各題 ({{ val[31] }}/{{ val[32] }}/{{ val[33] }}/{{ val[34] }}) <br>
+            總分 {{ val[6] }} <br> 
+            平均 {{ val[7] }}
+          </td>
+          <td>
+            各題 ({{ val[35] }}/{{ val[36] }}/{{ val[37] }}) <br>
+            總分 {{ val[8] }} <br> 
+            平均 {{ val[9] }}
+          </td>
+          <td>
+            各題 ({{ val[38] }}/{{ val[39] }}/{{ val[40] }}/{{ val[41] }}/{{ val[42] }}) <br>
+            總分 {{ val[10] }} <br> 
+            平均 {{ val[11] }}</td>
+        </tr>
+      {% elif val[43] == '同輩2' %}
+        <tr class="text-center align-middle">
+          <td>{{ val[12] }}</td>
+          <td>{{ val[13] }}</td>
+          <td>{{ val[43] }}</td>
+          <td class="text-primary">{{ val[14] }}</td>
+          <td>
+            各題 ({{ val[15] }}/{{ val[16] }}/{{ val[17] }}/{{ val[18] }}/{{ val[19] }}) <br>
+            總分 {{ val[0] }} <br> 
+            平均 {{ val[1] }}
+          </td>
+          <td>
+            各題 ({{ val[20] }}/{{ val[21] }}/{{ val[22] }}/{{ val[23] }}/{{ val[24] }}/{{ val[25] }}) <br>
+            總分 {{ val[2] }} <br> 
+            平均 {{ val[3] }}
+          </td>
+          <td>
+            各題 ({{ val[26] }}/{{ val[27] }}/{{ val[28] }}/{{ val[29] }}/{{ val[30] }}) <br>
+            總分 {{ val[4] }} <br> 
+            平均 {{ val[5] }}
+          </td>
+          <td>
+            各題 ({{ val[31] }}/{{ val[32] }}/{{ val[33] }}/{{ val[34] }}) <br>
+            總分 {{ val[6] }} <br> 
+            平均 {{ val[7] }}
+          </td>
+          <td>
+            各題 ({{ val[35] }}/{{ val[36] }}/{{ val[37] }}) <br>
+            總分 {{ val[8] }} <br> 
+            平均 {{ val[9] }}
+          </td>
+          <td>
+            各題 ({{ val[38] }}/{{ val[39] }}/{{ val[40] }}/{{ val[41] }}/{{ val[42] }}) <br>
+            總分 {{ val[10] }} <br> 
+            平均 {{ val[11] }}</td>
+        </tr>
+      {% elif val[43] == '下屬1' %}
+        <tr class="text-center align-middle">
+          <td>{{ val[12] }}</td>
+          <td>{{ val[13] }}</td>
+          <td>{{ val[43] }}</td>
+          <td class="text-primary">{{ val[14] }}</td>
+          <td>
+            各題 ({{ val[15] }}/{{ val[16] }}/{{ val[17] }}/{{ val[18] }}/{{ val[19] }}) <br>
+            總分 {{ val[0] }} <br> 
+            平均 {{ val[1] }}
+          </td>
+          <td>
+            各題 ({{ val[20] }}/{{ val[21] }}/{{ val[22] }}/{{ val[23] }}/{{ val[24] }}/{{ val[25] }}) <br>
+            總分 {{ val[2] }} <br> 
+            平均 {{ val[3] }}
+          </td>
+          <td>
+            各題 ({{ val[26] }}/{{ val[27] }}/{{ val[28] }}/{{ val[29] }}/{{ val[30] }}) <br>
+            總分 {{ val[4] }} <br> 
+            平均 {{ val[5] }}
+          </td>
+          <td>
+            各題 ({{ val[31] }}/{{ val[32] }}/{{ val[33] }}/{{ val[34] }}) <br>
+            總分 {{ val[6] }} <br> 
+            平均 {{ val[7] }}
+          </td>
+          <td>
+            各題 ({{ val[35] }}/{{ val[36] }}/{{ val[37] }}) <br>
+            總分 {{ val[8] }} <br> 
+            平均 {{ val[9] }}
+          </td>
+          <td>
+            各題 ({{ val[38] }}/{{ val[39] }}/{{ val[40] }}/{{ val[41] }}/{{ val[42] }}) <br>
+            總分 {{ val[10] }} <br> 
+            平均 {{ val[11] }}</td>
+        </tr>
+      {% else %}
+        <tr class="text-center align-middle">
+          <td>{{ val[12] }}</td>
+          <td>{{ val[13] }}</td>
+          <td>{{ val[43] }}</td>
+          <td class="text-primary">{{ val[14] }}</td>
+          <td>
+            各題 ({{ val[15] }}/{{ val[16] }}/{{ val[17] }}/{{ val[18] }}/{{ val[19] }}) <br>
+            總分 {{ val[0] }} <br> 
+            平均 {{ val[1] }}
+          </td>
+          <td>
+            各題 ({{ val[20] }}/{{ val[21] }}/{{ val[22] }}/{{ val[23] }}/{{ val[24] }}/{{ val[25] }}) <br>
+            總分 {{ val[2] }} <br> 
+            平均 {{ val[3] }}
+          </td>
+          <td>
+            各題 ({{ val[26] }}/{{ val[27] }}/{{ val[28] }}/{{ val[29] }}/{{ val[30] }}) <br>
+            總分 {{ val[4] }} <br> 
+            平均 {{ val[5] }}
+          </td>
+          <td>
+            各題 ({{ val[31] }}/{{ val[32] }}/{{ val[33] }}/{{ val[34] }}) <br>
+            總分 {{ val[6] }} <br> 
+            平均 {{ val[7] }}
+          </td>
+          <td>
+            各題 ({{ val[35] }}/{{ val[36] }}/{{ val[37] }}) <br>
+            總分 {{ val[8] }} <br> 
+            平均 {{ val[9] }}
+          </td>
+          <td>
+            各題 ({{ val[38] }}/{{ val[39] }}/{{ val[40] }}/{{ val[41] }}/{{ val[42] }}) <br>
+            總分 {{ val[10] }} <br> 
+            平均 {{ val[11] }}</td>
+        </tr>
+      {% endif %}
+    {% endfor %}
+
+  </table>
+</div>
+
+
+<!------------------------------------------------------------------------------------------ 
+-
+- 管理能力 
+-
+--------------------------------------------------------------------------------------------> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-hover my-3">
+    <tr><th colspan="7">管理能力</th></tr>
+    <tr class="text-center align-middle">
+      <th>問題</th>
+      <th>自己</th>
+      <th>主管</th>
+      <th>同輩 1</th>
+      <th>同輩 2</th>
+      <th>下屬 1</th>
+      <th>下屬 2</th>
+    </tr>
+    
+    <tr>
+      <td>(1).清楚地向下屬解釋 , 對於他們的期望為何。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_1_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_1_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_1_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_1_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_1_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_1_1  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(2).讓直屬下屬對提高其績效和實現其目標負起責任。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_1_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_1_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_1_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_1_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_1_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_1_2  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(3).向直屬下屬提供及時、建設性和持續的績效回饋。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_1_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_1_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_1_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_1_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_1_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_1_3  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(4).對表現出色的下屬給予有意義和具體的表揚或認可。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_1_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_1_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_1_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_1_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_1_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_1_4  | safe  }}</td>
+    </tr>
+    
+    <tr>
+      <td>(5).在制定任務、目標和承諾時，能夠設定切實可行的預期。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_1_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_1_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_1_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_1_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_1_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_1_5  | safe  }}</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">總分</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_1_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_1_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_1_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_1_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_1_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_1_1}}</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">平均</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_avg_1_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_avg_1_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_avg_1_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_avg_1_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_avg_1_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_avg_1_1}} / 5</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">總平均</td>
+      <td colspan="6" class="text-center align-middle"><span class=""></span>{{ show_pie_pic_total_avg_1_1 }} / 5</td>
+    </tr>
+  </table>
+</div>
+
+<!------------------------------------------------------------------------------------------ 
+-
+- 提供支援 
+-
+--------------------------------------------------------------------------------------------> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-hover my-3">
+    <tr><th colspan="7">提供支援</th></tr>
+    <tr class="text-center align-middle">
+      <th>問題</th>
+      <th>自己</th>
+      <th>主管</th>
+      <th>同輩 1</th>
+      <th>同輩 2</th>
+      <th>下屬 1</th>
+      <th>下屬 2</th>
+    </tr>
+    
+    <tr>
+      <td>(1).基於個人優勢提供下屬 , 具有挑戰性的任務。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_2_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_2_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_2_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_2_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_2_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_2_1  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(2).協助團隊成員學習 , 且不因犯錯而責難個人。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_2_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_2_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_2_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_2_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_2_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_2_2  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(3).積極地與下屬合作 , 為他們的職業發展制定工作計劃。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_2_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_2_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_2_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_2_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_2_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_2_3  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(4).為團隊提供支援，並根據需求性提供指導。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_2_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_2_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_2_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_2_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_2_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_2_4  | safe  }}</td>
+    </tr>
+    
+    <tr>
+      <td>(5).積極消除會讓下屬難以實現其目標的障礙。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_2_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_2_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_2_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_2_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_2_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_2_5  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(6).是自己團隊的驅動力。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_2_6  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_2_6  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_2_6  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_2_6  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_2_6  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_2_6  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td class="text-primary text-center align-middle">總分</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_2_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_2_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_2_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_2_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_2_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_2_1}}</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">平均</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_avg_2_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_avg_2_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_avg_2_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_avg_2_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_avg_2_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_avg_2_1}} / 5</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">總平均</td>
+      <td colspan="6" class="text-center align-middle"><span class=""></span>{{ show_pie_pic_total_avg_2_1 }} / 5</td>
+    </tr>
+  </table>
+</div>
+
+<!------------------------------------------------------------------------------------------ 
+-
+- 以身作則 
+-
+--------------------------------------------------------------------------------------------> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-hover my-3">
+    <tr><th colspan="7">以身作則</th></tr>
+    <tr class="text-center align-middle">
+      <th>問題</th>
+      <th>自己</th>
+      <th>主管</th>
+      <th>同輩 1</th>
+      <th>同輩 2</th>
+      <th>下屬 1</th>
+      <th>下屬 2</th>
+    </tr>
+    
+    <tr>
+      <td>(1).是具有積極意義的領導榜樣。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_3_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_3_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_3_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_3_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_3_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_3_1  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(2).在變革時期當領銜作為先拓者。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_3_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_3_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_3_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_3_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_3_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_3_2  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(3).在各個層面與他人合作無間。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_3_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_3_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_3_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_3_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_3_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_3_3  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(4).以自身行為和標準為楷模，展示自身對他人的期望。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_3_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_3_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_3_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_3_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_3_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_3_4  | safe  }}</td>
+    </tr>
+    
+    <tr>
+      <td>(5).與同事有良好的合作關係。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_3_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_3_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_3_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_3_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_3_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_3_5  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td class="text-primary text-center align-middle">總分</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_3_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_3_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_3_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_3_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_3_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_3_1}}</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">平均</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_avg_3_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_avg_3_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_avg_3_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_avg_3_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_avg_3_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_avg_3_1}} / 5</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">總平均</td>
+      <td colspan="6" class="text-center align-middle"><span class=""></span>{{ show_pie_pic_total_avg_3_1 }} / 5</td>
+    </tr>
+  </table>
+</div>
+
+<!------------------------------------------------------------------------------------------ 
+-
+- 效率導向 
+-
+--------------------------------------------------------------------------------------------> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-hover my-3">
+    <tr><th colspan="7">效率導向</th></tr>
+    <tr class="text-center align-middle">
+      <th>問題</th>
+      <th>自己</th>
+      <th>主管</th>
+      <th>同輩 1</th>
+      <th>同輩 2</th>
+      <th>下屬 1</th>
+      <th>下屬 2</th>
+    </tr>
+    
+    <tr>
+      <td>(1).有效率地管理和分配自己和團隊的複雜工作和專案任務。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_4_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_4_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_4_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_4_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_4_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_4_1  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(2).在做出重要決策時能夠考慮周全。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_4_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_4_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_4_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_4_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_4_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_4_2  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(3).以提出解決方案為前提來解決問題。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_4_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_4_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_4_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_4_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_4_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_4_3  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(4).通過行動兌現承諾。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_4_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_4_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_4_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_4_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_4_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_4_4  | safe  }}</td>
+    </tr>
+    
+    <tr>
+      <td class="text-primary text-center align-middle">總分</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_4_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_4_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_4_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_4_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_4_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_4_1}}</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">平均</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_avg_4_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_avg_4_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_avg_4_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_avg_4_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_avg_4_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_avg_4_1}} / 5</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">總平均</td>
+      <td colspan="6" class="text-center align-middle"><span class=""></span>{{ show_pie_pic_total_avg_4_1 }} / 5</td>
+    </tr>
+  </table>
+</div>
+
+<!------------------------------------------------------------------------------------------ 
+-
+- 培育人才 
+-
+--------------------------------------------------------------------------------------------> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-hover my-3">
+    <tr><th colspan="7">培育人才</th></tr>
+    <tr class="text-center align-middle">
+      <th>問題</th>
+      <th>自己</th>
+      <th>主管</th>
+      <th>同輩 1</th>
+      <th>同輩 2</th>
+      <th>下屬 1</th>
+      <th>下屬 2</th>
+    </tr>
+    
+    <tr>
+      <td>(1).能準確地評估團隊成員的強項與有待加強之處。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_5_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_5_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_5_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_5_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_5_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_5_1  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(2).瞭解自身的強項與有待加強之處。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_5_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_5_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_5_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_5_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_5_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_5_2  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(3).對回饋持開放態度，並以富有成效的方式根據收到的回饋採取行動。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_5_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_5_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_5_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_5_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_5_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_5_3  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td class="text-primary text-center align-middle">總分</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_5_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_5_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_5_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_5_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_5_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_5_1}}</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">平均</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_avg_5_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_avg_5_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_avg_5_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_avg_5_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_avg_5_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_avg_5_1}} / 5</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">總平均</td>
+      <td colspan="6" class="text-center align-middle"><span class=""></span>{{ show_pie_pic_total_avg_5_1 }} / 5</td>
+    </tr>
+  </table>
+</div>
+
+<!------------------------------------------------------------------------------------------ 
+-
+- 高效溝通 
+-
+--------------------------------------------------------------------------------------------> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-hover my-3">
+    <tr><th colspan="7">高效溝通</th></tr>
+    <tr class="text-center align-middle">
+      <th>問題</th>
+      <th>自己</th>
+      <th>主管</th>
+      <th>同輩 1</th>
+      <th>同輩 2</th>
+      <th>下屬 1</th>
+      <th>下屬 2</th>
+    </tr>
+    
+    <tr>
+      <td>(1).定期與團隊溝通，以確保成員瞭解組織和/或部門內部的變革 。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_6_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_6_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_6_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_6_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_6_1  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_6_1  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(2).是一個很好的傾聽者。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_6_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_6_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_6_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_6_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_6_2  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_6_2  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(3).個性平易近人容易溝通，能夠輕鬆與本人交談。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_6_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_6_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_6_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_6_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_6_3  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_6_3  | safe  }}</td>
+    </tr>
+
+    <tr>
+      <td>(4).積極主動地與各部門的其他成員進行溝通，合作，以達成業務成果。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_6_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_6_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_6_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_6_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_6_4  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_6_4  | safe  }}</td>
+    </tr>
+    
+    <tr>
+      <td>(5).當面對衝突時，能有效地處理各種情況。</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_6_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_6_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_6_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_6_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_6_5  | safe  }}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_6_5  | safe  }}</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">總分</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_6_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_6_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_6_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_6_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_6_1}}</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_6_1}}</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">平均</td>
+      <td class="text-center align-middle">{{ show_pie_pic_self_total_avg_6_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_manager_total_avg_6_1 }} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer1_total_avg_6_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_peer2_total_avg_6_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate1_total_avg_6_1}} / 5</td>
+      <td class="text-center align-middle">{{ show_pie_pic_subordinate2_total_avg_6_1}} / 5</td>
+    </tr>
+    <tr>
+      <td class="text-primary text-center align-middle">總平均</td>
+      <td colspan="6" class="text-center align-middle"><span class=""></span>{{ show_pie_pic_total_avg_6_1 }} / 5</td>
+    </tr>
+  </table>
+</div>
+
+<!------------------------------------------------------------------------------------------ 
+-
+- 雷達圖 
+-
+--------------------------------------------------------------------------------------------> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-hover my-3">
+    <tr><th colspan="7">總和雷達圖</th></tr>
+    <tr><td colspan="7">{{ show_radar_pic | safe }}</td></tr>
+    <tr>
+      <td colspan="7" class="text-center align-middle">
+        <img src="{{ url_for('static',filename='img/icon/blue-24.png') }}"> 自己 &nbsp;
+        <img src="{{ url_for('static',filename='img/icon/red-24.png') }}"> 主管 &nbsp;
+        <img src="{{ url_for('static',filename='img/icon/green-24.png') }}"> 同輩1 &nbsp;
+        <img src="{{ url_for('static',filename='img/icon/purple-24.png') }}"> 同輩2 &nbsp;
+        <img src="{{ url_for('static',filename='img/icon/orange-24.png') }}"> 下屬1 &nbsp;
+        <img src="{{ url_for('static',filename='img/icon/pink-24.png') }}"> 下屬2 &nbsp;
+      </td>
+    </tr>
+  </table>
+</div>
+

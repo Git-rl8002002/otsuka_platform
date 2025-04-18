@@ -1,0 +1,16 @@
+<!-- 工作進度表清單 -->
+<ul class="list-group">
+    {% for val in res_list %}
+        <li class="list-group-item list-group-item-action">
+            <strong><i class="bi bi-file-earmark-person"></i>
+            </strong><strong class="text-success">{{ val[0] }} <span class="text-primary">({{ val[1] }})</span></strong>
+            <ul>
+                {% for title in val[2] %}
+                <li style="list-style-type:none;">
+                    <a href="#" id="{{ title }}" onclick="load_work_record_list_by_detail(id)"><i class="bi bi-arrow-right-short"></i> {{ title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>

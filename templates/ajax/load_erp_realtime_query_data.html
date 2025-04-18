@@ -1,0 +1,35 @@
+<!-- 產品名稱 -->
+<div class="input-group my-1">
+    <span class="input-group-text text-success">產品名稱</span>
+    <select class="form-control" id="query_erp_product_name" onchange="select_erp_realtime_query2()">
+        <option></option>
+        {% for val in erp_realtime_p_name %}
+        <option>{{ val[1] }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<!-- 產品批號 
+
+<div class="input-group my-1">
+    <span class="input-group-text text-success" id="inputGroup-sizing-default">產品批號</span>
+    <select class="form-control" id="query_erp_product_all_num">
+      <option></option>              
+      {% for val in erp_realtime_p_num %}
+      <option>{{ val[1] }}</option>
+      {% endfor %}
+    </select>
+</div>
+-->
+
+<!-- 有效日期 
+<div class="input-group my-1">
+    <span class="input-group-text text-success" id="inputGroup-sizing-default">有效日期</span>
+    <select class="form-control" id="query_erp_product_limit_date">
+      <option></option>              
+      {% for val in bpm_budget_source %}
+      <option>{{ val[0] }}</option>
+      {% endfor %}
+    </select>
+</div>
+-->

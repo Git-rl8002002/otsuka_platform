@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+{% block title %} test3 {% endblock%}
+{% block navbar %}
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/test3"><i class="bi bi-wrench"></i> Test page</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/"><i class="bi bi-box-seam"></i> Home</a></li>
+                    <li><a href="/test"><i class="bi bi-box-seam"></i> Test</a></li>
+                    <li><a href="/test2"><i class="bi bi-box-seam"></i> Test2</a></li>
+                    <li><a href="/test3"><i class="bi bi-box-seam"></i> Test3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 my-3">
+                <div class="card" id="app1">
+                    <div class="card-header">[[ msg ]]</div>
+                    <div class="card-body">
+                        <div class="btn-group">
+                            <button class="btn btn-primary" v-on:click="test">Vue.js 1</button>
+                            <button class="btn btn-primary" v-on:click="test2">Vue.js 1</button>
+                        </div>
+                    </div>
+                    <div class="card-footer"></div>
+                </div>
+            </div>    
+            <div class="col-md-3 my-3"></div>    
+            <div class="col-md-3 my-3"></div>    
+            <div class="col-md-3 my-3"></div>    
+        </div>
+        
+        
+    </div>
+    
+{% endblock %}

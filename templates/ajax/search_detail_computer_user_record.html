@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> {{ s_number }}</h4>
+    </div>
+    <div class="card-body">
+        
+        <!--
+        d_status , o_name , l_activity , e_ip , i_ip 
+        -->
+        <table class="table table-hover table-bordered">
+            {% for val in u_detail %}
+            <tr>
+                <td><span class="font-weight-bold text-success">電腦用戶 </span>&nbsp;<span class="text-danger"> {{ val[0] }} </span></td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </div>
+</div>

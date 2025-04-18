@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ title }} </title>
+    <meta charset="UTF-8">
+
+    <!-- logo icon -->
+    <link rel="Shortcut Icon" type="image/x-icon" href="{{ url_for('static',filename='img/icon/database.png') }}" />
+    
+    <!-- Responsive meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 4.5.2 --> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Bootstrap 4.6.1
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/jquery-3.4.1.min.js') }}"></script>
+    -->
+    
+    <!-- socketIO CDN -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.1/socket.io.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/open-iconic-bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='js/flatpickr-gh-pages/dist/flatpickr.min.css') }}">
+    
+    
+    <!-- JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/index.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/flatpickr-gh-pages/dist/flatpickr.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/ckeditor.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/plugins/image/dialogs/image.js') }}"></script>
+    
+    <!-- websocket -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+           
+            $("#go_top").click(function(){
+                jQuery("html,body").animate({
+                    scrollTop:0
+                },1000);
+            });
+
+            $(window).scroll(function() {
+                if ( $(this).scrollTop() > 300){
+                    $('#go_top').fadeIn("fast");
+                } else {
+                    $('#go_top').stop().fadeOut("fast");
+                }
+            });
+            
+        });
+    </script>	
+
+
+</head>
+<body>
+    
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - menu
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <nav class="navbar navbar-expand-sm bg-primary fixed-top">
+            <!-- Brand -->
+            <a class="navbar-brand mr-2" href="/"><button class="btn btn-primary">{{ title }}</button></a>
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - lv 1 - admin
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            {% if lv == "1" %}
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <!-- online user -->
+                <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
+
+                <!-- logout -->
+                <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i>  登出</button></a></li>
+                
+                <!-- 權限管理 -->    
+                <li class="nav-item dropdown">
+                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 權限管理</button></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-person-bounding-box"></i> 帳號管理</a>
+                    </div>
+                </li>
+                <!-- 監控數值管理 -->    
+                <li class="nav-item dropdown">
+                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 感測器管理</button></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-bookmarks"></i> 感測器數值</a>
+                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-pencil-square"></i> 感測器設定</a>
+                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-alarm"></i> 感測器警報</a>
+                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-pen"></i> 感測器記錄</a>
+                    </div>
+                </li>
+            </ul>
+            </div> 
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - lv 2 - otsuka
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            {% elif lv == "2" %}
+            <button class="navbar-toggler btn btn-primary " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <!-- online user -->
+                <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
+
+                <!-- logout -->
+                <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> 登出</button></a></li>
+
+                <!-- 權限管理 -->    
+                <li class="nav-item dropdown">
+                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 權限管理</button></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/menu_account_management"><i class="bi bi-person-bounding-box"></i> 帳號管理</a>
+                    </div>
+                </li>
+                <!-- 工時時間紀錄管理 -->    
+                <li class="nav-item dropdown">
+                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 工時時間紀錄管理</button></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/production_2_work_time_record"><i class="bi bi-bookmarks"></i> 工時時間紀錄表</a>
+                        <a class="dropdown-item" href="/production_2_work_time_record_report"><i class="bi bi-pencil-square"></i> 工時時間紀錄日報表</a>
+                    </div>
+                </li>
+            </ul>
+            </div>
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - lv 3 - normal user
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            {% elif lv == "3" %}
+            <button class="navbar-toggler btn btn-primary " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <!-- online user -->
+                <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
+
+                <!-- logout -->
+                <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> 登出</button></a></li>
+                
+                <!-- 生產二部 -->    
+                <li class="nav-item dropdown">
+                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產二部</button></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/production_2_work_time_record"><i class="bi bi-bookmarks"></i> 工時時間記錄表</a>
+                    </div>
+                </li>
+            </ul>
+            </div>
+            {% endif %}
+    </nav>
+
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+
+        <!---------------------------------------------------------------------------------------------------- 
+        -
+        - main content
+        -
+        ----------------------------------------------------------------------------------------------------->
+        <div class="row my-5">
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - lv 1 - admin
+             -
+             ----------------------------------------------------------------------------------------------------->
+            {% if lv == "1" %}
+            <!-- 權限管理 -->
+            <div id="main_content" class="col-md-6 my-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-primary"><i class="bi bi-pencil-square"></i> 權限管理</h4>
+                    </div>
+                    <div class="card-body">
+                        {% for val in msg5 %}
+                        <div class="mouse_hover">
+                            <div><textarea id="content">{{ val[1] }}</textarea></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- 感測器管理 -->
+            <div id="main_content" class="col-md-6 my-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 感測器管理</h4></div>
+                    <div class="card-body">
+                        {% for val in msg3 %}
+                        <div class="mouse_hover" style="margin:1%; padding:1%;">
+                            {% if val[3] == "realtime" %}
+                            <div>{{ val[0] }}  <span class="text-success">(ET news {{ val[3] }})</span></div>
+                            <div class="text-primary"><a href="https://www.ettoday.net/news{{ val[2] }}" target="_blank">{{ val[1] }}</a></div>
+                            {% elif val[3] == "tech" %}
+                            <div>{{ val[0] }}  <span class="text-danger">({{ val[3] }}News)</span></div>
+                            <div class="text-primary"><a href="{{ val[2] }}" target="_blank">{{ val[1] }}</a></div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - lv 2 - otsuka
+             -
+             ----------------------------------------------------------------------------------------------------->
+            {% elif lv == "2" %}
+            <!-- 權限管理 -->
+            <div id="main_content" class="col-md-6 my-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-primary"><i class="bi bi-pencil-square"></i> 權限管理 - 帳號管理</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="btn-group">
+                            <button class="btn btn-primary" onclick="add_account_form()">新增帳號表</button>
+                        </div>
+                        <div id="add_account_form"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 帳號清單 -->
+            <div id="main_content" class="col-md-6 my-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 帳號清單</h4></div>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>帳號</th>
+                                    <th>密碼</th>
+                                    <th>工號</th>
+                                    <th>姓名</th>
+                                    <th>狀態</th>
+                                </tr>
+                            </thead>
+                            <tbody id="otsuka_account_list">
+                            {% for val in factory_work_account_list %}
+                                <tr>
+                                    <td>{{ val[0] }}</td>
+                                    <td>{{ val[2] }}</td>
+                                    <td>{{ val[4] }}</td>
+                                    <td>{{ val[1] }}</td>
+                                    <td>{{ val[3] }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - lv 3 - normal user
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            {% elif lv == "3" %}
+            <!-- 工時時間記錄表 -->
+            <div id="main_content" class="col-md-12 my-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 工時時間記錄表</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="input-group mb-3">
+                        <!-- 工號 -->
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">工號</span>
+                            </div>
+                            <input type="text" class="form-control" id="a_work_no">
+                        
+                        <!-- 姓名 -->
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">姓名</span>
+                            </div>
+                            <input type="text" class="form-control" id="a_name">
+
+                        <!-- 日期 -->
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">日期</span>
+                            </div>
+                            <input type="text" class="form-control" id="a_date" value="{{r_date}}" placeholder="日期">
+                        </div>
+            
+                        <table class="table table-bordered table-hover bg-light">
+                            <thead class="thead-dark">
+                            <tr class="text-center">
+                                <th>工作站</th>
+                                <th>產品</th>
+                                <th>批號</th>
+                                <th>一般工時</th>
+                                <th>加班工時</th>
+                                <th>稼動工時</th>
+                                <th>備註</th>
+                            </tr>
+                            </thead>                                        
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_1" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_1"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_1"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_1"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_1"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_1"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_1"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_2" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_2"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_2"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_2"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_2"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_2"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_2"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_3" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_3"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_3"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_3"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_3"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_3"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_3"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_4" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_4"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_4"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_4"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_4"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_4"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_4"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_5" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_5"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_5"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_5"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_5"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_5"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_5"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_6" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_6"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_6"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_6"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_6"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_6"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_6"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="text-center">
+                            <button class="btn btn-primary" id="submit_work_time_form" onclick="submit_work_time()">建立</button>
+                        </div>
+
+                                   
+                        
+                    </div>
+                </div>
+            </div>
+            {% endif%}
+            
+        </div>
+
+         <!-- go top -->
+         <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+
+    </div>
+</body>
+  <!-- date picker & rich editor-->
+  <script>
+    $("#a_date").flatpickr();  
+    //CKEDITOR.replace('content');
+</script>
+</html>

@@ -1,0 +1,15 @@
+<!-- 即時查詢庫存量 -->
+<table class="table table-hover table-bordered table-striped">
+    <tr class="text-center">
+      <th>倉庫名稱</th>
+      <th>倉庫代號</th>
+      <th class="text-end">目前總量</th>
+    </tr>
+    {% for val in show_erp_realtime_query_search %}
+    <tr >
+      <td class="text-center">{{ val[0] }}</td>
+      <td class="text-center">{{ val[1] }}</td>
+      <td class="text-end">{{ val[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>

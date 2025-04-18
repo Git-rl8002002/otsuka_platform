@@ -1,0 +1,17 @@
+{% for val in msg %}
+<div class="mouse_hover" style="border:#cccccc 1px solid; margin:1%; padding:1%;">
+        <div class="text-right"><button class="btn btn-danger"  id="{{ val[4] }}" onclick="del_menu_money_record(id)"><i class="bi bi-x-square"></i> 刪</button></div>
+        <div>
+                {{ val[0] }}
+        </div>
+        <div>
+                {{ val[1] }} {{ val[3] }} 元
+        </div>
+        <div class="text-primary">
+            {{ val[2] }}
+        </div>
+</div>
+{% endfor %}    
+
+
+   

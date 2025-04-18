@@ -1,0 +1,157 @@
+{% extends "bootstrap/base_login.html" %}
+
+{% block content %}
+<!-- brand 
+<div class="container-fluid text-center bg-light m-0 p-0">
+    <img src="{{ url_for('static',filename='img/icon/logo_no_chart.png') }}">
+    <h1 class="text-primary">{{ title }}</h1>
+</div>
+-->
+<!-- otsuka brand -->
+<header class="bd-header bg-light py-3 align-items-center justify-content-center border-bottom border-light text-center position-sticky top-0" >
+    <div class="container-fluid d-flex align-items-center justify-content-center">
+        <p class="d-flex align-items-center fs-1 mb-0">
+            <img src="{{ url_for('static',filename='img/icon/logo_no_chart.png') }}">
+            <h1 class="text-primary">{{ title }}</h1>
+        </p>
+    </div>
+</header>
+
+<!-- Banner -->
+<div class="container-fluid" style="padding: 0px;">
+    <div class="col-md-12">
+        <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
+            <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            </div>
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/static/img/banner/01.jpg" class="img-fluid d-block w-100">
+                <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+                    <p class="fs-1 fw-bold">Otsuka</p>
+                    <p class="fs-3">Otsuka-people creating new products for better health worldwide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/static/img/banner/02.jpg" class="img-fluid d-block w-100">
+                <div class="carousel-caption d-none d-sm-block">
+                    <p class="fs-1 fw-bold">Otsuka</p>
+                    <p class="fs-3">Otsuka-people creating new products for better health worldwide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/static/img/banner/03.jpg" class="img-fluid d-block w-100">
+                <div class="carousel-caption d-none d-sm-block">
+                    <p class="fs-1 fw-bold">Otsuka</p>
+                    <p class="fs-3">Otsuka-people creating new products for better health worldwide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/static/img/banner/04.jpg" class="img-fluid d-block w-100">
+                <div class="carousel-caption d-none d-sm-block">
+                    <p class="fs-1 fw-bold">Otsuka</p>
+                    <p class="fs-3">Otsuka-people creating new products for better health worldwide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/static/img/banner/05.jpg" class="img-fluid d-block w-100">
+                <div class="carousel-caption d-none d-sm-block">
+                    <p class="fs-1 fw-bold">Otsuka</p>
+                    <p class="fs-3">Otsuka-people creating new products for better health worldwide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="/static/img/banner/06.jpg" class="img-fluid d-block w-100">
+                <div class="carousel-caption d-none d-sm-block">
+                    <p class="fs-1 fw-bold">Otsuka</p>
+                    <p class="fs-3">Otsuka-people creating new products for better health worldwide.</p>
+                </div>
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>    
+</div>
+
+<!-- login form -->
+<div class="container text-center">
+    <div class="row">
+
+        <div id="main_content" class="col-md-2 my-3"></div>
+
+        <!-- content left -->
+        <div class="col-md-4 my-3">
+            <div class="card">
+                <div class="card-header text-primary"><i class="bi bi-person-circle"></i> TWOP</div>
+                <div class="card-body">
+                    <form action="/login" method="POST" class="form-group">
+                        <div class="input-group my-1">
+                            <span class="input-group-text"><i class="bi bi-person"></i> 帳號</span>
+                            <input type="text" name="user" class="form-control" placeholder="" required>
+                        </div>
+                        <div class="input-group my-1">
+                            <span class="input-group-text"><i class="bi bi-person-fill"></i> 密碼</span>
+                            <input type="password" name="pwd" class="form-control" placeholder="" required>
+                        </div>
+                        <div class="text-center my-1">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary" name="submit">
+                                    <i class="bi bi-send"></i> 登入
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    {% if login_msg | length %}
+                        <div class="text-center text-danger"><i class="bi bi-x-circle-fill"></i> {{ login_msg }}</div>
+                    {% else %}
+                        <div class="text-center text-danger">{{ login_msg }}</div>
+                    {% endif %}  
+                </div>
+            </div>
+            
+            
+
+        </div>
+    
+        <!-- content right -->
+        <div id="main_content" class="col-md-4 my-3">
+            <!-------- 
+            -
+            - 說明 
+            -
+            ---------->
+            <div class="card" id="login_msg">
+                <div class="card-header text-danger"><i class="bi bi-chat-left-text"></i> 登入說明</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 text-start align-middle">
+                            (1).<span class="text-primary">帳號</span> <i class="bi bi-arrow-right-short"></i> Email @ 符號前那串文字 <br>
+                            (例)<br> 
+                            <span class="text-danger">Otsuka_Test</span>@otsuka.com.tw <br>
+                            帳號 <i class="bi bi-arrow-right-short"></i> <span class="text-danger">Otsuka_Test</span> <br><br>
+                            (2).<span class="text-primary">密碼</span> <i class="bi bi-arrow-right-short"></i> 跟 Email ㄧ樣 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="main_content" class="col-md-2 my-3"></div>
+
+    </div>
+</div>
+{% endblock content %}

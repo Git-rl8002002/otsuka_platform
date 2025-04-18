@@ -1,0 +1,56 @@
+<!-- title -->
+<div>
+<div class="text-center"><h4>修改工作進度紀錄</h4></div>
+{% for val in res_list %}
+<div>
+    <form>
+        <!-- 標體 w_title -->
+        <div class="input-group my-2">
+            <span class="input-group-text">工作標體</span>
+            <input type="text" class="form-control" id="w_a_title" value='{{ val[0] }}' readonly>
+        </div>
+        
+        <!-- 新增日期 , 地點 , 開始時間 , 結束時間 , 狀態  / w_date , w_place , w_start , w_end , w_status -->
+        <div class="input-group my-2">
+            <span class="input-group-text">新增日期</span>
+            <!-- date  param : data-enable-time="true" data-enable-seconds="true" -->
+            <input type="text" class="form-control" id="w_a_date" value="{{ val[2] }}" placeholder="日期" readonly>
+            <span class="input-group-text">地點</span>
+            <input type="text" class="form-control" id="w_a_place" value="{{ val[7] }}" required>
+            <span class="input-group-text">開始時間</span>
+            <input type="text" class="form-control" id="w_a_start" value="{{ val[3] }}" required readonly>
+            <span class="input-group-text">結束時間</span>
+            <input type="text" class="form-control" id="w_a_end" value="{{ val[4] }}">
+            <span class="input-group-text">狀態</span>
+            <input type="text" class="form-control" id="w_a_status" value="{{ val[5] }}" required>
+        </div>
+
+        <!-- 部門 w_dep , 使用者 w_user -->
+        <input type="hidden" id="w_a_dep" value="{{ dep_id }}">
+        <input type="hidden" id="w_a_user" value="{{ user }}">
+
+        <!-- 內容 new_work_record_content -->
+        <div class="text-center my-2">
+            <textarea class="form-control" rows="15" style="width:600px; height:600px;" id="w_a_new_work_record_content">{{ val[1] }}</textarea>
+        </div>
+        
+        <!-- submit -->
+        <div class="text-center my-2">
+            <div class="btn-group">
+                <button  class="btn btn-primary" onclick="submit_alter_new_work_record()"><i class="bi bi-pencil-square"></i> 修改</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endfor %}
+
+    <!-- show msg -->
+    <div id="add_work_record_show_msg" class="text-center"></div>
+
+<!-- date picker & rich editor-->
+<script>
+    $("#w_a_date").flatpickr();  
+    $("#w_a_start").flatpickr();  
+    $("#w_a_end").flatpickr();  
+    CKEDITOR.replace('w_a_new_work_record_content');
+</script>

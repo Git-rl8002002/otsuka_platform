@@ -1,0 +1,42 @@
+<!-- rich editor -->
+<script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/ckeditor.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/plugins/image/dialogs/image.js') }}"></script>
+
+    <!-- title -->
+    <div id="add_work_form" class="card">
+        {% for val in msg %}
+        <div class="card-header text-center"><h3><i class="bi bi-pencil-square"></i> 修改 {{ val[1] }}</h3></div>
+        <div class="card-body">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">日期</span>
+                </div>
+                <!-- date -->
+                <input type="text" class="form-control" id="record_time" value="{{ val[0] }}" placeholder="日期" readonly/>
+            </div>
+            <div class="input-group">
+                <!-- title -->
+                <div class="input-group-prepend">
+                    <span class="input-group-text">標體</span>
+                </div>
+                <input type="text" class="form-control" id="title" value="{{ val[1] }}" placeholder="標體">
+            </div>
+            <div class="input-group">
+                <!-- content -->
+                <textarea class="form-control" id="content" rows="30" >{{ val[2] }}</textarea>
+                <!-- no -->
+                <input type="hidden" id="no" value="{{ val[4] }}"/>
+            </div>
+            <div class="text-center my-2">
+                <button  class="btn btn-primary" onclick="submit_alter_calendar_record_form()"><i class="bi bi-pencil-square"></i> 修改</button>
+                <button  class="btn btn-danger" onclick="del_alter_calendar_record_form()"><i class="bi bi-x-circle-fill"></i> 刪除</button>
+            </div>
+            {% endfor %}
+        </div>    
+    </div>
+
+    <!-- date picker -->
+    <script>
+        $("#record_time").flatpickr();  
+        CKEDITOR.replace('content');
+    </script>

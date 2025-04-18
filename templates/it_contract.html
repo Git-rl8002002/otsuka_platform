@@ -1,0 +1,381 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - main content
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            <!-- 合約查詢 -->
+            <div id="main_content" class="col-md-3">
+                <div class="card my-2">
+                    <div class="card-header">
+                        <i class="bi bi-chat-left-text"></i> {{ operation_record_title }}
+                    </div>
+                    <div class="card-body">
+                        <!-- Nav tabs -->
+                    <ul class="nav nav-tabs my-2">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#home"><i class="bi bi-chat-left-text"></i> 查詢</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu1"><i class="bi bi-pencil-square"></i> 新增</a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- 查詢 -->
+                        <div class="tab-pane container active" id="home">
+                            <!--
+                                <input class="form-control" placeholder="" id="query_contract" onkeyup="query_contract()" data-toggle="tooltip" data-placement="bottom" title="輸入 IT 合約名稱"><br>
+                                <div id="search_val"></div>
+                            -->
+                        </div>
+                        <!-- 新增 -->
+                        <div class="tab-pane container fade" id="menu1">
+                                <!-- 日期 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">建立日期</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_date"  placeholder="" data-toggle="tooltip" data-placement="bottom" title="建立日期">
+                                </div>
+                                <!-- 合約單位 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">合約單位</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_department"  placeholder="" data-toggle="tooltip" data-placement="bottom" title="合約單位" value="{{dep_id}}" readonly>
+                                </div>
+                                <!-- 合約種類 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">合約種類</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_kind"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="合約種類" required>
+                                </div>
+                                <!-- 合約名稱 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">合約名稱</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_title"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="合約名稱" required>
+                                </div>
+                                <!-- 合約價錢 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">合約金額</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_cost"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="合約金額" required>
+                                </div>
+                                <!-- 合約時間 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">合約時間</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_time"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="合約時間" required>
+                                </div>
+                                <!-- 合約公司 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">合約公司</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_company"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="合約公司" required>
+                                </div>
+                                <!-- 合約窗口 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">合約窗口</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_name"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="合約窗口" required>
+                                </div>
+                                <!-- 合約電話 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">窗口電話</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_telephone"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="合約電話" required>
+                                </div>
+                                <!-- 合約手機 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">窗口手機</span>
+                                    </div>
+                                    <input class="form-control" id="o_c_phone"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="合約手機" required>
+                                </div>
+                                <!-- 合約備註 -->
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">合約備註</span>
+                                    </div>
+                                    <textarea class="form-control" rows="10" id="o_c_comment"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="合約備註" required></textarea>
+                                </div>
+                                
+                                <!-- submit -->
+                                <div class="text-center my-2">
+                                    <div class="btn-group">
+                                        <button type="submit" class="btn btn-primary" id="o_c_submit" name="o_c_submit" onclick="submit_otsuka_contract()">
+                                            <i class="bi bi-send"></i> 確定新增
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!---------------------------------------------------------------------------------------------------- 
+                                -
+                                - success message 
+                                -
+                                ----------------------------------------------------------------------------------------------------->
+                                <!-- submit_otsuka_cobtract -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="submit_otsuka_contract" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-success"><i class="bi bi-x-circle-fill"></i> 訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約完成 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!---------------------------------------------------------------------------------------------------- 
+                                -
+                                - error message 
+                                -
+                                ----------------------------------------------------------------------------------------------------->
+                                <!-- o_c_date -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_date" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約時間不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- o_c_kind -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_kind" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約種類不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- o_c_title -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_title" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約名稱不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- o_c_cost -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_cost" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約金額不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- o_c_time -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_time" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約時間不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- o_c_company -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_company" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約公司不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- o_c_name -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_company" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約窗口不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- o_c_telephone -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_company" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約窗口電話不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- o_c_phone -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_company" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約窗口手機不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                <!-- o_c_comment -->
+                                <div aria-live="polite" aria-atomic="true"  class="fixed-element">
+                                    <div id="check_o_c_comment" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="5000">
+                                      <div class="toast-header">
+                                        <strong class="me-auto text-danger"><i class="bi bi-x-circle-fill"></i> 錯誤訊息</strong>
+                                      </div>
+                                      <div class="toast-body">
+                                        新增合約備註不能空白 !
+                                      </div>
+                                    </div>
+                                </div>
+                                
+                        </div>
+                    </div>    
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- IT 合約清單 -->    
+            <div class="col-md-9 my-2">
+                <div class="card">
+                    <div class="card-header"><i class="bi bi-chat-left-text"></i> 合約清單</div>
+                    
+                    <div class="card-body" id="query_contract">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs my-2">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#contract_list"><i class="bi bi-card-list"></i> 總計</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#contract_date"><i class="bi bi-card-list"></i> 日期</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#contract_kind"><i class="bi bi-card-list"></i> 種類</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <!-- contract list -->
+                            <div class="tab-pane container active" id="contract_list">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <tr>
+                                        <td>種類</td>
+                                        <td>合約總數</td>
+                                        <td>費用總計</td>
+                                    </tr>
+                                    {% for val in contract_list_summary %}
+                                    <tr>
+                                        <td>{{ val[0] }}</td>
+                                        <td>{{ val[1] }} 筆</td>
+                                        <td>{{ "%.0f" | format(val[2]) }} 元</td>
+                                    </tr>
+                                    {% endfor%}
+                                </table>    
+                            </div>
+                            <!-- contract by date -->
+                            <div class="tab-pane container fade" id="contract_date">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <tr>
+                                        <td>日期</td>
+                                        <td>種類</td>
+                                        <td>名稱</td>
+                                        <td>時效</td>
+                                        <td>費用</td>
+                                        <td>內容</td>
+                                    </tr>
+                                    {% for val in contract_list_by_date %}
+                                    <tr>
+                                        <td>{{ val[1] }}</td>
+                                        <td>{{ val[2] }}</td>
+                                        <td>{{ val[3] }}</td>
+                                        <td>{{ val[5] }}</td>
+                                        <td>{{ val[4] }} 元</td>
+                                        <td><button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#contract_date_detail_{{ val[1] }}"><i class="bi bi-card-list"></i> 合約內容</button></td>
+                                    </tr>
+                                    <tr><td colspan="6" id="contract_date_detail_{{ val[1] }}" class="collapse">{{ val[7] }}</td></tr>
+                                    {% endfor%}
+                                </table>
+                            </div>
+                            <!-- contract by kind -->
+                            <div class="tab-pane container fade" id="contract_kind">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <tr>
+                                        <td>種類</td>
+                                        <td>日期</td>
+                                        <td>名稱</td>
+                                        <td>時效</td>
+                                        <td>費用</td>
+                                        <td>內容</td>
+                                    </tr>
+                                    {% for val in contract_list_by_kind %}
+                                    <tr>
+                                        <td>{{ val[2] }}</td>
+                                        <td>{{ val[1] }}</td>
+                                        <td>{{ val[3] }}</td>
+                                        <td>{{ val[5] }}</td>
+                                        <td>{{ val[4] }} 元</td>
+                                        <td><button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#contract_kind_detail_{{ val[1] }}"><i class="bi bi-card-list"></i> 合約內容</button></td>
+                                    </tr>
+                                    <tr><td colspan="6" id="contract_kind_detail_{{ val[1] }}" class="collapse">{{ val[7] }}</td></tr>
+                                    {% endfor%}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+             </div>
+        </div>
+
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+{% endblock content %}
+
+{% block script %}    
+    <!-- date picker & rich editor-->
+    <script>
+        $("#o_c_date").flatpickr();    
+        //CKEDITOR.replace('content');
+        </script>
+{% endblock script %}
+    

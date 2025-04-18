@@ -1,0 +1,284 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - main content
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            
+            <!---------------------------- 
+            - 工廠 ERP - 進銷項明細表
+            ------------------------------>    
+            <div class="col-md-12 my-2">
+                <div class="card" id="p_s_detail_list">
+                    <div class="card-header"><i class="bi bi-chat-left-text"></i> {{ operation_record_title }}</div>
+                    
+                    <div class="card-body" id="query_content">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs my-2">
+                            <!-- 
+                            <li class="nav-item">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#bpm_expenditure_form_list_account"><i class="bi bi-card-list"></i> {{ user }}</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#bpm_expenditure_form_list_account_done_chart"><i class="bi bi-bar-chart-line"></i> {{ user }} 已結案統計圖</a>
+                            </li>
+                            -->
+
+                            <li class="nav-item">
+                              <a class="nav-link active" data-bs-toggle="tab" href="#f_erp_realtime_query"><i class="bi bi-card-list"></i> 進銷項明細表</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-bs-toggle="tab" href="#f_erp_realtime_query2"><i class="bi bi-card-list"></i> 進銷項彙總表</a>
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+
+                            <!-----------------
+                            - 進銷項明細表
+                            ------------------>
+                            <div class="tab-pane container active" id="f_erp_realtime_query" v-if="f_erp_realtime_query3" v-html="f_erp_realtime_query3">
+                              
+                              <div class="row">
+                                <div class="col-md-3">
+                                  <!------ 
+                                  - 搜尋 
+                                  -------->
+                                  <div class="tab-pane container active">
+                                      <div class="card" id="search_erp_subform">
+                                        <div class="card-header" onclick="select_q_c_name()">
+                                            <i class="bi bi-search"></i> 銷售項明細表查詢
+                                        </div>
+                                        <div class="card-body">
+                                
+                                          <!-- 建立人 -->
+                                          <div class="input-group my-1">
+                                            <span class="input-group-text text-success">建立人</span>
+                                            <input type="text" class="form-control" id="q_s_date" v-model="q_s_date" ref="q_s_date">
+                                          </div>
+                                          
+                                          <!-- 申報年 -->
+                                          <div class="input-group my-1">
+                                            <span class="input-group-text text-success">申報年</span>
+                                            <input type="text" class="form-control" id="q_s_date" v-model="q_s_date" ref="q_s_date">
+                                          </div>
+
+                                          <!-- 申報月 -->
+                                          <div class="input-group my-1">
+                                            <span class="input-group-text text-success">申報月</span>
+                                            <input type="text" class="form-control" id="q_e_date" v-model="q_e_date" ref="q_e_date">
+                                          </div>
+                                            
+                                          <!-- submit -->
+                                          <div class="btn-group justify-content-center">
+                                              <button type="button" class="btn btn-primary my-1" id="q_s_submit" name="q_b_w_f_search_submit" @click="q_s_submit">
+                                                  <i class="bi bi-send"></i> 搜尋
+                                              </button>
+                                              <button type="button" class="btn btn-success my-1" id="e_f_excel" name="e_f_excel" @click="e_f_excel" :disabled="isLoading">
+                                                <i class="bi bi-clipboard-data"></i> 匯出 Excel
+                                              </button>
+                                          </div>
+
+                                          <!-- l_status -->
+                                          <div class="text-center align-middle"><input type="text" v-model="l_status" class="form-control l_status" readonly/></div>
+
+                                        </div>
+                                      </div>  
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                  <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                      <thead class="text-center align-middle">
+                                        <th>建立者</th>
+                                        <th>進銷項</th>
+                                        <th>格式代號</th>
+                                        <th>稅籍編號</th>
+                                        <th>流水號</th>
+                                        <th>開立日期</th>
+                                        <th>買方統編</th>
+                                        <th>賣方統編</th>
+                                        <th>發票號碼</th>
+                                        <th>扣抵別</th>
+                                        <th>課稅別</th>
+                                        <th>銷售金額</th>
+                                        <th>營業稅額</th>
+                                        <th>備註</th>
+                                      </thead>
+                                      <tbody>
+                                        
+                                        <tr>
+                                          <td>
+                                            {{ val[0] }}
+                                          </td>
+                                          <td>{{ val[1] }}</td>
+                                          <td>{{ val[2] }}</td>
+                                          <td>{{ val[3] }}</td>
+                                          <td>{{ val[4] }}</td>
+                                          <td>{{ val[5] }}</td>
+                                          <td>{{ val[6] }}</td>
+                                          <td>{{ val[7] }}</td>
+                                          <td>{{ val[8] }}</td>
+                                          <td>{{ val[9] }}</td>
+                                          <td>{{ val[10] }}</td>
+                                          <td>{{ val[11] }}</td>
+                                          <td>{{ val[12] }}</td>
+                                        </tr>
+
+                                      </tbody>
+                                    </table> 
+                                   </div>
+                                </div>
+
+                              </div>
+
+                            </div>
+                            
+                            <!-----------------
+                            - 進銷項彙總表
+                            ------------------>
+                            <div class="tab-pane container active" id="f_erp_realtime_query2" v-if="f_erp_realtime_query3" v-html="f_erp_realtime_query3">
+                              
+                              <div class="container-fluid">
+                                <div class="row">
+                                  <div class="col-3">
+                                    <div class="card" id="search_erp_subform">
+                                      <div class="card-header" onclick="select_q_c_name()">
+                                          <i class="bi bi-search"></i> 銷售項彙總表查詢
+                                      </div>
+                                      <div class="card-body">
+                              
+                                        <!-- 申報年月 -->
+                                        <div class="input-group my-1">
+                                          <span class="input-group-text text-success">申報年月</span>
+                                          <select class="form-control" id="p_s_date" v-model="p_s_date" ref="p_s_date">
+                                            <option :disabled>請選擇</option>
+                                            {% for val in p_s_query_res_by_date %}
+                                            <option>{{ val[0] }}</option>
+                                            {% endfor %}
+                                          </select>
+                                        </div>
+                                        
+                                        <!-- 建立人 -->
+                                        <div class="input-group my-1">
+                                          <span class="input-group-text text-success">建立人</span>
+                                          <select class="form-control" id="p_s_person" v-model="p_s_person" ref="p_s_person">
+                                            <option :disabled>請選擇</option>
+                                            {% for val in p_s_query_person_res %}
+                                            <option>{{ val[0] }}</option>
+                                            {% endfor %}
+                                          </select>
+                                        </div>
+                                          
+                                        <!-- submit -->
+                                        <div class="btn-group justify-content-center">
+                                            <button type="button" class="btn btn-primary my-1" id="q_s_submit" name="q_b_w_f_search_submit" @click="p_s_q_s_submit">
+                                                <i class="bi bi-send"></i> 搜尋
+                                            </button>
+                                            <button type="button" class="btn btn-success my-1" id="e_f_excel" name="e_f_excel" @click="e_f_excel" :disabled="isLoading">
+                                              <i class="bi bi-clipboard-data"></i> 匯出 Excel
+                                            </button>
+                                        </div>
+
+                                        <!-- l_status -->
+                                        <div class="text-center align-middle"><input type="text" v-model="l_status" class="form-control l_status" readonly/></div>
+
+                                      </div>
+                                    </div>  
+                                  </div>
+
+                                  <!-- show_content2 -->
+                                  <div class="col-9">
+                                    
+                                    <div id="p_s_show_content2">
+                                      
+                                      <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                          <thead>
+                                            <tr>
+                                              <th>建立者</th>
+                                              <th>進銷項別</th>
+                                              <th>進銷項</th>
+                                              <th>格式代號</th>
+                                              <th>發票金額</th>
+                                              <th>營業稅額</th>
+                                              <th>總計發票金額</th>
+                                              <th>總計營業稅額</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {% for val in p_s_query_res2 %}
+                                            <tr>
+                                              <td>
+                                                {{ val[0] }}
+                                              </td>
+                                              <td>{{ val[6] }}</td>
+                                              <td>{{ val[7] }}</td>
+                                              <td>{{ val[5] }}</td>
+                                              <td>{{ val[16] }}</td>
+                                              <td>{{ val[18] }}</td>
+                                              <td>{{ val[16] }}</td>
+                                              <td>{{ val[18] }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                          </tbody>
+                                        </table> 
+                                      </div>
+
+                                    </div>
+
+                                  </div>
+
+                                </div>
+                              </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+             </div>
+        </div>
+
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+{% endblock content %}
+
+{% block script %}    
+    
+    <!-- Vue.js 3 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/index_vue_js_3.js') }}"></script>
+
+    <!-- date picker & rich editor -->
+    <script>
+      $("#q_s_date").flatpickr();    
+      $("#q_e_date").flatpickr();    
+      //CKEDITOR.replace('content');
+    </script>    
+{% endblock script %}
+
+
+    

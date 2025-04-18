@@ -1,0 +1,139 @@
+<table class="table table-bordered table-hover table-striped text-center small">
+    
+    <!----------
+    - 
+    -  Title
+    -
+    ------------>
+    <tr>
+        <td>中文</td>
+        <td>英文</td>
+        <td>部門</td>
+        <td>{{month}}/1</td>
+        <td>{{month}}/2</td>
+        <td>{{month}}/3</td>
+        <td>{{month}}/4</td>
+        <td>{{month}}/5</td>
+        <td>{{month}}/6</td>
+        <td>{{month}}/7</td>
+        <td>{{month}}/8</td>
+        <td>{{month}}/9</td>
+        <td>{{month}}/10</td>
+        <td>{{month}}/11</td>
+        <td>{{month}}/12</td>
+        <td>{{month}}/13</td>
+        <td>{{month}}/14</td>
+        <td>{{month}}/15</td>
+        <td>{{month}}/16</td>
+        <td>{{month}}/17</td>
+        <td>{{month}}/18</td>
+        <td>{{month}}/19</td>
+        <td>{{month}}/20</td>
+        <td>{{month}}/21</td>
+        <td>{{month}}/22</td>
+        <td>{{month}}/23</td>
+        <td>{{month}}/24</td>
+        <td>{{month}}/25</td>
+        <td>{{month}}/26</td>
+        <td>{{month}}/27</td>
+        <td>{{month}}/28</td>
+        <td>{{month}}/29</td>
+        <td>{{month}}/30</td>
+        <td>{{month}}/31</td>
+        <td>總計</td>
+    </tr>
+    <!---------------------
+    - 
+    - Date total by name
+    -
+    ----------------------->
+    {% for val in name_in_month %}
+    <tr>
+        <td>{{ val[0] }}</td>
+        <td>{{ val[1] }}</td>
+        <td>{{ val[2] }}</td>
+        <td>{{ val[3] }}</td>
+        <td>{{ val[4] }}</td>
+        <td>{{ val[5] }}</td>
+        <td>{{ val[6] }}</td>
+        <td>{{ val[7] }}</td>
+        <td>{{ val[8] }}</td>
+        <td>{{ val[9] }}</td>
+        <td>{{ val[10] }}</td>
+        <td>{{ val[11] }}</td>
+        <td>{{ val[12] }}</td>
+        <td>{{ val[13] }}</td>
+        <td>{{ val[14] }}</td>
+        <td>{{ val[15] }}</td>
+        <td>{{ val[16] }}</td>
+        <td>{{ val[17] }}</td>
+        <td>{{ val[18] }}</td>
+        <td>{{ val[19] }}</td>
+        <td>{{ val[20] }}</td>
+        <td>{{ val[21] }}</td>
+        <td>{{ val[22] }}</td>
+        <td>{{ val[23] }}</td>
+        <td>{{ val[24] }}</td>
+        <td>{{ val[25] }}</td>
+        <td>{{ val[26] }}</td>
+        <td>{{ val[27] }}</td>
+        <td>{{ val[28] }}</td>
+        <td>{{ val[29] }}</td>
+        <td>{{ val[30] }}</td>
+        <td>{{ val[31] }}</td>
+        <td>{{ val[32] }}</td>
+        <td>{{ val[33] }}</td>
+        <td>{{ val[34] }}</td>
+    </tr>
+    {% endfor %}
+
+    <!---------------------
+    - 
+    - Date total by name
+    -
+    ----------------------->
+    {% for val in day_in_total %}
+    <tr>
+        <td colspan="3">總計</td>
+        <td>{{ val[0] }}</td>
+        <td>{{ val[1] }}</td>
+        <td>{{ val[2] }}</td>
+        <td>{{ val[3] }}</td>
+        <td>{{ val[4] }}</td>
+        <td>{{ val[5] }}</td>
+        <td>{{ val[6] }}</td>
+        <td>{{ val[7] }}</td>
+        <td>{{ val[8] }}</td>
+        <td>{{ val[9] }}</td>
+        <td>{{ val[10] }}</td>
+        <td>{{ val[11] }}</td>
+        <td>{{ val[12] }}</td>
+        <td>{{ val[13] }}</td>
+        <td>{{ val[14] }}</td>
+        <td>{{ val[15] }}</td>
+        <td>{{ val[16] }}</td>
+        <td>{{ val[17] }}</td>
+        <td>{{ val[18] }}</td>
+        <td>{{ val[19] }}</td>
+        <td>{{ val[20] }}</td>
+        <td>{{ val[21] }}</td>
+        <td>{{ val[22] }}</td>
+        <td>{{ val[23] }}</td>
+        <td>{{ val[24] }}</td>
+        <td>{{ val[25] }}</td>
+        <td>{{ val[26] }}</td>
+        <td>{{ val[27] }}</td>
+        <td>{{ val[28] }}</td>
+        <td>{{ val[29] }}</td>
+        <td>{{ val[30] }}</td>
+        <td>{{ val[31] }}</td>
+    </tr>
+    {% endfor %}
+    
+
+</table>
+
+
+
+
+    

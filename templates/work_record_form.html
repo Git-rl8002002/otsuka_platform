@@ -1,0 +1,152 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div id="load_check_form2">
+
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            <!-- 人員考核表清單 -->
+            <div class="col-md-3 my-1">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-chat-left-text"></i> 工作進度表
+                    </div>
+                    <div class="card-body">
+
+                        <div class="btn-group text-center align-middle my-2">
+                            <button class="btn btn-warning" onclick="load_work_record_form()"><i class="bi bi-menu-button-wide"></i> 新增</button>
+                            <button class="btn btn-warning" id="{{ dep_id }}" onclick="load_work_record_list_by_dep(id)"><i class="bi bi-menu-button-wide"></i> 總覽清單</button>
+                        </div>
+
+                        <!-- 工作報表 -->
+                        <div class="bg-light my-2">
+                            <div class="card">
+                                <div class="card-header bg-primary text-white"><i class="bi bi-chat-left-text"></i> 工作報表</div>
+                                <div class="card-body">
+                                    <!-- start date -->
+                                    <input type="text" class="form-control my-1" id="s_s_date" value="{{ r_time }}" placeholder="開始日期" readonly/> 
+                                    
+                                    <!-- end date -->
+                                    <input type="text" class="form-control my-1" id="s_e_date" value="{{ r_time }}" placeholder="結束日期" readonly/> 
+                                    
+                                    <!-- w_kind -->
+                                    <select id="s_w_kind" class="form-control" required>
+                                        <option></option>
+                                        <option>工作日報</option>
+                                        <option>工作週報</option>
+                                        <option>工作月報</option>
+                                        <option>工作年報</option>
+                                        <option>各別進度</option>
+                                    </select>
+
+                                    <div class="btn-group text-center align-middle my-2 text-center align-middle">
+                                        <button class="btn btn-warning" onclick="search_work_record_list()"><i class="bi bi-menu-button-wide"></i> 搜尋</button>
+                                        <button class="btn btn-warning" id="{{ dep_id }}" onclick="load_work_record_list_by_dep(id)"><i class="bi bi-menu-button-wide"></i> 匯出</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="final_update_work_record">
+                            <!-- 本帳號最後更新五筆紀錄 -->
+                            <div>
+                                <ul class="list-group my-2">
+                                    <li class="list-group-item active"><i class="bi bi-chat-left-text"></i> {{ user }} 最後更新紀錄 </li>
+                                    {% for val in final_res_list %}
+                                    <li class="list-group-item list-group-item-action">
+                                        <span class="text-primary">{{ val[1] }}</span> <br> 
+                                        <i class="bi bi-arrow-right-short"></i> {{ val[0] }}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <!-- 部門最後更新15筆紀錄 -->
+                            <div>
+                                <ul class="list-group my-2">
+                                    <li class="list-group-item active"><i class="bi bi-chat-left-text"></i> {{ dep_id }} 最後更新紀錄 </li>
+                                    {% for val in final_res_list_by_dep %}
+                                    <li class="list-group-item list-group-item-action">
+                                        <span class="text-primary">{{ val[1] }}</span> <br> 
+                                        <i class="bi bi-arrow-right-short"></i> {{ val[0] }} <span class="text-success">({{ val[2] }})</span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - woerk record form
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            <div id="main_content" class="col-md-9 my-1">
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-chat-left-text"></i> {{ dep_id }}
+                    </div>
+                    <div class="card-body" id="work_record_form_content">
+                        
+                        <!-- 工作進度表清單 -->
+                        <ul class="list-group">
+                            {% for val in res_list %}
+                                <li class="list-group-item list-group-item-action">
+                                    <strong><i class="bi bi-file-earmark-person"></i>
+                                    </strong><strong class="text-success">{{ val[0] }} <span class="text-primary">({{ val[1] }})</span></strong>
+                                    
+                                    <ul>
+                                        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                            {% for title in val[2] %}
+                                            <li style="list-style-type: none; display: inline-block; width: 16%;" class="list-inline-item mouse_hover rounded">
+                                                <a href="#" id="{{ title }}/{{ val[0] }}" onclick="load_work_record_list_by_detail(id)">
+                                                    {{ title }}
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </ul>
+
+                                </li>
+
+                            {% endfor %}
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+{% endblock content %}
+
+{% block script %}
+    <!-- date picker & rich editor-->
+    <script>
+    $("#a_date").flatpickr(); 
+    $("#s_s_date").flatpickr();    
+    $("#s_e_date").flatpickr();       
+    //CKEDITOR.replace('content');
+    </script>
+{% endblock script %}
+
+

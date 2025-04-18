@@ -1,0 +1,604 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4"><div class="col-md-12"></div></div>
+        <div class="row my-5">
+            <!---------------------------------------------------------------------------------------------------- 
+            -
+            - left content
+            -   
+            ----------------------------------------------------------------------------------------------------->
+            <!-- 查詢 -->
+            <div id="main_content" class="col-md-12">
+                <div class="card my-2">
+                    <div class="card-header">
+                        <i class="bi bi-chat-left-text"></i> {{ operation_record_title }}
+                    </div>
+                    <div class="card-body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs my-2">
+                          <li class="nav-item my-2">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#regulations"><i class="bi bi-chat-left-text"></i> 最新法規通知</a>
+                          </li>
+                          <li class="nav-item my-2">
+                              <a class="nav-link" data-bs-toggle="tab" href="#food"><i class="bi bi-chat-left-text"></i> 食品成分</a>
+                          </li>
+                          <li class="nav-item my-2">
+                              <a class="nav-link" data-bs-toggle="tab" href="#drug"><i class="bi bi-chat-left-text"></i> 藥品成分</a>
+                          </li>
+                          <li class="nav-item my-2">
+                            <a class="nav-link" data-bs-toggle="tab" href="#product"><i class="bi bi-chat-left-text"></i> 產品成分</a>
+                          </li>
+                          <li class="nav-item my-2">
+                            <a class="nav-link" data-bs-toggle="tab" href="#cosmetic"><i class="bi bi-chat-left-text"></i> 化妝品成分</a>
+                          </li>
+                        </ul>
+                    
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+                        <!---------------------------------------------------------------------------------------------------- 
+                          -
+                          - 最新法規通知
+                          -
+                          ----------------------------------------------------------------------------------------------------->
+                          <div class="tab-pane container-fluid active" id="regulations">
+                            <div class="row my-2">
+                              <div class="col-md-3 my-2">
+                                <!-- FDA 衛生福利部食品藥物管理署 公告 , mrd_8_announcement_1_url -->
+                                <div class="card text-center h-100">
+                                  <div class="card-header">
+                                    <a href="{{ mrd_8_announcement_1_url }}" target="_blank">
+                                      <p>FDA 衛生福利部食品藥物管理署</p>
+                                      <p><i class="bi bi-send"></i> 公告</p>
+                                    </a>
+                                  </div>
+                                  <div class="card-body">
+                                    
+                                    <select class="form-select my-2" id="mrd_8_query_announcement_year">
+                                      <option selected="selected" value="">全部</option>
+                                      <option value="2024">2024</option>
+                                      <option value="2023">2023</option>
+                                      <option value="2022">2022</option>
+                                      <option value="2021">2021</option>
+                                      <option value="2020">2020</option>
+                                      <option value="2019">2019</option>
+                                      <option value="2018">2018</option>
+                                      <option value="2017">2017</option>
+                                      <option value="2016">2016</option>
+                                      <option value="2015">2015</option>
+                                    </select>
+
+										                <select class="form-select my-2" id="mrd_8_query_announcement_item">
+                                      <option selected="selected" value="">全部</option>
+                                      <option value="00" >&#26410;&#20998;&#39006;</option>
+                                      <option value="01" >&#39135;&#21697;</option>
+                                      <option value="02" >&#34277;&#21697;</option>
+                                      <option value="03" >&#37291;&#30274;&#22120;&#26448;</option>
+                                      <option value="04" >&#21270;&#31911;&#21697;</option>
+                                      <option value="05" >&#31649;&#21046;&#34277;&#21697;</option>
+                                    </select>
+
+                                    <input class="form-control my-2" id="mrd_8_query_announcement_keyword"  placeholder="關鍵字">
+                                    
+                                    <button class="btn btn-primary" id="mrd_8_query_announcement_submit" onclick="mrd_8_query_announcement_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                    
+                                  </div>
+                                  <div class="card-footer">
+                                    <!-- 公告自動 Email 通知 -->
+                                    <a href="#" onclick="mrd_8_add_auto_email_push()"><i class="bi bi-envelope-plus"></i> 公告自動 Email 通知設定 </a>
+                                  </div>
+                                </div>  
+                              </div>
+                              <div class="col-md-3 my-2">
+                                <!-- 台灣藥物法規資訊網 , mrd_8_announcement_2_url -->
+                                <div class="card text-center h-100">
+                                  <div class="card-header">
+                                    <a href="{{ mrd_8_announcement_2_url }}" target="_blank">
+                                      <p>台灣藥物法規資訊網</p>
+                                      <p><i class="bi bi-send"></i> 法規公告</p>
+                                    </a>
+                                  </div>
+                                  <div class="card-body">
+                                    <li>
+                                      <a href="{{ mrd_8_announcement_2_url }}" target="_blank">法規公告查詢</a>  
+                                    </li>
+                                  </div>
+                                </div>   
+                              </div>
+                              <div class="col-md-3 my-2"></div>
+                              <div class="col-md-3 my-2"></div>  
+                            </div>
+                          </div>
+                        <!---------------------------------------------------------------------------------------------------- 
+                        -
+                        - 食品成分
+                        -
+                        ----------------------------------------------------------------------------------------------------->
+                        <div class="tab-pane container-fluid fade" id="food">
+                          
+                          <!-- FDA 統一搜尋入口 , mrd_8_food_8_all_search -->
+                          <div class="row my-2">
+                            <div class="col-md-3 my-2">
+                              <div class="card text-center h-100">
+                                <div class="card-header">
+                                  <a href="{{ mrd_8_food_8_all_search }}" target="_blank">
+                                    <p>FDA 衛生福利部食品藥物管理署</p>
+                                    <p><i class="bi bi-send"></i> 統一搜尋入口 整合查詢服務</p>
+                                  </a>
+                                </div>
+                                <div class="card-body">
+
+                                  <input class="form-control my-2" id="mrd_8_food_8_all_search_k"   placeholder="關鍵字">
+                                  
+                                  <button class="btn btn-primary" id="mrd_8_food_8_all_search_submit" onclick="mrd_8_food_8_all_search_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                </div>
+                              </div>  
+                            </div>
+                            <div class="col-md-9"></div>
+                          </div>
+                          
+                          <div class="row my-2">
+                            <div class="col-md-3 my-2">
+                              <!-- FDA 衛生福利部審核通過之基因改造食品原料之查詢 , mrd_8_food_8_url -->
+                              <div class="card text-center h-100">
+                                <div class="card-header">
+                                  <a href="{{ mrd_8_food_8_url }}" target="_blank">
+                                    <p>FDA 食品藥物消費者專區</p>
+                                    <p><i class="bi bi-send"></i> 衛生福利部審核通過之基因改造食品原料之查詢</p>
+                                  </a>
+                                </div>
+                                <div class="card-body">
+                                  
+                                  <select class="form-select my-2" id="mrd_8_food_query_genetic_modification_t">
+                                    <option selected="selected" value="">全部</option>
+                                    <option value="1">單一品系</option>
+                                    <option value="2">混合品系</option>
+                                  </select>  
+
+                                  <select class="form-select my-2" id="mrd_8_food_query_genetic_modification_t2">
+                                    <option selected="selected" value="">全部</option>
+                                    <option value="玉米">玉米</option>
+                                    <option value="油菜">油菜</option>
+                                    <option value="甜菜">甜菜</option>
+                                    <option value="棉花">棉花</option>
+                                    <option value="黃豆">黃豆</option>
+                                  </select> 
+
+                                  <input class="form-control my-2" id="mrd_8_food_query_genetic_modification_pn"  placeholder="品名">
+                                  <input class="form-control my-2" id="mrd_8_food_query_genetic_modification_an"  placeholder="申請者">
+                                  <input class="form-control my-2" id="mrd_8_food_query_genetic_modification_sd"  placeholder="有效期限(起) 日期格式：2022-01-01">
+                                  <input class="form-control my-2" id="mrd_8_food_query_genetic_modification_ed"  placeholder="有效期限(迄) 日期格式：2022-01-01">
+                                  <input class="form-control my-2" id="mrd_8_food_query_genetic_modification_k"   placeholder="關鍵字">
+                                  
+                                  <button class="btn btn-primary" id="mrd_8_food_query_genetic_modification_submit" onclick="mrd_8_food_query_genetic_modification_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                </div>
+                              </div>
+
+                            </div>
+                            
+                            <div class="col-md-3 my-2">
+                              <!-- FDA 國產維生素類錠狀膠囊狀食品查驗登記證資料查詢 , mrd_8_food_7_url -->
+                              <div class="card text-center h-100">
+                                <div class="card-header">
+                                  <a href="{{ mrd_8_food_7_url }}" target="_blank">
+                                    <p>FDA 食品藥物消費者專區</p>
+                                    <p><i class="bi bi-send"></i> 國產維生素類錠狀膠囊狀食品查驗登記證資料查詢</p>
+                                  </a>
+                                </div>
+                                <div class="card-body">
+                                  
+                                  <input class="form-control my-2" id="mrd_8_food_query_domestic_vitamins_ct"  placeholder="查驗登記證號">
+                                  <input class="form-control my-2" id="mrd_8_food_query_domestic_vitamins_cn"  placeholder="中文品名">
+                                  <input class="form-control my-2" id="mrd_8_food_query_domestic_vitamins_en"  placeholder="英文品名">
+                                  <input class="form-control my-2" id="mrd_8_food_query_domestic_vitamins_cp"  placeholder="食品申請商">
+                                  <input class="form-control my-2" id="mrd_8_food_query_domestic_vitamins_ph1" placeholder="成分1">
+                                  <input class="form-control my-2" id="mrd_8_food_query_domestic_vitamins_ph2" placeholder="成分2">
+                                  <input class="form-control my-2" id="mrd_8_food_query_domestic_vitamins_ph3" placeholder="成分3">
+                                  <input class="form-control my-2" id="mrd_8_food_query_domestic_vitamins_k"   placeholder="關鍵字">
+                                  
+                                  <button class="btn btn-primary" id="mrd_8_food_query_domestic_vitamins_submit" onclick="mrd_8_food_query_domestic_vitamins_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="col-md-3 my-2">
+                              <!-- FDA 輸入膠囊錠狀食品核備查詢 , mrd_8_food_6_url -->
+                              <div class="card text-center h-100">
+                                <div class="card-header">
+                                  <a href="{{ mrd_8_food_6_url }}" target="_blank">
+                                    <p>FDA 食品藥物消費者專區</p>
+                                    <p><i class="bi bi-send"></i> 輸入膠囊錠狀食品核備查詢</p>
+                                  </a>
+                                </div>
+                                <div class="card-body">
+                                  
+                                  <input class="form-control my-2" id="mrd_8_food_query_enter_capsule_ct"  placeholder="核備函字號">
+                                  <input class="form-control my-2" id="mrd_8_food_query_enter_capsule_cn"  placeholder="中文品名">
+                                  <input class="form-control my-2" id="mrd_8_food_query_enter_capsule_en"  placeholder="英文品名">
+                                  <input class="form-control my-2" id="mrd_8_food_query_enter_capsule_cp"  placeholder="食品申請商">
+                                  <input class="form-control my-2" id="mrd_8_food_query_enter_capsule_ph1" placeholder="成分1">
+                                  <input class="form-control my-2" id="mrd_8_food_query_enter_capsule_ph2" placeholder="成分2">
+                                  <input class="form-control my-2" id="mrd_8_food_query_enter_capsule_ph3" placeholder="成分3">
+                                  <input class="form-control my-2" id="mrd_8_food_query_enter_capsule_k"   placeholder="關鍵字">
+                                  
+                                  <button class="btn btn-primary" id="mrd_8_food_query_enter_capsule_submit" onclick="mrd_8_food_query_enter_capsule_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="col-md-3 my-2">
+                              <!-- FDA 特定疾病配方食品 , mrd_8_food_5_url -->
+                              <div class="card text-center h-100">
+                                <div class="card-header">
+                                  <a href="{{ mrd_8_food_5_url }}" target="_blank">
+                                    <p>FDA 食品藥物消費者專區</p>
+                                    <p><i class="bi bi-send"></i> 特定疾病配方食品</p>
+                                  </a>
+                                </div>
+                                <div class="card-body">
+                                  
+                                  <select class="form-select my-2" id="mrd_8_food_query_disease_recipe_t">
+                                    <option selected="selected" value="">全部</option>
+                                    <option value="11">特定疾病配方食品</option>
+                                    <option value="12">特定疾病配方食品(營養均衡完整配方食品)</option>
+                                    <option value="13">特定疾病配方食品(營養調整完整配方食品)</option>
+                                    <option value="14">特定疾病配方食品(營養調整補充配方食品)</option>
+                                    <option value="15">特定疾病配方食品(特殊單素配方食品)</option>
+                                  </select>  
+
+                                  <input class="form-control my-2" id="mrd_8_food_query_disease_recipe_ct" placeholder="核備函字號">
+                                  <input class="form-control my-2" id="mrd_8_food_query_disease_recipe_cn" placeholder="中文品名">
+                                  <input class="form-control my-2" id="mrd_8_food_query_disease_recipe_en" placeholder="英文品名">
+                                  <input class="form-control my-2" id="mrd_8_food_query_disease_recipe_cp" placeholder="公司名稱">
+                                  <input class="form-control my-2" id="mrd_8_food_query_disease_recipe_ph1" placeholder="成分1">
+                                  <input class="form-control my-2" id="mrd_8_food_query_disease_recipe_ph2" placeholder="成分2">
+                                  <input class="form-control my-2" id="mrd_8_food_query_disease_recipe_ph3" placeholder="成分3">
+                                  <input class="form-control my-2" id="mrd_8_food_query_disease_recipe_k" placeholder="關鍵字">
+                                  
+                                  <button class="btn btn-primary" id="mrd_8_food_query_disease_recipe_submit" onclick="mrd_8_food_query_disease_recipe_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                          
+                          <div class="row my-2">
+                            <div class="col-md-3 my-2">
+                              <!-- FDA 衛生福利部審核通過之健康食品資料查詢 , mrd_8_food_4_url -->
+                              <div class="card text-center h-100">
+                                <div class="card-header">
+                                  <a href="{{ mrd_8_food_4_url }}" target="_blank">
+                                    <p>FDA 食品藥物消費者專區</p>
+                                    <p><i class="bi bi-send"></i> 衛生福利部審核通過之健康食品資料查詢</p>
+                                  </a>
+                                </div>
+                                <div class="card-body">
+                                  
+                                  <select class="form-select my-2" id="mrd_8_food_query_pass_t">
+                                      <option selected="selected" value="">全部</option>
+                                      <option value="1">衛署(部)健食字</option>
+                                      <option value="2">衛署(部)健食規字</option>
+                                  </select>  
+
+                                  <input class="form-control my-2" id="mrd_8_food_query_pass_Tid" placeholder="許可證字號">
+                                  <input class="form-control my-2" id="mrd_8_food_query_pass_Cop" placeholder="申請商">
+                                  <input class="form-control my-2" id="mrd_8_food_query_pass_Cna" placeholder="中文品名">
+
+                                  <select class="form-select my-2" id="mrd_8_food_query_pass_t2">
+                                      <option selected="selected" value="">全部</option>
+                                      <option value="調節血脂">調節血脂</option>
+                                      <option value="調節血糖">調節血糖</option>
+                                      <option value="輔助調整過敏體質">輔助調整過敏體質</option>
+                                      <option value="免疫調節">免疫調節</option>
+                                      <option value="不易形成體脂肪">不易形成體脂肪</option>
+                                      <option value="抗疲勞">抗疲勞</option>
+                                      <option value="骨質保健">骨質保健</option>
+                                      <option value="延緩衰老">延緩衰老</option>
+                                      <option value="胃腸功能改善">胃腸功能改善</option>
+                                      <option value="護肝">護肝</option>
+                                      <option value="牙齒保健">牙齒保健</option>
+                                      <option value="輔助調節血壓">輔助調節血壓</option>
+                                      <option value="促進鐵吸收">促進鐵吸收</option>
+                                      <option value="紅麴（規格標準）-調節血脂">紅麴（規格標準）-調節血脂</option>
+                                      <option value="魚油（規格標準）-調節血脂">魚油（規格標準）-調節血脂</option>
+                                  </select>   
+
+                                  <input class="form-control my-2" id="mrd_8_food_query_pass_k" placeholder="關鍵字">
+                                  <button class="btn btn-primary" id="mrd_8_food_query_pass_submit" onclick="mrd_8_food_query_pass_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-3 my-2">
+                              <!-- FDA 食品原料整合查詢平臺 , mrd_8_food_3_url -->
+                              <div class="card text-center h-100">
+                                <div class="card-header">
+                                  <a href="{{ mrd_8_food_3_url }}" target="_blank">
+                                    <p>FDA 食品藥物消費者專區</p>
+                                    <p><i class="bi bi-send"></i> 食品原料整合查詢平臺</p>
+                                  </a>
+                                </div>
+                                <div class="card-body">
+                                  
+                                  <select class="form-select my-2" id="mrd_8_food_query_platform_c">
+                                    <option selected="selected" value="">全部</option>
+                                    <option value="1">可供食品使用之原料</option>
+                                    <option value="2">未確認安全性尚不得使用之原料</option>
+                                  </select>  
+
+                                  <select class="form-select my-2" id="mrd_8_food_query_platform_t">
+                                    <option selected="selected" value="">全部</option>
+                                    <option value="1">草、木本植物類(1)供茶包、膳食調理包或萃取後作為原料</option>
+                                    <option value="2">草、木本植物類(2)可供直接食用</option>
+                                    <option value="11">草、木本植物類(3)供香辛調味使用</option>
+                                    <option value="3">草、木本植物類來源製取之原料</option>
+                                    <option value="4">藻類及其來源製取之原料</option>
+                                    <option value="5">菇蕈類及其來源製取之原料</option>
+                                    <option value="6">微生物及其來源製取之原料</option>
+                                    <option value="7">海水產類、爬蟲類或其他動物及其來源製取之原料</option>
+                                    <option value="8">昆蟲及其來源製取之原料</option>
+                                    <option value="9">禽、畜類及其來源製取之原料</option>
+                                    <option value="10">以化學反應或酵素製程等加工處理之食品原料</option>
+                                    <option value="12">未確認安全性尚不得使用之原料</option>
+                                  </select>  
+
+                                  <input class="form-control my-2" id="mrd_8_food_query_platform_k" placeholder="關鍵字">
+                                  <button class="btn btn-primary" id="mrd_8_food_query_platform_submit" onclick="mrd_8_food_query_platform_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-3 my-2">
+                              <!-- FDA 食品藥物消費者專區 , mrd_8_food_1_url -->
+                              <div class="card text-center h-100">
+                                <div class="card-header">
+                                  <a href="{{ mrd_8_food_1_url }}" target="_blank">
+                                    <p>FDA 食品藥物消費者專區</p>
+                                    <p><i class="bi bi-send"></i> 食品添加物使用範圍及限量暨規格標準</p>
+                                  </a>
+                                </div>
+                                <div class="card-body">
+                                  <select class="form-select my-2" id="mrd_8_food_t">
+                                    <option selected="selected" value="">全部</option>
+                                    <option value="1">(一) 防腐劑</option>
+                                    <option value="2">(二) 殺菌劑</option>
+                                    <option value="3">(三) 抗氧化劑</option>
+                                    <option value="4">(四) 漂白劑</option>
+                                    <option value="5">(五) 保色劑</option>
+                                    <option value="6">(六) 膨脹劑</option>
+                                    <option value="7">(七) 品質改良用、釀造用及食品製造用劑</option>
+                                    <option value="8">(八) 營養添加劑</option>
+                                    <option value="9">(九) 著色劑</option>
+                                    <option value="10">(十) 香料</option>
+                                    <option value="11">(十一) 調味劑</option>
+                                    <option value="19">(十一之一) 甜味劑</option>
+                                    <option value="12">(十二) 粘稠劑（糊料）</option>
+                                    <option value="13">(十三) 結著劑</option>
+                                    <option value="14">(十四) 食品工業用化學藥品</option>
+                                    <option value="15">(十五) 載體</option>
+                                    <option value="16">(十六) 乳化劑</option>
+                                    <option value="17">(十七) 其他</option>
+                                  </select>  
+
+                                  <input class="form-control my-2" id="mrd_8_food_k" placeholder="關鍵字">
+                                  <button class="btn btn-primary" id="mrd_8_food_submit" onclick="mrd_8_food_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                </div>
+                               </div>
+                              </div>
+
+                              <div class="col-md-3 my-2">
+                                <!-- FDA 食品藥物消費者專區 , mrd_8_food_2_url -->
+                                <div class="card text-center h-100 ">
+                                  <div class="card-header">
+                                    <a href="{{ mrd_8_food_2_url }}" target="_blank">
+                                      <p>FDA 食品藥物消費者專區</p>
+                                      <p><i class="bi bi-send"></i> 食品添加物許可證資料查詢</p> 
+                                    </a>
+                                  </div>
+                                  <div class="card-body">
+                                    <input class="form-control my-2" id="mrd_8_license_ct"  placeholder="許可證字號">
+                                    <input class="form-control my-2" id="mrd_8_license_cn"  placeholder="中文品名">
+                                    <input class="form-control my-2" id="mrd_8_license_en"  placeholder="英文品名">
+                                    <input class="form-control my-2" id="mrd_8_license_cp"  placeholder="食品申請商">
+                                    <input class="form-control my-2" id="mrd_8_license_ph1" placeholder="成份 1">
+                                    <input class="form-control my-2" id="mrd_8_license_ph2" placeholder="成份 2">
+                                    <input class="form-control my-2" id="mrd_8_license_ph3" placeholder="成份 3">
+                                    <input class="form-control my-2" id="mrd_8_license_k"   placeholder="關鍵字">
+                                    <button class="btn btn-primary" id="mrd_8_license_submit" onclick="mrd_8_license_submit()" ><i class="bi bi-search"></i> 搜尋</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row my-2">
+                              <div class="col-md-3 my-2">
+                                <!-- FDA 嬰兒與較大嬰兒配方食品許可資料查詢 , mrd_8_food_9_url -->
+                                <div class="card text-center h-100">
+                                  <div class="card-header">
+                                    <a href="{{ mrd_8_food_9_url }}" target="_blank">
+                                      <p>FDA 食品藥物消費者專區</p>
+                                      <p><i class="bi bi-send"></i> 嬰兒與較大嬰兒配方食品許可資料查詢</p>
+                                    </a>
+                                  </div>
+                                  <div class="card-body">
+                                    
+                                    <input class="form-control my-2" id="mrd_8_food_query_infant_formula_ct"  placeholder="核備函字號">
+                                    <input class="form-control my-2" id="mrd_8_food_query_infant_formula_cn"  placeholder="中文品名">
+                                    <input class="form-control my-2" id="mrd_8_food_query_infant_formula_en"  placeholder="英文品名">
+                                    <input class="form-control my-2" id="mrd_8_food_query_infant_formula_cp"  placeholder="食品申請商">
+                                    <input class="form-control my-2" id="mrd_8_food_query_infant_formula_ph1" placeholder="成分1">
+                                    <input class="form-control my-2" id="mrd_8_food_query_infant_formula_ph2" placeholder="成分2">
+                                    <input class="form-control my-2" id="mrd_8_food_query_infant_formula_ph3" placeholder="成分3">
+                                    <input class="form-control my-2" id="mrd_8_food_query_infant_formula_k"   placeholder="關鍵字">
+                                    
+                                    <button class="btn btn-primary" id="mrd_8_food_query_infant_formula_submit" onclick="mrd_8_food_query_infant_formula_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-3 my-2"></div>
+                              <div class="col-md-3 my-2"></div>
+                              <div class="col-md-3 my-2"></div>
+                            </div>
+                          </div>
+
+                          <!---------------------------------------------------------------------------------------------------- 
+                          -
+                          - 藥品成分
+                          -
+                          ----------------------------------------------------------------------------------------------------->
+                          <div class="tab-pane container-fluid fade" id="drug">
+                            <div class="row my-2">
+                              <div class="col-md-3 my-2"></div>
+                              <div class="col-md-3 my-2"></div>
+                              <div class="col-md-3 my-2"></div>
+                              <div class="col-md-3 my-2"></div>  
+                            </div>
+                          </div>
+                          <!---------------------------------------------------------------------------------------------------- 
+                          -
+                          - 產品成分
+                          -
+                          ----------------------------------------------------------------------------------------------------->
+                          <div class="tab-pane container-fluid fade" id="product">
+                            <div class="row my-2">
+                              <div class="col-md-3 my-2">
+                                <!-- FDA 西藥許可證查詢 , mrd_8_food_10_url -->
+                                <div class="card text-center h-100">
+                                  <div class="card-header">
+                                    <a href="{{ mrd_8_cosmetic_1_url }}" target="_blank">
+                                      <p>FDA 西藥 , 醫療器材 , 化妝品 許可證相關查詢</p>
+                                      <p><i class="bi bi-send"></i> 西藥許可證查詢</p>
+                                    </a>
+                                  </div>
+                                  <div class="card-body">
+                                    <li>
+                                      <a href="https://lmspiq.fda.gov.tw/web/DRPIQ/DRPIQLicSearch" target="_blank">西藥許可證查詢 / 預知展延許可證查詢 / 過期許可證查詢 / 註銷許可證查詢</a>  
+                                    </li>
+                                  </div>
+                                </div> 
+                              </div>
+                              <div class="col-md-3 my-2">
+                                <!-- 智慧財產局 商標檢索系統 , mrd_8_product_1_url -->
+                                <div class="card text-center h-100">
+                                  <div class="card-header">
+                                    <a href="{{ mrd_8_product_1_url }}" target="_blank">
+                                      <p>智慧財產局</p>
+                                      <p><i class="bi bi-send"></i> 商標檢索系統 查詢</p>
+                                    </a>
+                                  </div>
+                                  <div class="card-body">
+                                    <li>
+                                      <a href="https://cloud.tipo.gov.tw/S282/OS0/OS0101.jsp" target="_blank">商標檢索系統</a>  
+                                    </li>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-3 my-2"></div>
+                              <div class="col-md-3 my-2"></div>  
+                            </div>
+                          </div>
+                          <!---------------------------------------------------------------------------------------------------- 
+                          -
+                          - 化妝品成分
+                          -
+                          ----------------------------------------------------------------------------------------------------->
+                          <div class="tab-pane container-fluid fade" id="cosmetic">
+                            <div class="row my-2">
+                              <div class="col-md-3 my-2">
+                                <!-- FDA 化粧品禁限用成分管理規定 , mrd_8_food_10_url -->
+                                <div class="card text-center h-100">
+                                  <div class="card-header">
+                                    <a href="{{ mrd_8_cosmetic_1_url }}" target="_blank">
+                                      <p>FDA 食品藥物消費者專區</p>
+                                      <p><i class="bi bi-send"></i> 化粧品禁限用成分管理規定</p>
+                                    </a>
+                                  </div>
+                                  <div class="card-body">
+                                    
+                                    <input class="form-control my-2" id="mrd_8_cosmetic_query_ingredients_prohibited_k"  placeholder="關鍵字">
+                                    
+                                    <button class="btn btn-primary" id="mrd_8_cosmetic_query_ingredients_prohibited_submit" onclick="mrd_8_cosmetic_query_ingredients_prohibited_submit()"><i class="bi bi-search"></i> 搜尋</button>
+                                  </div>
+                                </div>  
+                              </div>
+                              <div class="col-md-3 my-2"></div>
+                              <div class="col-md-3 my-2"></div>
+                              <div class="col-md-3 my-2"></div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - right content
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            <!-- 
+             <div class="col-md-9 my-2">
+                <div class="card">
+                    <div class="card-header"><i class="bi bi-chat-left-text"></i> {{ operation_record_title }}</div>
+                    
+                    <div class="card-body" id="query_contract">
+                    -->
+                        <!-- Nav tabs -->
+                        <!--
+                        <ul class="nav nav-tabs my-2">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#data_list"><i class="bi bi-card-list"></i> 搜尋內容</a>
+                            </li>
+                          -->
+                            <!--
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#data_list2"><i class="bi bi-card-list"></i> 部門</a>
+                            </li>
+                            -->
+                        <!--
+                        </ul>
+                      -->
+
+                        <!-- Tab panes -->
+                        <!--
+                        <div class="tab-content">
+                          -->
+                            <!-- account list -->
+                            <!--
+                            <div class="tab-pane container active" id="data_list"></div>
+                            -->
+                            <!-- account list by dep -->
+                            <!--
+                            <div class="tab-pane container fade" id="data_list2"></div>
+                        </div>
+                    </div>
+             </div>
+            -->
+
+        </div>
+
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+{% endblock content %}
+
+{% block script %}    
+    <!-- date picker & rich editor-->
+    <script>
+        $("#o_c_date").flatpickr();    
+        
+        // 衛生福利部審核通過之基因改造食品原料之查詢
+        $("#mrd_8_food_query_genetic_modification_sd").flatpickr();    
+        $("#mrd_8_food_query_genetic_modification_ed").flatpickr();    
+        
+        //CKEDITOR.replace('content');
+        </script>
+{% endblock script %}
+    

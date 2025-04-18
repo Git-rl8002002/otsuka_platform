@@ -1,0 +1,34 @@
+<!-- 清單 -->
+<div class="my-2">
+    <button type="submit" class="btn btn-primary my-1" id="e_bpm_expenditure_excel" name="e_bpm_expenditure_excel" onclick="bpm_expenditure_download_ecxcel()">
+        <i class="bi bi-file-earmark-excel"></i> 匯出 Excel
+    </button>
+</div>
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>表單單號</th>
+        <th>申請日期</th>
+        <th>預算來源</th>
+        <th>申請原因</th>
+        <th>申請人</th>
+        <th>金額</th>
+    </tr>
+    {% for val in show_bpm_expenditure_form_search  %}
+    <tr>
+        <td>{{ val[0] }}</td>
+        <td>{{ val[4] }}</td>
+        <td>{{ val[2] }}</td>
+        <td>{{ val[1] }}</td>
+        <td>{{ val[5] }}</td>
+        <td class="text-end">{{ val[3] }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>總計</td>
+        <td class="text-end">{{ show_bpm_expenditure_form_search_sum_money }}</td>
+    </tr>
+</table>

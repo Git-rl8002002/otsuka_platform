@@ -1,0 +1,23 @@
+{% extends "bootstrap/base_error.html" %}
+
+{% block content %}
+<!-- brand -->
+<div class="container-fluid my-2 text-center my-2" style="padding: 0px;">
+    <img src="{{ url_for('static',filename='img/icon/logo_no_chart.png') }}" class="my-3">
+    <h1 class="text-primary">{{ title }}</h1>
+</div>
+
+<!-- content -->
+<div class="container-fluid my-2 text-center">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <a href="/login"><img src="{{ url_for('static',filename='img/banner2/404.jpg') }}" class="img-fluid" style="padding:0px;"></a><br>
+            <p class="text-danger"><i class="bi bi-x-circle"></i> 404 錯誤 - 頁面未找到 , 很抱歉 , 您訪問的頁面不存在！</p><br>
+            <a href="/login">返回首頁</a> | <a href="#" onclick="close_page()">關閉</a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    
+</div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+<!-- 本帳號最後更新五筆紀錄 -->
+<div>
+    <ul class="list-group my-2">
+        <li class="list-group-item active"> {{ user }} 最後更新紀錄 </li>
+        {% for val in final_res_list %}
+        <li class="list-group-item list-group-item-action">
+            <span class="text-primary">{{ val[1] }}</span> <br> 
+            <i class="bi bi-arrow-right-short"></i> {{ val[0] }}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<!-- 部門最後更新15筆紀錄 -->
+<div>
+    <ul class="list-group my-2">
+        <li class="list-group-item active"> {{ dep_id }} 最後更新紀錄 </li>
+        {% for val in final_res_list_by_dep %}
+        <li class="list-group-item list-group-item-action">
+            <span class="text-primary">{{ val[1] }}</span> <br> 
+            <i class="bi bi-arrow-right-short"></i> {{ val[0] }} <span class="text-success">({{ val[2] }})</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

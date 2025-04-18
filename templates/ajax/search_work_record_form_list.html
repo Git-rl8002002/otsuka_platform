@@ -1,0 +1,30 @@
+<!-- search work record list -->
+<div>
+<div class="text-center"><h4>工作進度紀錄清單</h4></div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        {% for val in w_r_l_res %}
+        
+        <tr>
+            <td colspan="2">{{ val[0] }}</td>
+        </tr>
+        <tr>
+            <td>{{ val[1] }}</td>
+            <td>{{ val[2] | safe }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+    <!-- show msg -->
+    <div id="add_work_record_show_msg" class="text-center"></div>
+
+<!-- date picker & rich editor-->
+<script>
+    $("#w_a_date").flatpickr();  
+    $("#w_a_start").flatpickr();  
+    $("#w_a_end").flatpickr();  
+    CKEDITOR.replace('w_a_new_work_record_content');
+</script>

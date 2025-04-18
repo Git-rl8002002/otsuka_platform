@@ -1,0 +1,53 @@
+<!-- rich editor -->
+<script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/ckeditor.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/plugins/image/dialogs/image.js') }}"></script>
+    
+    <!-- title -->
+    <div id="add_money_form">
+    <div class="text-center"><h4>記帳表</h4></div>
+    <div class="border_01">
+            <div class="input-group">
+                <div class="input-group-append">
+                    <span class="input-group-text">日期時間</span>
+                </div>
+                <!-- date  param : data-enable-time="true" data-enable-seconds="true" -->
+                <input type="text" class="form-control" id="date" value="{{ r_time }}" placeholder="日期時間" readonly/>
+            </div>
+            <div class="input-group">
+                <!-- kind -->
+                <input type="text" class="form-control" id="kind" placeholder="種類">
+                <select class="form-control" onchange="select_money_record_kind(this.value)">
+                    <option></option>
+                    {% for val in kind %}
+                    <option value="{{ val[0] }}">{{ val[0] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="input-group">
+                <!-- money -->
+                <input type="text" class="form-control" id="money" placeholder="花費">
+                <div class="input-group-append">
+                    <span class="input-group-text">元</span>
+                </div>
+            </div>
+            <div class="input-group">
+                <!-- content -->
+                <input type="text" class="form-control" id="content" placeholder="內容"/>
+                <!-- user -->
+                <input type="hidden" id="user" value="{{ user }}" />
+            </div>
+            <div class="text-center">
+                <button  class="btn btn-primary" onclick="submit_add_money_record_form()"><i class="bi bi-pencil-square"></i> 新增</button>
+                <button  class="btn btn-danger" onclick="cancel_add_money_record_form()"><i class="bi bi-x-circle-fill"></i> 取消</button>
+            </div>
+    </div>
+
+    <!-- show msg -->
+    <div id="show_msg" class="text-center"></div>
+    
+    <!-- date picker & rich editor-->
+    <script>
+        $("#date").flatpickr();  
+        //CKEDITOR.replace('content');
+    </script>
+        

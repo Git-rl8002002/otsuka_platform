@@ -1,0 +1,16 @@
+    {% for val in msg %}    
+    <div  id="{{ val[5] }}" onclick="detail_work_record(id)" class="mouse_hover" style="border-bottom:#cccccc 1px solid;">
+            <div>
+                {{ val[0] }}
+                ({{ val[3] }})
+            </div>
+            <div>
+                {{ val[1] }}
+            </div>
+            <div class="text-primary">
+                {{ val[2] }}
+            </div>
+    </div>
+    {% endfor %}
+
+  

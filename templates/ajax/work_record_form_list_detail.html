@@ -1,0 +1,19 @@
+<!-- 工作進度表清單內容 -->
+{% for val in res_list %}
+<div class="text-center">{{ val[5] | safe }}</div>
+<div class="my-2">
+    <span class="input-group-text">
+        <span class="text-success">開始時間</span>&nbsp; {{ val[1] | safe }} &nbsp; | &nbsp;
+        <span class="text-success">結束時間</span>&nbsp; {{ val[2] | safe }} &nbsp; | &nbsp;
+        <span class="text-success">更新時間</span>&nbsp; {{ val[4] | safe }} &nbsp; | &nbsp;
+        <span class="text-success">狀態</span>&nbsp; {{ val[3] | safe }} &nbsp; | &nbsp;
+        <span class="text-primary" id="{{ title }}" onclick="alter_work_record_title(id)"><i class="bi bi-pen"></i> 修改</span> &nbsp; | &nbsp;
+        <span class="text-danger" id="{{ title }}" onclick="del_work_record_title(id)"><i class="bi bi-x-circle"></i> 刪除</span>
+    </span>
+</div>
+<div class="border rounded px-2 py-2 my-2" style="border-color:#f8f9fa;" id="{{ title }}/{{ w_dep_id }}" ondblclick="alter_work_record_title(id)">
+    {{ val[0] | safe }} 
+</div>
+{% endfor %}
+
+

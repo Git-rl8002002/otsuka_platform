@@ -1,0 +1,20 @@
+<table class="table table-bordered table-striped table-hover">
+    
+    <tr class="bg-primary text-white">
+        <th>部門</th>
+        <th>代號</th>
+        <th>工號</th>
+        <th>姓名</th>
+    </tr>
+
+    {% for val in d_e_name %}
+        <tr>
+            <td>{{ val[0] }}</td>
+            <td>{{ val[3] }}</td>
+            <td>{{ val[1] }}</td>
+            <td>{{ val[2] }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+

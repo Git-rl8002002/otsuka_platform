@@ -1,0 +1,203 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            <div class="col-md-4 my-2">
+                <div id="main_content">
+
+                    <!--------------------------------------------------------------------------------------------------------------------------------
+                    -     
+                    - VMware 統計清單 
+                    -
+                    ----------------------------------------------------------------------------------------------------------------------------------->
+                    <div class="card">
+                        <div class="card-header"><i class="bi bi-chat-left-text"></i> VMware 統計清單</div>
+                        <div class="card-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs my-2">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#contract_list"><i class="bi bi-card-list"></i> 總計</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#contract_date"><i class="bi bi-card-list"></i> 主機</a>
+                                </li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <!------------------ 
+                                -    
+                                - 總計 
+                                -
+                                -------------------->
+                                <div class="tab-pane container active" id="contract_list">
+                                    
+                                    <!-- Taipei -->
+                                    <div class="card">
+                                        <div class="card-header"><i class="bi bi-card-list"></i> Taipei VMware</div>
+                                        <div class="card-body">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <tr>
+                                                    <td>位置</td>
+                                                    <td>主機</td>
+                                                    <td>狀態</td>
+                                                </tr>
+                                                {% for val in vm_statistics_taipei %}
+                                                <tr>
+                                                    <td>{{ val[0] }}</td>
+                                                    {% if val[2] == 'running' %}
+                                                    <td id="{{ val[1] }}" onclick="vmware_detail(id)"><span class="text-primary">{{ val[1] }}</span> <br> {{ val[3] }}</td>
+                                                    <td><i class="bi bi-check-circle text-success"></i> {{ val[2] }}</td> 
+                                                    {% else %}
+                                                    <td id="{{ val[1] }}" onclick="vmware_detail(id)"><del><span class="text-primary">{{ val[1] }}</span> <br> {{ val[3] }}</del></td>
+                                                    <td><i class="bi bi-x-circle text-danger"></i> {{ val[2] }} </td> 
+                                                    {% endif %}
+                                                </tr>
+                                                {% endfor%}
+                                            </table>    
+                                        </div>
+                                    </div>
+                                    <br>
+                                    
+                                    <!-- Factory -->
+                                    <div class="card">
+                                        <div class="card-header"><i class="bi bi-card-list"></i> Factory VMware</div>
+                                        <div class="card-body">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <tr>
+                                                    <td>位置</td>
+                                                    <td>主機</td>
+                                                    <td>狀態</td>
+                                                </tr>
+                                                <!--
+                                                {% for val in vm_statistics_factory %}
+                                                <tr>
+                                                    <td>{{ val[0] }}</td>
+                                                    {% if val[2] == 'running' %}
+                                                        <td id="{{ val[1] }}" onclick="vmware_detail(id)"><span class="text-primary">{{ val[1] }} </span> <br> {{ val[3] }} </td>
+                                                        <td><i class="bi bi-check-circle text-success"></i> {{ val[2] }}</td> 
+                                                    {% else %}
+                                                        <td id="{{ val[1] }}" onclick="vmware_detail(id)"><del><span class="text-primary">{{ val[1] }}</span> <br> {{ val[3] }} </del></td>
+                                                        <td><i class="bi bi-x-circle text-danger"></i> {{ val[2] }}</td> 
+                                                    {% endif %}
+                                                </tr>
+                                                {% endfor%}
+                                                -->
+
+                                            </table>    
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!------------------ 
+                                -    
+                                - 主機 
+                                -
+                                -------------------->
+                                <div class="tab-pane container fade" id="contract_date">
+                                    <!-- Taipei -->
+                                    <div class="card">
+                                        <div class="card-header"><i class="bi bi-card-list"></i> Taipei VMware</div>
+                                        <div class="card-body">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <tr>
+                                                    <td>位置</td>
+                                                    <td>主機 / 系統</td>
+                                                    <td>狀態</td>
+                                                </tr>
+                                                {% for val in vm_host_taipei %}
+                                                <tr>
+                                                    <td>{{ val[0] }}</td>
+                                                    {% if val[3] == 'running' %}
+                                                    <td id="{{ val[1] }}" onclick="vmware_detail(id)"><span class="text-primary">{{ val[1] }}</span> <br> {{ val[2] }}</td>
+                                                    <td><i class="bi bi-check-circle text-success"></i> {{ val[3] }}</td> 
+                                                    {% else %}
+                                                    <td id="{{ val[1] }}" onclick="vmware_detail(id)"><del><span class="text-primary">{{ val[1] }}</span> <br> {{ val[2] }}</del></td>
+                                                    <td><i class="bi bi-x-circle text-danger"></i> {{ val[3] }}</td> 
+                                                    {% endif %}
+                                                </tr>
+                                                {% endfor%} 
+                                            </table>    
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <!-- Factory -->
+                                    <div class="card">
+                                        <div class="card-header"><i class="bi bi-card-list"></i> Factory VMware</div>
+                                        <div class="card-body">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <tr>
+                                                    <td>位置</td>
+                                                    <td>主機 / 系統</td>
+                                                    <td>狀態</td>
+                                                </tr>
+                                                {% for val in vm_host_factory %}
+                                                <tr>
+                                                    <td>{{ val[0] }}</td>
+                                                    {% if val[3] == 'running' %}
+                                                    <td id="{{ val[1] }}" onclick="vmware_detail(id)"><span class="text-primary">{{ val[1] }}</span> <br> {{ val[2] }}</td>
+                                                    <td><i class="bi bi-check-circle text-success"></i> {{ val[3] }}</td> 
+                                                    {% else %}
+                                                    <td id="{{ val[1] }}" onclick="vmware_detail(id)"><del><span class="text-primary">{{ val[1] }}</span> <br> {{ val[2] }}</del></td>
+                                                    <td><i class="bi bi-x-circle text-danger"></i> {{ val[3] }}</td> 
+                                                    {% endif %}
+                                                </tr>
+                                                {% endfor%}
+                                            </table>    
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--------------------------------------------------------------------------------------------------------------------------------
+            -     
+            - 詳細資料內容
+            -
+            ---------------------------------------------------------------------------------------------------------------------------------->
+            <div class="col-md-8 my-2">
+                <div id="show_day_month_detail">
+                    <!-- all sensro temp -->
+                    <div class="row">
+                        <div class="col-md-12" id="vmware_detail"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+
+{% endblock content  %}
+
+{% block script %}
+  <!--------------------------- 
+  -
+  - date picker & rich editor
+  -
+  ----------------------------->
+  <script>
+    $("#a_date").flatpickr();  
+    //CKEDITOR.replace('content');
+</script>
+{% endblock script %}

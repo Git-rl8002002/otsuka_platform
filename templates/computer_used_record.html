@@ -1,0 +1,77 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            <div class="col-md-3 my-1">
+                <div id="main_content">
+                    
+                    <div class="card">
+                        <div class="card-header"><i class="bi bi-card-text"></i> 電腦設備使用紀錄</div>
+                        <div class="card-body">
+                            <div class="input-group my-1">
+                                <span class="input-group-text text-success" id="inputGroup-sizing-default"><i class="bi bi-search"></i></span>
+                                <input class="form-control" placeholder="電腦序號" onkeypress="search_show_computer_user_detail(value)">
+                            </div>
+                            
+                            <div class="btn-group my-1">
+                                <button class="btn btn-primary" onclick="show_computer_serial_name_list()">設備序號清單</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 電腦使用者詳細資料內容 -->
+            <div id="main_content" class="col-md-9 my-1">
+                <div id="computer_user_detail">
+                    
+                    <div class="border p-1 rounded text-center align-middle">
+                        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                            
+                            {% for device in d_name %}
+                            <li style="list-style-type: none; display: inline-block; width: 16%;" class="list-inline-item mouse_hover rounded text-center align-middle">
+                                <p class="form-control" id="{{ device[1] }}" onclick="show_computer_user_detail(this.id)">{{ device[1] }}</p>
+                            </li>
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div id="show_day_month_detail"></div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+{% endblock content %}
+
+{% block script %}
+  <!--------------------------- 
+  -
+  - date picker & rich editor
+  -
+  ----------------------------->
+  <script>
+    $("#a_date").flatpickr();  
+    //CKEDITOR.replace('content');
+</script>
+{% endblock script %}

@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 電腦序號清單</h4>
+    </div>
+    <div class="card-body">
+        
+        <!--
+        s_number , d_name , d_status
+        -->
+        <table class="table table-hover table-bordered">
+            {% for val in u_detail %}
+            <tr>
+                <td><span class="font-weight-bold text-success">電腦序號 </span>&nbsp;<span> {{ val[0] }} </span></td>
+                <td><span class="font-weight-bold text-success">電腦用戶 </span>&nbsp;<span> {{ val[1] }} {{ val[4] }} </span></td>
+                
+                {% if val[2] == 'Online' %}
+                <td><span class="font-weight-bold text-success">使用狀態 </span>&nbsp;<span> {{ val[2] }} </span></td>
+                {% else %}
+                <td><span class="font-weight-bold text-success">使用狀態 </span>&nbsp;<span class="text-danger"> {{ val[2] }} </span></td>
+                {% endif %}
+
+                <td><span class="font-weight-bold text-success">最後時間 </span>&nbsp;<span> {{ val[3] }} </span></td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+        
+    </div>
+</div>

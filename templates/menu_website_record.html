@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <!-- logo icon -->
+    <link rel="Shortcut Icon" type="image/x-icon" href="{{ url_for('static',filename='img/icon/database.png') }}" />
+
+    <!-- Responsive meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 4.5.2 --> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Bootstrap 4.6.1
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/jquery-3.4.1.min.js') }}"></script>
+    -->
+    
+    <!-- socketIO CDN -->
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" >
+    <link rel="stylesheet" href="{{ url_for('static',filename='js/flatpickr-gh-pages/dist/flatpickr.min.css') }}">
+    
+    <!-- JavaScript -->
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/index.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/flatpickr-gh-pages/dist/flatpickr.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/ckeditor.js') }}"></script>
+    .,<script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/plugins/image/dialogs/image.js') }}"></script>
+
+    <!-- websocket -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+            var ws = io.connect('http://61.220.205.142:8080/menu_money_record');
+            
+            ws.on('my response' , function(msg){
+                $('#status').html(msg.data);
+
+            });
+            
+            if(!window.WebSocket){
+                if(window.MozWebSocket){
+                    window.WebSocket = window.MozWebSocket;
+                }else{
+                    show_message("Your browser doesn't support websocket !");
+                }
+            }
+            
+            
+                  
+                  $(window).scroll(function() {
+                      if ( $(this).scrollTop() > 300){
+                          $('#goto_top').fadeIn("fast");
+                      } else {
+                          $('#goto_top').stop().fadeOut("fast");
+                      }
+                  });
+            
+        });
+    </script>	
+
+</head>
+<body>
+    
+    <!-- menu -->
+    <nav class="navbar navbar-expand-sm bg-primary fixed-top">
+        <!-- Brand -->
+        <a class="navbar-brand mr-2" href="/"><button class="btn btn-primary">WebCloud</button></a>
+        {% if lv == "1" %}
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler btn btn-primary " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <!-- online user -->
+            <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
+
+            <!-- logout -->
+            <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> logout</button></a></li>
+            
+            <!-- DB system -->    
+            <li class="nav-item dropdown">
+                <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> DB system</button></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-bookmarks"></i> 網站書籤</a>
+                    <a class="dropdown-item" href="/menu_money_record"><i class="bi bi-basket"></i> 記帳本</a>
+                    <a class="dropdown-item" href="/menu_car_record"><i class="bi bi-pencil-square"></i> 用車記錄</a>
+                    <a class="dropdown-item" href="/menu_work_record"><i class="bi bi-pen"></i> 工作記錄</a>
+                    <a class="dropdown-item" href="/menu_calendar_record"><i class="bi bi-calendar3"></i> 工作日誌</a>
+                </div>
+            </li>
+        </ul>
+        </div> 
+
+        {% elif lv == "3" %}
+        <button class="navbar-toggler btn btn-primary " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <!-- online user -->
+            <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
+
+            <!-- logout -->
+            <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> logout</button></a></li>
+
+            <!-- DB system -->    
+            <li class="nav-item dropdown">
+                <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> DB system</button></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-bookmarks"></i> 網站書籤</a>
+                    <a class="dropdown-item" href="/menu_money_record"><i class="bi bi-basket"></i> 記帳本</a>
+                    <a class="dropdown-item" href="/menu_car_record"><i class="bi bi-pencil-square"></i> 用車記錄</a>
+                    <a class="dropdown-item" href="/menu_work_record"><i class="bi bi-pen"></i> 工作記錄</a>
+                    <a class="dropdown-item" href="/menu_calendar_record"><i class="bi bi-calendar3"></i> 工作日誌</a>
+                </div>
+            </li>
+        </ul>
+        </div>
+
+        {% elif lv == "4" %}
+        <button class="navbar-toggler btn btn-primary " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <!-- online user -->
+            <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
+
+            <!-- logout -->
+            <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> logout</button></a></li>
+            <!-- TINFAR -->    
+            <li class="nav-item dropdown">
+                <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-clipboard-data"></i> TINFAR</button></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/">Modbus RTU - SD & CW9</a>
+                    <a class="dropdown-item" href="/modbus_rtu_sd">Modbus RTU - SD <span class="text-primary">({{ sd_total_ok }})</span></a>
+                    <a class="dropdown-item" href="/modbus_rtu_sd_total_by_val">Modbus RTU - SD total by val <span class="text-primary">({{ sd_by_val_total_ok }})</span></a>
+                    <a class="dropdown-item" href="/modbus_rtu_cw9">Modbus RTU - CW9 <span class="text-primary">({{ cw9_total_ok }})</span></a>
+                </div>
+            </li>
+        </ul>
+        </div>
+        {% endif %}
+    </nav>
+
+    <!-- main content -->
+    <!-- title -->
+    <div class="container-fluid" style="margin-top:7%;">
+        
+        <!-- status -->
+        <div class="row">
+            <div class="col-md-12 my-1">
+                <i class="bi bi-caret-right-fill"></i> <span id="status">message bar</span>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- content -->
+            <div id="main_content" class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="bi bi-card-text"></i> 網站書籤</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="btn-group">
+                            <button class="btn btn-success" onclick="reload_menu_money_record()">
+                                <i class="bi bi-folder"></i> 回主頁
+                            </button>
+                            <button class="btn btn-primary" onclick="add_website_record()">
+                                <i class="bi bi-pencil-square"></i> 新增網站書籤
+                            </button>
+                        </div>
+                    
+                        <div id="add_content"></div>
+                
+                        <div id="menu_website_record_list">
+                            
+                            
+                            {% for val in msg %}
+
+                                    <div class="mouse_hover">{{ val[0] }} ({{ val[1] }})</div>    
+                                
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- goto top -->
+                <div class="text-right">
+                    <button id="goto_top" class="btn btn-success text-right" onclick="goto_top()">
+                        <i class="bi bi-chevron-double-up"></i> Back Top
+                    </button>
+                </div>
+            </div>
+
+            <!-- content 2 -->
+            <div class="col-md-6 my-1">
+                <div class="row">
+                <!-- 年記帳清單 -->
+                <div id="money_record_by_year" class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="bi bi-list-ol"></i>  年記帳清單</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                {% for val in msg3 %}
+                                <div class="mouse_hover" id="{{ val[0] }}" onclick="load_menu_money_record_by_year(id)">
+                                <li class=" text-primary">{{ val[0] }} 年</li>
+                                    <ul>
+                                        <li>共 {{ val[1] }} 筆</li>
+                                        <li>共 {{ val[2] }} 元</li>
+                                    </ul>
+                                </div>
+                                {% endfor %}   
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 月記帳清單 -->
+                <div id="money_record_by_month" class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="bi bi-list-ol"></i>  月記帳清單</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                {% for val in msg4 %}
+                                <div class="mouse_hover" id="{{ val[0] }}" onclick="load_menu_money_record_by_month(id)">
+                                    <li class=" text-primary">{{ val[0] }} 月</li>
+                                    <ul>
+                                        <li>共 {{ val[1] }} 筆</li>
+                                        <li>共 {{ val[2] }} 元</li>
+                                    </ul>
+                                </div>
+                                {% endfor %}    
+                            </ul>
+                        </div> 
+                    </div>
+                </div>
+                </div>
+
+                <div class="row">
+                <!-- 日記帳清單 -->
+                <div id="money_record_by_day" class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="bi bi-list-ol"></i>  日記帳清單</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                {% for val in msg2 %}
+                                <div class="mouse_hover" id="{{ val[0] }}" onclick="load_menu_money_record_by_day(id)">
+                                <li class=" text-primary">{{ val[0] }}</li>
+                                    <ul>
+                                        <li>共 {{ val[1] }} 筆</li>
+                                        <li>共 {{ val[2] }} 元</li>
+                                    </ul>
+                                </div>
+                                {% endfor %}    
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,990 @@
+{% extends "bootstrap/base.html" %}
+    
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            
+            <!-------------------------------------------------------------------------------------------------------------------------------- 
+            -
+            - menu 
+            -
+            ---------------------------------------------------------------------------------------------------------------------------------->
+            <div id="show_day_month_detail" class="col-md-2 my-2">
+                
+                <!-- 個人照片 -->
+                <div class="card my-3">
+                    <div class="card-header text-primary"><i class="bi bi-file-earmark-person"></i> {{ user }}</div>
+                    <div class="card-body"><img src="{{ url_for('static',filename='img/Unknown_person.jpg') }}" class="img-fluid"></div>
+                </div>
+
+                <!-- 常用連結 -->
+                <div class="card my-3">
+                    <div class="card-header text-primary"><i class="bi bi-link"></i> 常用系統連結</div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-action"><a href="http://192.168.1.50/hrm8w.html" target="_blank"><i class="bi bi-file-earmark-person"></i> HR 請假系統</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="http://192.168.1.45:8080/WebAgenda/index.do" target="_blank"><i class="bi bi-pencil-square"></i> BPM 表單系統</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="http://192.168.1.32/#/signin?redirect=%2Fviews%2FDailySales_17127284610890%2FDailySales%3F%3Aiid%3D1&error=46" target="_blank"><i class="bi bi-pencil-square"></i> BI 報表系統</a></li>
+                            <li class="list-group-item list-group-item-action"><i class="bi bi-bookmark-plus"></i> BPM 會議預定</li>
+                            <li class="list-group-item list-group-item-action"><a href="http://192.168.1.34/" target="_blank"><i class="bi bi-bookmark-plus"></i> 台北 L7 網路管理器</li></a>
+                            <li class="list-group-item list-group-item-action"><a href="http://192.168.111.201/" target="_blank"><i class="bi bi-bookmark-plus"></i> 中壢 L7 網路管理器</li></a>
+                            <li class="list-group-item list-group-item-action"><a href="http://192.168.1.199/snspam/homepage.asp" target="_blank"><i class="bi bi-bookmark-plus"></i> Email SPAM/MSE 系統</li></a>
+                            <li class="list-group-item list-group-item-action"><a href="http://192.168.1.73/ss2/" target="_blank"><i class="bi bi-clipboard-data"></i> SS2 營業系統</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="http://192.168.1.73/ss3/" target="_blank"><i class="bi bi-clipboard-data"></i> SS3(CRM) 系統</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="https://sso.mr-library.com.tw/login?redirect_url=https://mr-library.com.tw/callback" target="_blank"><i class="bi bi-clipboard-data"></i> MRLibrary 系統(振作)</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="https://mrlib.otsuka.com.tw/" target="_blank"><i class="bi bi-clipboard-data"></i> MRLibrary 系統(Otsuka)</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="http://192.168.1.32/#/signin?redirect=%2Fviews%2FREXULTI%2FREXULTIMCRH2" target="_blank"><i class="bi bi-clipboard-data"></i> Tableau BI 系統</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 相關連結 -->
+                <div class="card my-3">
+                    <div class="card-header text-primary"><i class="bi bi-link"></i> 相關網站連結</div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-action"><a href="https://www.otsuka.com.tw/" target="_blank"><i class="bi bi-link-45deg"></i> 台灣大塚製藥官方網站</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="https://ap2.otsuka.com.tw/" target="_blank"><i class="bi bi-link-45deg"></i> 台灣大塚製藥工具網站</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="https://www.ulos.com.tw/" target="_blank"><i class="bi bi-link-45deg"></i> UL.OS 官方網站</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="https://www.facebook.com/people/ULOS-Taiwan/61557676115838/" target="_blank"><i class="bi bi-link-45deg"></i> UL.OS 官方FB</a></li>
+                            <li class="list-group-item list-group-item-action"><a href="https://www.instagram.com/ulos.tw/" target="_blank"><i class="bi bi-link-45deg"></i> UL.OS 官方IG</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-------------------------------------------------------------------------------------------------------------------------------- 
+            -
+            - content 
+            -
+            ---------------------------------------------------------------------------------------------------------------------------------->
+            <div class="col-md-10 my-2">
+                <div class="card my-3">
+                    <div class="card-header">
+                        <i class="bi bi-file-earmark-person"></i> {{ user }} 詳細資料</div>
+                    <div class="card-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs my-2">
+                                <!-------------
+                                - 
+                                - 最新公告
+                                -
+                                --------------->
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#latest_announcement"><i class="bi bi-card-list"></i> 最新公告</a>
+                                </li>
+
+                                <!-------------
+                                - 
+                                - 台北員工分機表
+                                -
+                                --------------->
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#member_telephone_taipei"><i class="bi bi-card-list"></i> 台北員工分機表</a>
+                                </li>
+                                
+                                <!-------------
+                                - 
+                                - 工廠員工分機表
+                                -
+                                --------------->
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#member_telephone_factory"><i class="bi bi-card-list"></i> 工廠員工分機表</a>
+                                </li>
+
+                                <!-------------
+                                - 
+                                - 員工明細資料
+                                -
+                                --------------->
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#hr_person_1"><i class="bi bi-card-list"></i> 個人資料</a>
+                                </li>
+                                <!-------------
+                                - 
+                                - 人事異動資料
+                                -
+                                --------------->
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#hr_person_2"><i class="bi bi-card-list"></i> 人事異動</a>
+                                </li>
+                                <!-------------
+                                - 
+                                - 訓練記錄
+                                -
+                                --------------->
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#hr_person_3"><i class="bi bi-card-list"></i> 培訓記錄</a>
+                                </li>
+                            </ul>
+    
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                
+                                <!-------------
+                                - 
+                                - 最新公告
+                                -
+                                --------------->
+                                <div class="tab-pane container active" id="latest_announcement">
+                                    
+                                    <div class="row my-3">
+                                        
+                                        <!-- NAS 備份系統 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i> NAS 備份系統</div>
+                                                <div class="card-body">
+                                                    <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241230.pdf')">20241230 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241223.pdf')">20241223 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241216.pdf')">20241216 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241209.pdf')">20241209 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241202.pdf')">20241202 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241125.pdf')">20241125 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241118.pdf')">20241118 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241111.pdf')">20241111 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241104.pdf')">20241104 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241028.pdf')">20241028 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241021.pdf')">20241021 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241014.pdf')">20241014 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20241007.pdf')">20241007 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240930.pdf')">20240930 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240923.pdf')">20240923 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240916.pdf')">20240916 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240909.pdf')">20240909 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240902.pdf')">20240902 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240826.pdf')">20240826 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240819.pdf')">20240819 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240812.pdf')">20240812 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240805.pdf')">20240805 備份報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('nas_report_20240729.pdf')">20240729 備份報告</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- AI 系統 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i>  AI 系統</div>
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>AI 系統</td>
+                                                                    <td><a href="https://llm-b.yesinfotw.com/auth" target="_blank"><i class="bi bi-arrow-right-short"></i> 系統網址</a></td>
+                                                                    <td>需要跟 IT 相關人員申請帳密</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center align-middle"> AI 系統進度表</td>
+                                                                    <td><a href="https://seven7099.direct.quickconnect.to:5001/d/s/xNi8Ulzg2YYsH3MdOkyeUuLb2PPQt1Cy/tQ5efp7tG2vATPYc9J9aMwLxDTyN4XF7-rLrgEqmQKAs#tid=16" target="_blank"><i class="bi bi-arrow-right-short"></i> 進度網址</a></td>
+                                                                    <td>登入密碼 : OtsukatW2024!</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="align-middle">機器學習 AI - RapidMiner</td>
+                                                                    <td colspan="2">
+                                                                        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_ai_rapid_miner_file('rapid_miner_doc.pdf')">說明文件</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_ai_rapid_miner_file('rapid_miner_film1_20240308.wmv')">教學影片1</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_ai_rapid_miner_file('rapid_miner_film2_20240308.wmv')">教學影片2</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_ai_rapid_miner_file('rapid_miner_film3_20240308.wmv')">教學影片3</span>
+                                                                            </li>
+
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover">銷售數據預測監控 - 202410</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover">銷售數據預測監控 - 202409</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover">生產二部 - 設備A監控</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover">生產二部 - 設備B監控</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover">生產三部 - 設備A監控</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover">生產三部 - 設備B監控</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover">生產三部 - 設備C監控</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover">生產三部 - 設備D監控</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                    
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="align-middle">生成式 AI</td>
+                                                                    <td colspan="2">
+                                                                        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover"><a href="https://llm-b.yesinfotw.com/" target="_blank">測試網址</span></a>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_ai_fine_tuning_file('20241007')">20241007 訓練報告 PPT</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_ai_fine_tuning_file('20241029')">20241029 訓練報告 PPT</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_ai_fine_tuning_file('20241106')">20241106 訓練報告 PPT</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-3">
+                                        <!-- BPM 電子表單系統 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i> BPM 電子表單系統</div>
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="text-center align-middle">BPM 電子表單系統</td>
+                                                                    <td><a href="http://192.168.1.45:8080/WebAgenda/index.do" target="_blank"><i class="bi bi-arrow-right-short"></i> 系統網址</a></td>
+                                                                    <td>帳密跟登入otsuka內網系統一樣</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center align-middle">表單開發進度排程</td>
+                                                                    <td><a href="https://seven7099.direct.quickconnect.to:5001/d/s/xNi8Ulzg2YYsH3MdOkyeUuLb2PPQt1Cy/tQ5efp7tG2vATPYc9J9aMwLxDTyN4XF7-rLrgEqmQKAs#tid=16" target="_blank"><i class="bi bi-arrow-right-short"></i> 進度網址</a></td>
+                                                                    <td>登入密碼 : OtsukatW2024!</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3">
+                                                                        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('mrd_001_20241119.pdf')">消費品不良反應通報單 使用說明</span>
+                                                                            </li>
+                                                                            
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>      
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- WMS 倉儲系統(確效驗證電子表單) -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i> WMS 倉儲系統(電子表單-確效)</div>
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="text-center align-middle">WMS 倉儲系統</td>
+                                                                    <td><a href="http://192.168.1.61/" target="_blank"><i class="bi bi-arrow-right-short"></i> 系統網址</a></td>
+                                                                    <td>需要跟工廠相關人員申請帳密</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center align-middle">表單開發進度排程</td>
+                                                                    <td><a href="https://seven7099.direct.quickconnect.to:5001/d/s/xNi8Ulzg2YYsH3MdOkyeUuLb2PPQt1Cy/tQ5efp7tG2vATPYc9J9aMwLxDTyN4XF7-rLrgEqmQKAs#tid=16" target="_blank"><i class="bi bi-arrow-right-short"></i> 進度網址</a></td>
+                                                                    <td>登入密碼 : OtsukatW2024!</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3">
+                                                                        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_flow_confirmed_20241125.pdf')">20241122 功能流程圖參考樣板</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_record_20241122.pdf')">20241122 會議記錄</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_record_20241115.pdf')">20241115 會議記錄</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_record_20241108.pdf')">20241108 會議記錄</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_record_20241101.pdf')">20241101 會議記錄</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_record_20241025.pdf')">20241025 會議記錄</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_record_20241009.pdf')">20241009 會議記錄</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_20241115.pdf')">20241115 進度記錄</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_agv_detail_20241017.pdf')">20241017 AGV簡介</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_board_spec_20240322.pdf')">20240322 棧版翻轉機規格書</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_spec_list_20240322.pdf')">20240322 自動化規格書</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('wms_device_component_20240425.pdf')">20240425 倉儲設備規格書</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-3">
+                                        <!--  SS2/CRM 營業系統 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i> SS2/CRM 營業系統</div>
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>SS2/CRM 營業系統</td>
+                                                                    <td><a href="https://ss2.otsuka.com.tw/ss2/" target="_blank"><i class="bi bi-arrow-right-short"></i> 系統網址</a></td>
+                                                                    <td>帳密跟登入otsuka內網系統一樣</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>系統問題修改進度表</td>
+                                                                    <td><a href="https://seven7099.direct.quickconnect.to:5001/d/s/xNi8Ulzg2YYsH3MdOkyeUuLb2PPQt1Cy/tQ5efp7tG2vATPYc9J9aMwLxDTyN4XF7-rLrgEqmQKAs#tid=16" target="_blank"><i class="bi bi-arrow-right-short"></i> 進度網址</a></td>
+                                                                    <td>登入密碼 : OtsukatW2024!</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3">
+                                                                        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('ss2_add_product.pdf')">SS2 新增品目檔操作手冊</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                                
+                                                            </tbody>
+                                                        </table>
+                                                    </div>      
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- MR LIbrary -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i> MR LIbrary 簡報系統</div>
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>MR LIbrary 簡報系統</td>
+                                                                    <td><a href="https://mrlib.otsuka.com.tw/ " target="_blank"><i class="bi bi-arrow-right-short"></i> 系統網址</a></td>
+                                                                    <td>所有使用方式都一樣 , VPN一樣要連線</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3">
+                                                                        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('MR Library_202411.pdf')">202411 維護報告</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('MR Library_202410.pdf')">202410 維護報告</span>
+                                                                            </li>
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('MR Library_202409.pdf')">202409 維護報告</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row my-3">
+
+                                        <!-- IT 資訊報告 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i>  IT 資訊報告</div>
+                                                <div class="card-body">
+
+                                                    <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('otsuka_mobile_setup.pdf')">公司帳號手機認證教學</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('email_error_usage.pdf')">信件連結點無法開啟解決方式說明</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('2025_it_nb_buy.pdf')">2025 筆電採購比較表</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('factory_card_reader_202411.pdf')">202411 工廠門禁刷卡全廠圖</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('it_meeting_2_2025.pdf')">2025 IT 例行月會議</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('it_meeting_1_2025.pdf')">2025 IT 例行月會議內容</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('factory_device_20241115.pdf')">20241115 工廠現行資訊及機械設備連線現況報告</span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Tableau BI 報表系統 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i> Tableau BI 報表系統</div>
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="text-center align-middle">BI 報表系統</td>
+                                                                    <td><a href="http://192.168.1.32/#/signin?redirect=%2Fviews%2FDailySales_17127284610890%2FDailySales%3F%3Aiid%3D1&error=46" target="_blank"><i class="bi bi-arrow-right-short"></i> 系統網址</a></td>
+                                                                    <td>帳密需跟 IT 申請</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center align-middle"> Tableau BI 系統進度表</td>
+                                                                    <td><a href="https://seven7099.direct.quickconnect.to:5001/d/s/xNi8Ulzg2YYsH3MdOkyeUuLb2PPQt1Cy/tQ5efp7tG2vATPYc9J9aMwLxDTyN4XF7-rLrgEqmQKAs#tid=16" target="_blank"><i class="bi bi-arrow-right-short"></i> 進度網址</a></td>
+                                                                    <td>登入密碼 : OtsukatW2024!</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="3">
+                                                                        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                                            <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                                                <span class="mouse_hover" onclick="download_mrlibrary_file('Tableau_20241118.pdf')">20241113 故障排除報告</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>      
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="row my-3">
+
+                                        <!-- Email SPAM/MSE 垃圾郵件系統 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i>  Email SPAM/MSE 垃圾郵件系統</div>
+                                                <div class="card-body">
+
+                                                    <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('email_spam_health_20240402.pdf')">20240402 Email SPAM 系統健診報告</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('email_mse_health_20240402.pdf')">20240402 Email MSE 系統健診報告</span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- ERP 系統 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i>  ERP 系統</div>
+                                                <div class="card-body">
+
+                                                    <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('erp_bom_maintain_usage_20241106.pdf')">20241106 BOM 維護操作文件</span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="row my-3">
+
+                                        <!-- 工廠資訊報告 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i>  工廠資訊報告</div>
+                                                <div class="card-body">
+
+                                                    <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('factory_card_reader_system2_20241121.pdf')">20241121 工廠刷卡工時連動流程說明</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('f_no3_counter_20241120.pdf')">20241120 生產三部刷卡機計算工時案</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('factory_card_reader_system_20241011.pdf')">20241021 工廠打卡系統異動(原本大門改成四個部門)</span>
+                                                        </li>
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('f_c_r_system3_20240606.pdf')">20240606 工廠 生二/生三部指紋辨識工時應用</span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Studio 資訊報告 -->
+                                        <div class="col-md-6 my-3">
+                                            <div class="card h-100">
+                                                <div class="card-header text-primary"><i class="bi bi-megaphone"></i>  Studio 資訊報告</div>
+                                                <div class="card-body">
+
+                                                    <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+                                                        <li style="list-style-type: none; display: inline-block; width: 25%;" class="list-inline-item mouse_hover rounded">
+                                                            <span class="mouse_hover" onclick="download_mrlibrary_file('11F-FarBar_20241122.pdf')">20241122 Farbar 電子看板系統</span>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                                
+                                <!-------------
+                                - 
+                                - 台北員工分機表
+                                -
+                                --------------->
+                                <div class="tab-pane container" id="member_telephone_taipei">
+                                    <img src="{{ url_for('static',filename='img/phone/2024-09-20_1.png') }}" class="img-fluid my-2"><br>
+                                    <img src="{{ url_for('static',filename='img/phone/2024-09-20_2.png') }}" class="img-fluid my-2">
+                                </div>
+
+                                <!-------------
+                                - 
+                                - 工廠員工分機表
+                                -
+                                --------------->
+                                <div class="tab-pane container" id="member_telephone_factory">
+                                    <img src="{{ url_for('static',filename='img/phone/fa_20240930.png') }}" class="img-fluid my-2">
+                                </div>
+
+                                <!-------------
+                                - 
+                                - 個人資料
+                                -
+                                --------------->
+                                <div class="tab-pane container" id="hr_person_1">
+                                    
+                                    {% if hr_data1 == 'no data' %}
+
+
+                                    {% else %}
+                                    
+                                    {% for value in hr_data1 %}
+                                        <div class="input-group my-1">
+                                            <!-- 單位名稱 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">單位名稱</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[0] }}" readonly>
+                                            <!-- 員工編號 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">員工編號</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[1] }}" readonly>
+                                        </div>
+                                        <div class="input-group my-1">
+                                            <!-- 中文姓名 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">中文姓名</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[2] }}" readonly>
+                                            <!-- 英文姓名 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">英文姓名</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[3] }}" readonly>
+                                        </div>
+                                        <div class="input-group my-1">
+                                            <!-- 登入帳號 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">登入帳號</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[4] }}" readonly>
+                                            <!-- 職稱中文 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">職稱中文</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[5] }}" readonly>
+                                        </div>
+                                        <div class="input-group my-1">
+                                            <!-- 到職日期 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">到職日期</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[6] }}" readonly>
+                                            <!-- 電子信箱 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">電子信箱</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[10] }}" readonly>
+                                        </div>
+                                        <div class="input-group my-1">
+                                            <!-- 留停起日 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">留停起日</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[7] }}" readonly>
+                                            <!-- 留停迄日 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">留停迄日</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[8] }}" readonly>
+                                        </div>
+                                        <div class="input-group my-1">
+                                            <!-- 育嬰迄日 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">育嬰迄日</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[9] }}" readonly>
+                                            <!-- 工作地點 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">工作地點</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[11] }}" readonly>
+                                        </div>
+                                        <div class="input-group my-1">
+                                            <!-- 行動電話 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">行動電話</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[14] }}" readonly>
+                                            <!-- 緊急聯絡 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">緊急聯絡</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[15] }}" readonly>
+                                        </div>
+                                        <div class="input-group my-1">
+                                            <!-- 聯絡關係 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">聯絡關係</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[16] }}" readonly>
+                                            <!-- 聯絡電話 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">聯絡電話</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[17] }}" readonly>
+                                        </div>
+                                        <div class="input-group my-1">
+                                            <!-- 現址地址 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">現址地址</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[13] }}" readonly>
+                                            <!-- 戶籍地址 -->
+                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">戶籍地址</span>
+                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[12] }}" readonly>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <!-------------
+                                - 
+                                - 人事異動資料
+                                -
+                                --------------->
+                                <div class="tab-pane container" id="hr_person_2">
+                                
+                                    
+                                    {% if hr_data2 == 'no data' %}
+
+                                    {% else %}
+
+                                    {% for value in hr_data2 %}
+                                    
+                                    <div class="card my-3">
+                                        <div class="card-header text-primary"><i class="bi bi-file-earmark-text"></i> 表單編號 {{ value[0] }}</div>
+                                        <div class="card-body">
+                                            <div class="input-group my-1">
+                                                <!-- 異動項目 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">異動項目</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[1] }}" readonly>
+                                                <!-- 員工編號 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">員工編號</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[2] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 員工姓名 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">員工姓名</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[3] }}" readonly>
+                                                <!-- 到職日期 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">到職日期</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[4] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 公司別(前) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">公司別(前)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[5] }}" readonly>
+                                                <!-- 公司別(後) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">公司別(後)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[10] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 單位(前) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">單位(前)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[6] }}" readonly>
+                                                <!-- 單位(後) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">單位(後)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[11] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 職稱(前) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">職稱(前)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[7] }}" readonly>
+                                                <!-- 職稱(後) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">職稱(後)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[12] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 職等(前) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">職等(前)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[8] }}" readonly>
+                                                <!-- 職等(後) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">職等(後)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[13] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 職級(前) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">職級(前)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[9] }}" readonly>
+                                                <!-- 職級(後) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">職級(後)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[14] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 直屬主管(後) --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">直屬主管(後)</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[15] }}" readonly>
+                                                <!-- 申請說明 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">申請說明</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[16] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 生效日期 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">生效日期</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[17] }}" readonly>
+                                                <!-- 留職停薪 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">留職停薪</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[18] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 復職日期 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">復職日期</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[19] }}" readonly>
+                                                <!-- 離職種類 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">離職種類</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[20] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 離職原因 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">離職原因</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[21] }}" readonly>
+                                                <!-- 計算離職 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">計算離職</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[22] }}" readonly>
+                                             </div>
+                                             <div class="input-group my-1">
+                                                <!-- 正式任用 --> 
+                                                <span class="input-group-text text-success" id="inputGroup-sizing-default">正式任用</span>
+                                                <input type="text" class="form-control" id="query_start_date" value="{{ value[23] }}" readonly>
+                                             </div>
+                                        </div>
+                                    </div>
+                                     
+                                     {% endfor %}
+                                     {% endif %}
+                                    
+                                </div>
+                                <!-------------
+                                - 
+                                -  訓練記錄
+                                -
+                                --------------->
+                                <div class="tab-pane container" id="hr_person_3">
+                                    
+                                    <div class="card my-3">
+                                        <div class="card-header text-primary"><i class="bi bi-file-earmark-text"></i> 2023</div>
+                                        <div class="card-body">
+
+                                            {% if hr_data3 == 'no data' %}
+
+                                            {% else %}
+                                            {% for value in hr_data3 %}
+                                                <div class="card my-3 ">
+                                                    <div class="card-header text-danger"><i class="bi bi-chat-left-text"></i> {{ value[2] }}</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group my-1">
+                                                            <!-- 中文姓名 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">中文姓名</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[0] }}" readonly>
+                                                            <!-- 英文姓名 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">英文姓名</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[1] }}" readonly>
+                                                        </div>
+                                                        <div class="input-group my-1">
+                                                            <!-- 課程起始日 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">課程起始日</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[3] }}" readonly>
+                                                            <!-- 課程完成日 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">課程完成日</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[4] }}" readonly>
+                                                        </div>
+                                                        <div class="input-group my-1">
+                                                            <!-- 受訓地點 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">受訓地點</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[5] }}" readonly>
+                                                            <!-- 上課時數 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">上課時數</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[6] }}" readonly>
+                                                        </div>
+                                                        <div class="input-group my-1">
+                                                            <!-- 講師 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">講師</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[7] }}" readonly>
+                                                            <!-- 備註 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">備註</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[8] }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                                {% endif %}
+                                        </div>
+                                    </div>
+
+                                    <div class="card my-3">
+                                        <div class="card-header text-primary"><i class="bi bi-file-earmark-text"></i> 2024</div>
+                                        <div class="card-body">
+
+                                            {% if hr_data4 == 'no data' %}
+
+                                            {% else %}
+                                            {% for value in hr_data4 %}
+                                                <div class="card my-3">
+                                                    <div class="card-header text-danger"><i class="bi bi-chat-left-text"></i> {{ value[2] }}</div>
+                                                    <div class="card-body">
+                                                        <div class="input-group my-1">
+                                                            <!-- 中文姓名 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">中文姓名</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[0] }}" readonly>
+                                                            <!-- 英文姓名 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">英文姓名</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[1] }}" readonly>
+                                                        </div>
+                                                        <div class="input-group my-1">
+                                                            <!-- 課程起始日 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">課程起始日</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[3] }}" readonly>
+                                                            <!-- 課程完成日 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">課程完成日</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[4] }}" readonly>
+                                                        </div>
+                                                        <div class="input-group my-1">
+                                                            <!-- 受訓地點 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">受訓地點</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[5] }}" readonly>
+                                                            <!-- 上課時數 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">上課時數</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[6] }}" readonly>
+                                                        </div>
+                                                        <div class="input-group my-1">
+                                                            <!-- 講師 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">講師</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[7] }}" readonly>
+                                                            <!-- 備註 -->
+                                                            <span class="input-group-text text-success" id="inputGroup-sizing-default">備註</span>
+                                                            <input type="text" class="form-control" id="query_start_date" value="{{ value[8] }}" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                                {% endif %}
+                                        </div>
+                                    </div>
+                                     
+                                 </div>
+
+                            </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+{% endblock content %}

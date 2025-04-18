@@ -1,0 +1,30 @@
+<!-- 部門人員 --> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-striped table-hover">
+    <tr class="text-center align-middle">
+      <th>功能</th>
+      <th>考評日期</th>
+      <th>考評人員</th>
+      <th>受評人員</th>
+      <th>狀態</th>
+      <th>結果</th>
+    </tr>
+    <!-- 考評人員清單 --> 
+    {% for val in show_hr_360_person_1_check_data %}
+    <tr class="text-center align-middle">
+      <td>
+        <div class="btn-group">
+          <button class="btn btn-danger" id="{{val[1]}}/{{val[2]}}" onclick="del_hr_360_process_data(id)"><i class="bi bi-x-circle"></i> 刪</button>
+        </div>
+      </td>
+      <td>{{ val[0] }} </td>
+      <td>{{ val[1] }} </td>
+      <td class="text-primary" id="{{val[1]}}/{{val[2]}}" onclick="show_hr_360_person_result(id)">{{ val[2] }} </td>
+      <td class="text-success"><i class="bi bi-check-circle"></i> 已完成</td>
+      <td class="text-primary" id="{{val[1]}}/{{val[2]}}" onclick="show_hr_360_result(id)"><i class="bi bi-clipboard-data"> 考評分數</i></td>
+    </tr>
+    {% endfor %}
+
+  </table>
+</div>
+

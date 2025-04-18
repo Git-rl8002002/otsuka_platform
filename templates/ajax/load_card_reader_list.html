@@ -1,0 +1,85 @@
+<div class="card">
+    <div class="card-header">
+        <i class="bi bi-chat-left-text"></i> {{ position }} 
+    </div>
+    <div class="card-body">
+            <div class="col-md-12 my-3">
+                
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs my-2">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#by_month"><i class="bi bi-card-list"></i> 本月</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#by_every_month"><i class="bi bi-card-list"></i> 月份</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!------------------ 
+                    -    
+                    - 本月 
+                    -
+                    -------------------->
+                    <div class="tab-pane container active" id="by_month">
+                        <table class="table table-striped table-bordered table-hover">
+                            
+                            <tr>
+                                <th>日期</th>
+                                <th class="text-center">進出次數</th>
+                                <th class="text-center">下載</th>
+                            </tr>
+                            {% for val in card_reader_door_list_by_month %}
+                            <tr>
+                                <td id="{{position}}/{{val[0]}}" onclick="load_card_reader_list_by_day(id)">{{ val[0] }}</td>
+                                <td class="text-center">{{ val[1] }}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-light text-link" id="{{ position }}/{{ val[0] }}/excel" onclick="card_reader_download_pdf(id)"><i class="bi bi-filetype-xlsx"></i> Excel</button>
+                                    <!--
+                                    &nbsp;
+                                    <button class="btn btn-light text-link" id="{{ position }}/{{ val[0] }}/pdf" onclick="card_reader_download_pdf(id)"><i class="bi bi-file-pdf"></i> PDF</a></button>
+                                    -->
+                                </td>
+                            </tr>
+                            {% endfor %} 
+                        </table>    
+                    </div>
+                    <!------------------ 
+                    -    
+                    - 月份 
+                    -
+                    -------------------->
+                    <div class="tab-pane container fade" id="by_every_month">
+                        <table class="table table-striped table-bordered table-hover">
+                            
+                            <tr>
+                                <th>日期</th>
+                                <th class="text-center">下載</th>
+                            </tr>
+
+                            {% for val in card_reader_door_list_by_every_month %}
+                            <tr>
+                                <td id="{{position}}/{{val[0]}}" onclick="load_card_reader_list_by_every_month(id)">{{ val[0] }}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-light text-link" id="{{ position }}/{{ val[0] }}/excel" onclick="card_reader_download_pdf_every_month(id)"><i class="bi bi-filetype-xlsx"></i> Excel</button>
+                                    <!--
+                                    &nbsp;
+                                    <button class="btn btn-light text-link" id="{{ position }}/{{ val[0] }}/pdf" onclick="card_reader_download_pdf(id)"><i class="bi bi-file-pdf"></i> PDF</a></button>
+                                    -->
+                                </td>
+                            </tr>
+                            {% endfor %} 
+                        </table>    
+                    </div>
+                    
+
+                </div>
+
+            </div>
+        </ul>
+    </div>
+</div>
+
+

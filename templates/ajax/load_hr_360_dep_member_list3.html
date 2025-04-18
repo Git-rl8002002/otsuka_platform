@@ -1,0 +1,37 @@
+<!-- 部門人員 --> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-striped table-hover">
+    <tr class="text-center align-middle">
+      <th colspan="9"><i class="bi bi-card-list"></i> 360 主管清單</th>
+    </tr>
+    <tr class="text-center align-middle">
+      <th colspan="2">功能</th>
+      <th>部門</th>
+      <th>姓名</th>
+      <th>考核主管</th>
+      <th>考核平行 1</th>
+      <th>考核平行 2</th>
+      <th>考核下屬 1</th>
+      <th>考核下屬 2</th>
+    </tr>
+    {% for val in show_hr_360_person_1_data %}
+    <tr class="text-center align-middle">
+      <td colspan="2">
+        <div class="btn-group">
+          <button class="btn btn-danger" id="{{val[0]}}/{{val[1]}}"  onclick="del_hr_360_setup_data(id)"><i class="bi bi-x-circle"></i> 刪</button>
+          <button class="btn btn-success" id="{{val[0]}}/{{val[1]}}" onclick="alter_hr_360_setup_data(id)"><i class="bi bi-pen"></i> 改</button>
+          <botton class="btn btn-primary"><a href="/show_hr_360_person_result2_export_pdf?s_name={{ val[1] }}" target="_blank" class=" text-white"><i class="bi bi-printer"></i> 列印</a></botton>
+        </div>
+      </td>
+      <td>{{ val[0] }}</td>
+      <td class="text-primary" id="{{ val[1] }}" onclick="show_hr_360_person_result2(id)">{{ val[1] }}</td>
+      <td>{{ val[2] }}</td>
+      <td>{{ val[3] }}</td>
+      <td>{{ val[4] }}</td>
+      <td>{{ val[5] }}</td>
+      <td>{{ val[6] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+

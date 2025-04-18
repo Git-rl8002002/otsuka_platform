@@ -1,0 +1,32 @@
+<!-- 部門人員 --> 
+<div class="table-responsive">
+  <table class="table  table-bordered table-striped table-hover">
+    <tr class="text-center align-middle">
+      
+      <th>考評人員</th>
+      <th>考評等級</th>
+      <th>狀態</th>
+      <th>受評人員</th>
+      <th>Email 通知</th>
+    </tr>
+    <!-- 考評人員清單 --> 
+    {% for val in show_hr_360_person_1_check_data %}
+    <tr class="text-center align-middle">
+      <td>{{ val[0] }}</td>
+      <td>{{ val[1] }}</td>
+      <td>尚未考評</td>
+      <td>{{ val[2] }}</td>
+      <td>
+        <a href="mailto:{{ val[3] }}?subject=HR%20360%20考評&body=
+        Dear %20 {{val[0]}}, %0D%0A%0D%0A 
+        %20%20%20%20%20%20 [ HR %20 360 %20 考評 ] %0D%0A%0D%0A 
+        %20%20%20%20%20%20 尚未完成 %20 , %20 受評人 %20 : %20 {{ val[2] }} %20 考評 %0D%0A%0D%0A 
+        %20%20%20%20%20%20 考評網址 %20 : %20 https://ap1.otsuka.com.tw/ %0D%0A%0D%0A 
+        %20%20%20%20%20%20 請再進行考評動作 %20 , %20 感謝您。">{{ val[3] }}</a>
+      </td>
+    </tr>
+    {% endfor %}
+
+  </table>
+</div>
+

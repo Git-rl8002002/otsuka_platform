@@ -1,0 +1,37 @@
+<!-- 即時查詢庫存量 -->
+<table class="table table-hover table-bordered table-striped">
+    <tr class="text-center">
+      <th>產品品號</th>
+      <th>產品名稱</th>
+      <th>產品批號</th>
+      <th>已生產量</th>
+      <th>原 & 物</th>
+      <th>原物料代號</th>
+      <th>原物料品名</th>
+      <th>原物料批號</th>
+      <th>領退料數量</th>
+      <th>單位</th>
+      <th>有效日期</th>
+      <th>複檢日期</th>
+      <th>供應商代號</th>
+      <th>供應商名稱</th>
+    </tr>
+    {% for val in show_erp_realtime_query_search3 %}
+    <tr class="text-end">
+      <td>{{ val[12] }}</td>
+      <td>{{ val[13] }}</td>
+      <td>{{ val[9] }}</td>
+      <td>{{ val[11] }}</td>
+      <td>{{ val[1] }}</td>
+      <td>{{ val[0] }}</td>
+      <td>{{ val[17] }}</td>
+      <td>{{ val[2] }}</td>
+      <td>{{ val[7] }}</td>
+      <td>{{ val[8] }}</td>
+      <td>{{ val[15] }}</td>
+      <td>{{ val[16] }}</td>
+      <td>{{ val[18] }}</td>
+      <td>{{ val[19] }}</td>
+    </tr>
+    {% endfor %}
+</table>

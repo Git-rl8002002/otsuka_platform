@@ -1,0 +1,18 @@
+{% for val in msg %}
+<div class="mouse_hover my-3" style="border-bottom:#cccccc 1px solid ;">
+    <div>
+        <button class="btn btn-danger"  id="{{ val[6] }}" onclick="del_menu_car_record(id)"><i class="bi bi-x-square"></i> 刪</button>
+    </div>
+    <div>
+        {{ val[0] }} 
+    </div>
+    <div>
+        出車 {{ val[1] }} KM , 入庫 {{ val[2] }} KM , 共 {{ val[3] }} KM , 車子 {{ val[4] }}
+    </div>
+    <div class="text-primary">
+    {{ val[5] }}
+    </div>
+</div>
+{% endfor %}    
+
+  

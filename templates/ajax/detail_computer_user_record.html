@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> {{ d_name }}</h4>
+    </div>
+    <div class="card-body">
+        
+        <!--
+        r_date , d_status , o_name , l_activity , e_ip , i_ip , s_number , s_model , s_manu , registered , cpu_usage , ram_usage , disk_usage
+        -->
+        
+        {% for val in u_detail %}
+        <div class="card my-2">
+            {% if val[1] == 'Online' %}
+                <div class="card-header">{{ val[0] }} ({{ val[1] }})</div>
+            {% else %}
+                <div class="card-header">{{ val[0] }} <span class="text-danger">({{ val[1] }})</span></div>
+            {% endif %}
+            
+            <div class="card-body">
+                <table class="table table-hover table-bordered">
+                    <tr>
+                        <td class="font-weight-bold text-success">電腦系統   </td><td> {{ val[2] }} </td>
+                        <td class="font-weight-bold text-success">使用時間   </td><td class="text-danger"> {{ val[3] }} </td>
+                        <td class="font-weight-bold text-success">外部IP </td><td> {{ val[4] }} </td>
+                        <td class="font-weight-bold text-success">內部IP </td><td> {{ val[5] }} </td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold text-success">電腦序號 </td><td> {{ val[6] }} </td>
+                        <td class="font-weight-bold text-success">電腦型號 </td><td> {{ val[7] }} </td>
+                        <td class="font-weight-bold text-success">電腦品牌 </td><td> {{ val[8] }} </td>
+                        <td class="font-weight-bold text-success">啟動時間 </td><td> {{ val[9] }} </td>
+                    </tr>
+                    <tr>
+                        <td class="font-weight-bold text-success">CPU 用量 </td><td> {{ val[10] }} </td>
+                        <td class="font-weight-bold text-success">RAM 用量 </td><td> {{ val[11] }} </td>
+                        <td class="font-weight-bold text-success">HDD 用量 </td><td> {{ val[12] }} </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        {% endfor %}
+        
+
+        
+        
+    </div>
+</div>

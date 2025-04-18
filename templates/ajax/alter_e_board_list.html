@@ -1,0 +1,91 @@
+<!-- 回覆電子看板 清單 -->
+
+{% for val in e_board_res_data %}
+  <!-- 申請日期 -->
+  <div class="input-group my-1">
+    <span class="input-group-text text-success">申請日期</span>
+    <input type="text" class="form-control" id="e_a_date" value="{{ val[0] }}">
+  </div>
+
+  <!-- 播放開始 -->
+  <div id="load_erp_realtime_query_all_num3_1">
+    <div class="input-group my-1">
+        <span class="input-group-text text-success">播放開始</span>
+        <input type="text" class="form-control" id="e_s_date" value="{{ val[1] }}">
+    </div>
+  </div>
+
+  <!-- 播放結束 -->
+  <div id="load_erp_realtime_query_all_num3_1">
+  <div class="input-group my-1">
+      <span class="input-group-text text-success">播放結束</span>
+      <input type="text" class="form-control" id="e_e_date" v-model="e_e_date" ref="e_e_date">
+  </div>
+  </div>
+
+  <!-- 貴賓公司 -->
+  <div id="load_erp_realtime_query_all_num3_1">
+  <div class="input-group my-1">
+      <span class="input-group-text text-success">貴賓公司</span>
+      <input class="form-control" v-model="e_c_name" placeholder="">
+      <select class="form-control" v-model="q_c_name" ref="q_c_name" v-on:change="select_q_c_name">
+        <option disabled>請選擇</option>
+        {% for val in f_ss2_query_res3 %}
+        <option>{{ val[0] }}</option>
+        {% endfor %}
+      </select>
+  </div>
+  </div>
+
+  <!-- 貴賓職稱 -->
+  <div id="load_erp_realtime_query_all_num3_1">
+  <div class="input-group my-1">
+      <span class="input-group-text text-success">貴賓職稱</span>
+      <input class="form-control" v-model="e_title" placeholder="">
+      <select class="form-control" v-model="q_p_name" ref="q_p_name" v-on:change="select_q_p_name">
+        <option disabled>請選擇</option>
+        {% for val in f_ss2_query_res2 %}
+        <option>{{ val[0] }}</option>
+        {% endfor %}
+      </select>
+  </div>
+  </div>
+
+  <!-- 貴賓姓名 -->
+  <div id="load_erp_realtime_query_all_num3_1">
+  <div class="input-group my-1">
+      <span class="input-group-text text-success">貴賓姓名</span>
+      <input class="form-control" v-model="e_name" placeholder="">
+      <select class="form-control" v-model="q_p_name" ref="q_p_name" v-on:change="select_q_p_name">
+        <option disabled>請選擇</option>
+        {% for val in f_ss2_query_res2 %}
+        <option>{{ val[0] }}</option>
+        {% endfor %}
+      </select>
+  </div>
+  </div>
+
+  <!-- 其它說明 -->
+  <div id="load_erp_realtime_query_all_num3_1">
+  <div class="input-group my-1">
+      <span class="input-group-text text-success">其它說明</span>
+      <input class="form-control" v-model="e_other" placeholder="">
+  </div>
+  </div>
+
+  <!-- 完成時間 -->
+  <div id="load_erp_realtime_query_all_num3_1">
+  <div class="input-group my-1">
+      <span class="input-group-text text-success">完成時間</span>
+      <input type="text" class="form-control" id="f_a_date" v-model="f_a_date" ref="f_a_date">
+  </div>
+  </div>
+
+  <!-- submit -->
+  <div class="btn-group text-center">
+  <button type="button" class="btn btn-primary my-1" id="e_b_submit" name="e_b_submit" @click="e_b_submit">
+    <i class="bi bi-send"></i> 送出
+  </button>
+  </div>
+
+{% endfor %}

@@ -1,0 +1,18 @@
+<div class="card my-2">
+        <div class="card-header">
+            <h3><i class="bi bi-list-ol"></i>  日記帳清單</h3>
+        </div>
+        <div class="card-body">
+            <ul>
+                {% for val in msg %}
+                <div class="mouse_hover">
+                <li class=" text-primary">{{ val[0] }}</li>
+                    <ul>
+                        <li>共 {{ val[1] }} 筆</li>
+                        <li>共 {{ val[2] }} 元</li>
+                    </ul>
+                </div>
+                {% endfor %}    
+            </ul>
+        </div>
+</div>

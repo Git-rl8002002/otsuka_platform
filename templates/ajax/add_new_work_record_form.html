@@ -1,0 +1,73 @@
+<!-- title -->
+<div>
+<div class="text-center"><h4>新增工作進度紀錄</h4></div>
+<div>
+    <form>
+        <!-- 標體 w_title -->
+        <div class="input-group my-2">
+            <span class="input-group-text">工作標體</span>
+            <input type="text" class="form-control" id="w_title" required>
+        </div>
+        
+        <!-- 新增日期 , 地點 , 開始時間 , 結束時間 , 狀態  / w_date , w_place , w_start , w_end , w_status -->
+        <div class="input-group my-2">
+            <span class="input-group-text">新增日期</span>
+            <!-- date  param : data-enable-time="true" data-enable-seconds="true" -->
+            <input type="text" class="form-control" id="w_date" value="{{ r_date }}" placeholder="日期" readonly>
+            <span class="input-group-text">地點</span>
+            <select id="w_place" class="form-control" required>
+                <option></option>
+                <option>全部</option>
+                <option>日本</option>
+                <option>台北</option>
+                <option>工廠</option>
+            </select>
+            <span class="input-group-text">開始時間</span>
+            <input type="text" class="form-control" id="w_start" value="{{ r_date }}" required>
+            <span class="input-group-text">結束時間</span>
+            <input type="text" class="form-control" id="w_end">
+            <span class="input-group-text">種類</span>
+            <select id="w_kind" class="form-control" required>
+                <option></option>
+                <option>工作日報</option>
+                <option>工作週報</option>
+                <option>工作月報</option>
+                <option>工作年報</option>
+                <option>各別進度</option>
+            </select>
+            <span class="input-group-text">狀態</span>
+            <select id="w_status" class="form-control" required>
+                <option></option>
+                <option>執行中</option>
+                <option>完成</option>
+            </select>
+        </div>
+
+        <!-- 部門 w_dep , 使用者 w_user -->
+        <input type="hidden" id="w_dep" value="{{ dep_id }}">
+        <input type="hidden" id="w_user" value="{{ user }}">
+        
+        <!-- 內容 new_work_record_content -->
+        <div class="text-center my-2">
+            <textarea class="form-control" rows="15" style="width:600px; height:600px;" id="w_new_work_record_content" required></textarea>
+        </div>
+        
+        <!-- submit -->
+        <div class="text-center my-2">
+            <div class="btn-group">
+                <button  class="btn btn-primary" onclick="submit_add_new_work_record()"><i class="bi bi-pencil-square"></i> 新增</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+    <!-- show msg -->
+    <div id="add_work_record_show_msg" class="text-center"></div>
+
+<!-- date picker & rich editor-->
+<script>
+    $("#w_date").flatpickr();  
+    $("#w_start").flatpickr();  
+    $("#w_end").flatpickr();  
+    CKEDITOR.replace('w_new_work_record_content');
+</script>

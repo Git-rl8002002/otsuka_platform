@@ -1,0 +1,58 @@
+{% for val in show_hr_360_person_1_data %}
+
+<!-- 部門 -->
+<div class="input-group my-1">
+  <span class="input-group-text text-success">部門</span>
+  <input type="text" class="form-control" id="hr_360_manager_dep" value="{{ val[0] }}">
+</div>
+
+<div id="load_hr_360_query_data_name">
+  <!-- 姓名 -->
+  <div class="input-group my-1" >
+    <span class="input-group-text text-success">姓名</span>
+    <input type="text" class="form-control" id="hr_360_manager_name" value="{{ val[1] }}">
+  </div>
+</div>
+
+<div id="load_erp_realtime_query_data2">
+  <!-- 主管考核 -->
+  <div class="input-group my-1">
+    <span class="input-group-text text-success">考核主管</span>
+    <input type="text" class="form-control" id="hr_360_check_manager_name" value="{{ val[2] }}">
+  </div>
+</div>
+
+<div id="load_erp_realtime_query_data3">
+  <!-- 平行 1 考核 -->
+  <div class="input-group my-1" >
+    <span class="input-group-text text-success">考核平行 1</span>
+    <input type="text" class="form-control" id="hr_360_check_peer_1_name" value="{{ val[3] }}">
+  </div>
+</div>
+
+<div id="load_erp_realtime_query_data3">
+  <!-- 平行 2 考核 -->
+  <div class="input-group my-1" >
+    <span class="input-group-text text-success">考核平行 2</span>
+    <input type="text" class="form-control" id="hr_360_check_peer_2_name" value="{{ val[4] }}">
+  </div>
+</div>
+
+<div id="load_erp_realtime_query_data3">
+  <!-- 下屬 1 考核-->
+  <div class="input-group my-1" >
+    <span class="input-group-text text-success">考核下屬 1</span>
+    <input type="text" class="form-control" id="hr_360_check_subordinate_1_name" value="{{ val[5] }}">
+  </div>
+</div>
+
+<div id="load_erp_realtime_query_data3">
+  <!-- 下屬 2 考核-->
+  <div class="input-group my-1" >
+    <span class="input-group-text text-success">考核下屬 2</span>
+    <input type="text" class="form-control" id="hr_360_check_subordinate_2_name" value="{{ val[6] }}">
+  </div>
+</div>
+
+{% endfor %}
+

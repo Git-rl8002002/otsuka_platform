@@ -1,0 +1,31 @@
+<!-- 清單 -->
+<div class="my-2">
+    <table class="table table-bordered table-striped table-hover my-2">
+        <tr><td colspan="4"> {{ dep }} - {{ user }} ({{ kind }})</td></tr>
+        <tr class="bg bg-light">
+            <th>日期</th>
+            <th>總預算</th>
+            <th>費用</th>
+            <th>需求說明</th>
+        </tr>
+        {% for val in bpm_information_by_dep_kind_user %}
+        <tr>
+            <td>{{ val[0] }}</td>
+            <td class="text-end">{{ val[2] }}</td>
+            <td class="text-end">{{ val[1] }}</td>
+            <td>{{ val[3] }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td><b>總計</b></td>
+            <td></td>
+            <td class="text-end"><b>{{ bpm_information_by_dep_kind_total_cost_user }}</b></td>
+            <td></yd>
+        </tr>
+    </table>
+</div>
+
+<!-- 清單統計圖-->
+<div class="text-center my-2">
+    <img src="data:image/png;base64,{{ bpm_information_by_dep_kind_user_img }}" class="img-fluid" alt="{{ dep }} - {{ user }} {{ kind }}">
+</div>

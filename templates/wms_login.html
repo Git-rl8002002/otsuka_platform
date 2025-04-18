@@ -1,0 +1,77 @@
+{% extends "bootstrap/base_login.html" %}
+
+{% block content %}
+<!-- brand -->
+<div class="container-fluid text-center bg-light" style="padding: 0px;">
+    <img src="{{ url_for('static',filename='img/icon/logo_no_chart.png') }}" class="my-3">
+    <h1 class="text-primary">{{ title }} WMS 倉儲系統 登入測試</h1>
+</div>
+
+
+<!-- login form -->
+<div class="container text-center">
+    <div class="row">
+        
+        <!-- content left -->
+        <div class="col-md-6 my-3">
+            <div class="card">
+                <div class="card-header text-primary"><i class="bi bi-person-circle"></i> TWOP</div>
+                <div class="card-body">
+                    <form action="/wms_login" method="POST" class="form-group">
+                        <div class="input-group my-1">
+                            <span class="input-group-text"><i class="bi bi-person"></i> 帳號</span>
+                            <input type="text" name="user" class="form-control" placeholder="" required>
+                        </div>
+                        <div class="input-group my-1">
+                            <span class="input-group-text"><i class="bi bi-person-fill"></i> 密碼</span>
+                            <input type="password" name="pwd" class="form-control" placeholder="" required>
+                        </div>
+                        <div class="text-center my-1">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary" name="submit">
+                                    <i class="bi bi-send"></i> 登入
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    {% if login_msg | length %}
+                        <div class="text-center text-danger"><i class="bi bi-x-circle-fill"></i> {{ login_msg }}</div>
+                    {% else %}
+                        <div class="text-center text-danger">{{ login_msg }}</div>
+                    {% endif %}  
+                </div>
+            </div>
+            
+            
+
+        </div>
+    
+        <!-- content right -->
+        <div id="main_content" class="col-md-6 my-3">
+            <!-------- 
+            -
+            - 說明 
+            -
+            ---------->
+            <div class="card" id="login_msg">
+                <div class="card-header text-danger"><i class="bi bi-chat-left-text"></i> 登入說明</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-6 text-start align-middle">
+                            (1).<span class="text-primary">帳號</span> <i class="bi bi-arrow-right-short"></i> Email @ 符號前那串文字 <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;(例)<br> 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="text-danger">Otsuka_Test</span>@otsuka.com.tw <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 帳號 <i class="bi bi-arrow-right-short"></i> <span class="text-danger">Otsuka_Test</span> <br><br>
+                            (2).<span class="text-primary">密碼</span> <i class="bi bi-arrow-right-short"></i> 跟 Email ㄧ樣 
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

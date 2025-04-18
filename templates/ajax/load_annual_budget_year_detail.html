@@ -1,0 +1,15 @@
+<ul>分類總預算
+    {% for val1 in it_annual_budget_year_kind_total %}
+    <li>{{ val1[0] }} , 共 {{ val1[1] }} 筆 , 總預算 {{ val1[2] }} 元</li>
+    {% endfor %}
+</ul>
+<ul>目前支出
+    {% for val2 in it_annual_budget_kind_use_cost %}
+    <li>{{ val2[0] }} , 共 {{ val2[2] }} 筆 , 總支出 {{ val2[1] }} 元</li>
+    {% endfor %}
+</ul>
+<ul>目前剩餘
+    {% for val3 in it_annual_budget_kind_remaining_cost %}
+    <li>{{ val3[0] }} , 總剩餘 {{ val3[1] }} 元</li>
+    {% endfor %}
+</ul>

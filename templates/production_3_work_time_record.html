@@ -1,0 +1,300 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - lv 3 - normal user
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            <!-- 工時時間記錄表 -->
+            <div id="main_content" class="col-md-12 my-1">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-chat-left-text"></i> 生產三部 - 液劑工時時間記錄表
+                    </div>
+                    <div class="card-body">
+                        
+                        <div class="input-group mb-3">
+                        <!-- 工號 -->
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">工號</span>
+                            </div>
+                            <input type="text" class="form-control" id="a_work_no" value="{{ a_work_no }}" readonly>
+                        
+                        <!-- 姓名 -->
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">姓名</span>
+                            </div>
+                            <input type="text" class="form-control" id="a_name" value="{{ a_name }}" readonly>
+
+                        <!-- 日期 -->
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">日期</span>
+                            </div>
+                            <input type="text" class="form-control" id="a_date" value="{{r_date}}" placeholder="日期"> 
+                        
+                        <!-- 總工時 -->
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">總工時</span>
+                            </div>
+                            <input type="text" class="form-control" id="auto_plus_total_work_time" readonly>
+                        </div>
+
+                        
+            
+                        <table class="table table-bordered table-hover bg-light">
+                            <thead class="thead-dark">
+                            <tr class="text-center">
+                                <th>工作站</th>
+                                <th>產品</th>
+                                <th>批號</th>
+                                <th>一般工時 <span id="auto_plus_normal_work_time"></span></th>
+                                <th>加班工時 <span id="auto_plus_over_work_time"></span></th>
+                                <th>稼動工時 <span id="auto_plus_availability_work_time"></span></th>
+                                <th>備註</th>
+                            </tr>
+                            </thead>                                        
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_1" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_1"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_1"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_1" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_1" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_1" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_1"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_2" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_2"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_2"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_2" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_2" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_2" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_2"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_3" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_3"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_3"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_3" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_3" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_3" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_3"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_4" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_4"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_4"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_4" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_4" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_4" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_4"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_5" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_5"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_5"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_5" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_5" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_5" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_5"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_6" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_6"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_6"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_6" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_6" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_6" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_6"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_7" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_7"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_7"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_7" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_7" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_7" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_7"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_8" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_8"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_8"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_8" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_8" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_8" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_8"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_9" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_9"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_9"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_9" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_9" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_9" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_9"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_10" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_10"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_10"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_10" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_10" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_10" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_10"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_11" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_11"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_11"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_11" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_11" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_11" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_11"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_12" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_12"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_12"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_12" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_12" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_12" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_12"></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                        
+
+                        <div class="text-center">
+                            <button class="btn btn-primary" id="submit_work_time_form" onclick="submit_work_time_3()">建立</button>
+                        </div>
+
+                                   
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+
+{% endblock content %}
+
+{% block script %}
+  <!-- date picker & rich editor-->
+  <script>
+    $("#a_date").flatpickr();  
+    //CKEDITOR.replace('content');
+</script>
+{% endblock script %}

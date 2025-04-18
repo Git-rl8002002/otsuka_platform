@@ -1,0 +1,22 @@
+<!-- 重新載入 HR 360 人員名單 -->
+<div class="card-header"><i class="bi bi-pen"></i> 點選下列人員進行考評</div>
+<div class="card-body">
+  <ul class="list-group">
+                                    
+    <!-- self -->
+    {% if hr_360_manager_question1 %}  
+      {% for val in hr_360_manager_question1 %}
+        <li class="list-group-item list-group-item-action" id="{{ val[0] }}" onclick="select_hr_360_content(id)">
+        <i class="bi bi-arrow-right-short"></i> {{ val[0] }}</li>
+      {% endfor %}
+    {% else %}
+      <li class="list-group-item list-group-item-action">
+      <i class="bi bi-arrow-right-short"></i> 沒有考評人員</li>
+    {% endif %}
+
+  </ul>
+</div>
+
+
+
+

@@ -1,0 +1,91 @@
+<!-- ERP BOM 維護 - BOM 組成 -->
+<div class="table-responsive my-2">
+  <table class="table table-hover table-striped table-bordered my-2">
+        <tr>
+          <th colspan="11"><i class="bi bi-pencil-square"></i> BOM 組成</th>
+        </tr>
+        <tr class="text-center align-middle">
+          <th>主件品號</th>
+          <th>主件品名</th>
+          <th>標準批號</th>
+          <th>主件單位</th>
+          <th>序號</th>
+          <th>元件品號</th>
+          <th>元件品名</th>
+          <th>元件單位</th>
+          <th>材料型態</th>
+          <th>組成用量</th>
+          <th>修改</th>
+        </tr>
+      {% for val in f_bom_query_1 %}
+        <tr class="text-center align-middle">
+          <td>{{ val[0] }}</td>
+          <td>{{ val[1] }}</td>
+          <td class="text-primary">{{ val[2] }}</td>
+          <td>{{ val[3] }}</td>
+          <td>{{ val[4] }}</td>
+          <td>{{ val[5] }}</td>
+          <td class="text-primary">{{ val[6] }}</td>
+          <td>{{ val[7] }}</td>
+          <td>{{ val[8] }}</td>
+          <td>
+            <input type="text" class="form-control" value="{{ val[9] }}" placeholder="目前量" readonly>
+            <input type="text" class="form-control" id="{{ val[4] }}_{{ val[5] }}" placeholder="修改量">
+          </td>
+          <td><button class="btn btn-primary" id="{{ val[0] }} / {{ val[4] }} / {{ val[5] }} / {{ val[9] }} / {{ val[6] }}" onclick="select_q_c_name(id)" ><i class="bi bi-pencil"></i></button></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<!-- ERP BOM 維護 - BOM 組成庫存量 -->
+<div class="table-responsive my-2">
+  <table class="table table-hover table-striped table-bordered my-2">
+        <tr>
+          <th colspan="15"><i class="bi bi-pencil-square"></i> BOM 組成庫存量</th>
+        </tr>
+        <tr class="text-center align-middle">
+          <th>主件品號</th>
+          <th>主件品名</th>
+          <th>主件單位</th>
+          <th>標準批量</th>
+          <th>製令單別</th>
+          <th>元件品號</th>
+          <th>元件品名</th>
+          <th>元件單位</th>
+          <th>組成用量</th>
+          <th>材料型態</th>
+          <th>元件批號</th>
+          <th>最早入庫日</th>
+          <th>有效日期</th>
+          <th>庫別</th>
+          <th>庫存數量</th>
+        </tr>
+      {% for val in f_bom_query_2 %}
+        <tr class="text-center align-middle">
+          <td>{{ val[0] }}</td>
+          <td>{{ val[1] }}</td>
+          <td class="text-primary">{{ val[2] }}</td>
+          <td>{{ val[3] }}</td>
+          <td>{{ val[4] }}</td>
+          <td>{{ val[5] }}</td>
+          <td class="text-primary">{{ val[6] }}</td>
+          <td>{{ val[7] }}</td>
+          <td>{{ val[8] }}</td>
+          <td>{{ val[9] }}</td>
+          <td>{{ val[10] }}</td>
+          <td>{{ val[11] }}</td>
+          <td>{{ val[12] }}</td>
+          <td>{{ val[13] }}</td>
+          <td>{{ val[14] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
+
+
+
+

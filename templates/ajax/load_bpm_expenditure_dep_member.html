@@ -1,0 +1,21 @@
+<!-- 申請人 -->
+<div class="input-group my-1">
+    <span class="input-group-text text-success" id="inputGroup-sizing-default">申請人名</span>
+    <select class="form-control" id="query_bpm_expenditure_dep_member">
+        <option></option>
+        {% for val in bpm_dep_member  %}
+        <option>{{ val[0] }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<!-- 預算來源 -->
+<div class="input-group my-1">
+    <span class="input-group-text text-success" id="inputGroup-sizing-default">預算來源</span>
+    <select class="form-control" id="query_bpm_budget_source_by_dep">
+      <option></option>              
+      {% for val in bpm_budget_source %}
+      <option>{{ val[0] }}</option>
+      {% endfor %}
+    </select>
+</div>

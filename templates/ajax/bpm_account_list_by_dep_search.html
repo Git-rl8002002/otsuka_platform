@@ -1,0 +1,19 @@
+<table class="table table-bordered table-hover table-striped">
+{% for val in res_query_account %}
+    <tr>
+        <td>{{ val[0] }}</td>
+    </tr>
+    <tr>
+        <td>{{ val[1] }}</td>
+    </tr>
+    <tr>
+        <td>{{ val[2] }}</td>
+    </tr>
+    <tr>
+        <td>{{ val[3] }}</td>
+    </tr>
+    <tr>
+        <td>{{ val[4] }}</td>
+    </tr>
+{% endfor %}
+</table>

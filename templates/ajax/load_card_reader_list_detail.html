@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-header">
+        <i class="bi bi-chat-left-text"></i> {{ position }} 進入紀錄 
+    </div>
+    <div class="card-body">
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th>日期</th>
+                <th class="text-center">時間</th>
+                <th class="text-center">進出人員</th>
+            </tr>
+            {% for val in card_reader_door_list_by_day %}
+            <tr>
+                <td> {{ val[0] }} </td>
+                <td class="text-center"> {{ val[1] }} </td>
+                <td class="text-center"> {{ val[2] }} ({{ val[3] }})</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+

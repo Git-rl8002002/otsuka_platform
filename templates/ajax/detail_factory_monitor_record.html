@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-md-5 my-1">
+        
+        <table class="table table-hover table-bordered table-striped">
+            <tr>
+                <th colspan="5" class="text-primary"><i class="bi bi-chat-left-text"></i> {{ s_kind }} {{ s_c_kind }}</th>
+            </tr>
+            <tr>
+                <th>紀錄時間</th>
+                <th>設備位置</th>
+                <th>傳輸協定</th>
+                <th>溫度</th>
+                <th>濕度</th>
+            </tr>
+            {% for val in kind_detail %}
+            <tr>
+                <td> {{ val[0] }} </td>
+                <td> {{ val[1] }} </td>
+                <td> {{ val[2] }} </td>
+                <td> {{ val[3] }} °C</td>
+                <td> {{ val[4] }} %</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        
+    </div>
+    <div class="col-md-7 my-2 text-center">
+
+        <!-- pie temp -->
+        <img src="data:image/png;base64,{{ kind_detail_temp_pie_img }}" class="img-fluid" alt="{{ s_kind }} 溫度">
+        
+        <!-- line temp -->
+        <img src="data:image/png;base64,{{ kind_detail_temp_img }}" class="img-fluid" alt="{{ s_kind }} 溫度">
+        <div>
+            {% for val in kind_detail_temp_val %}
+                <span>MIN {{ val[0] }} °C</span> &nbsp;,&nbsp;
+                <span>MAX {{ val[1] }} °C</span> &nbsp;,&nbsp;
+                <span>AVG {{ val[2] }} °C</span>
+            {% endfor %}
+        </div>
+
+        <!-- pie rh -->
+        <img src="data:image/png;base64,{{ kind_detail_rh_pie_img }}" class="img-fluid" alt="{{ s_kind }} 濕度">
+        
+        <!-- line rh -->
+        <img src="data:image/png;base64,{{ kind_detail_rh_img }}" class="img-fluid" alt="{{ s_kind }} 濕度">
+        <div>
+            {% for val in kind_detail_rh_val %}
+                <span>MIN {{ val[0] }} %</span> &nbsp;,&nbsp;
+                <span>MAX {{ val[1] }} %</span> &nbsp;,&nbsp;
+                <span>AVG {{ val[2] }} %</span>
+            {% endfor %}
+        </div>
+
+        
+    </div>
+</div>

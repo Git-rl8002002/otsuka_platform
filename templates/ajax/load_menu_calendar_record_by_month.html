@@ -1,0 +1,12 @@
+    {% for val in msg %}    
+    <div  id="{{ val[3] }}" onclick="detail_calendar_record(id)" class="mouse_hover" style="border-bottom:#cccccc 1px solid;">
+            <div>
+                {{ val[0] }}
+            </div>
+            <div class="text-primary">
+                {{ val[1] }}
+            </div>
+    </div>
+    {% endfor %}
+
+  

@@ -1,0 +1,31 @@
+<div class="text-primary text-center">部門 : {{ dep2_name }}</div>
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>職稱</th>
+            <th>職級</th>
+            <th>入職</th>
+            <th>工號</th>
+            <th>姓名</th>
+            <th>英文名字</th>
+            <th>登入帳號</th>
+            <th>信箱</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for val in upper_dep2 %}    
+        <tr>
+            <td>{{ val[3] }}</td>
+            <td>{{ val[2] }}</td>
+            <td>{{ val[4] }}</td>
+            <td>{{ val[0] }}</td>
+            <td>{{ val[1] }}</td>
+            <td>{{ val[5] }}</td>
+            <td>{{ val[6] }}</td>
+            <td><a href="mailto:{{ val[7] }}?subject=大塚製藥 測試郵件&body=Hello! This is a Otsuka test email.">{{ val[7] }}</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+  

@@ -1,0 +1,8 @@
+
+{% for val in upper_dep %}    
+    <li class="list-group-item list-group-item-action" id="{{ val[0] }}_{{ val[1] }}" onclick="load_dep_detail2(id)"  data-bs-toggle="collapse"  data-bs-target="#dep2_{{val[0]}}" aria-expanded="false" aria-controls="collapseExample">&nbsp;&nbsp;&nbsp;
+        <span class="text-success"><i class="bi bi-arrow-right-short"></i> ({{ val[0] }}). {{ val[1] }} ({{ val[4] }})</li></span>
+            <ul aria-colspan="list-group" id="dep2_{{ val[0] }}" class="collapse list-group"></ul>
+{% endfor %}
+
+  

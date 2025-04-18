@@ -1,0 +1,635 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta content="width=device-width; initial-scale=1.0" name="viewport"/>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <meta content="no-cache" http-equiv="pragma"/>
+  <!--<meta http-equiv="refresh" content="600" />-->
+  <meta content="Designer by NEWMEDIAMAX digital‧www.newmediamax.com.tw" name="Author"/>
+  <meta content="IE=9" http-equiv="X-UA-Compatible"/>
+  <link href="images/bcc.ico" rel="shortcut icon"/>
+  <!-- include file="_adminx/about/skin/config.asp"-->
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  <link href="css/style2.css" rel="stylesheet" type="text/css"/>
+  <link href="css/style3.css" rel="stylesheet" type="text/css"/>
+  <!-- main css -->
+  <!-- media queries css -->
+  <!-- html5.js for IE less than 9 -->
+  <!--[if lt IE 9]>
+	<script src="js/html5.js"></script>
+<![endif]-->
+  <!-- css3-mediaqueries.js for IE less than 9 -->
+  <!--[if lt IE 9]>
+	<script src="js/css3-mediaqueries.js"></script>
+<![endif]-->
+  <script async="" crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/all.js?hash=796dcc1c13794fbeb832a32691fd3f3d">
+  </script>
+  <script async="" src="https://www.googletagservices.com/tag/js/gpt.js" type="text/javascript">
+  </script>
+  <script async="" src="//www.google-analytics.com/analytics.js">
+  </script>
+  <script id="facebook-jssdk" src="//connect.facebook.net/zh_TW/all.js#xfbml=1&amp;appId=651190948230813">
+  </script>
+  <script async="" src="https://ssl.google-analytics.com/ga.js" type="text/javascript">
+  </script>
+  <script src="js/jquery-1.9.0.min.js" type="text/javascript">
+  </script>
+  <script src="js/www.bcc.com.tw.js" type="text/javascript">
+  </script>
+  <script src="js/jquery-migrate-1.1.1.js" type="text/javascript">
+  </script>
+  <!--輪播(跑馬)-->
+  <script src="js/jcarousellite_1.0.1.min.js" type="text/javascript">
+  </script>
+  <!--字++-->
+  <script src="js/jquery.jfontsize-1.0.js" type="text/javascript">
+  </script>
+  <!--瀑布流-->
+  <script src="js/jquery-migrate-1.1.1.js" type="text/javascript">
+  </script>
+  <script src="sample-images/jquery.easing.1.3.js" type="text/javascript">
+  </script>
+  <script src="sample-images/block.js" type="text/javascript">
+  </script>
+  <!--[if lt IE 9]>
+<script src="sample-images/html5.js"></script>
+<![endif]-->
+  <!--拉軸-->
+  <link href="css/jquery.jscrollpane.css" media="all" rel="stylesheet" type="text/css"/>
+  <script src="js/jquery.mousewheel.js" type="text/javascript">
+  </script>
+  <script src="js/jquery.jscrollpane.min.js" type="text/javascript">
+  </script>
+  <script src="js/jquery-cookie.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   $(function(){
+		getWidth();
+		$(window).resize(getWidth);
+			   })
+	
+	function getWidth(){
+		var html='';
+		html='總寬：'+$(window).width()+' <br />Left:'+$('.w1').width()+', Right:'+$('.w2').width();
+		html+='<br />wrapper寬:'+$('#wrapper').width()+', .m4寬：'+$('.m4').width()+', .m10寬：'+$('.m10').width();
+		html+=', .a3寬'+$('.a3').width()+', bod寬'+$('body').width();
+		$('#msg').html(html);
+		
+		}
+  </script>
+  <script type="text/javascript">
+   $(function(){
+		$(".img_over").hover(function(){
+			var src=$(this).attr("src"),n=src.lastIndexOf(".");
+			var s1=src.substring(src,n), s2=src.replace(s1,"");
+			$(this).attr("src", s1+"_over"+s2);
+		}, function(){
+			var src=$(this).attr("src");
+			$(this).attr("src", src.replace("_over",""));
+		});
+		
+		if ($(window).width() >= 1120){
+			$('#topx').show();
+		}else{
+			$('#topx').hide();
+		}		
+								 
+		$(window).scroll(function() {
+            if ($(this).scrollTop() > 1) {
+				if ($(window).width() >= 1120){
+                	$('#topx').fadeIn();
+				}else{
+					$('#topx').hide();
+				}
+            } else {
+                $('#topx').fadeOut();
+            }			
+        });
+		
+		$('#topx').click(function() {
+			$('html,body').animate({ scrollTop: 0 }, 'slow');
+			return false;
+		});
+	});
+  </script>
+  <meta content="Az6AfRvI8mo7yiW5fLfj04W21t0ig6aMsGYpIqMTaX60H+b0DkO1uDr+7BrzMcimWzv/X7SXR8jI+uvbV0IJlwYAAACFeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==" http-equiv="origin-trial"/>
+  <meta content="A+USTya+tNvDPaxUgJooz+LaVk5hPoAxpLvSxjogX4Mk8awCTQ9iop6zJ9d5ldgU7WmHqBlnQB41LHHRFxoaBwoAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==" http-equiv="origin-trial"/>
+  <meta content="A7FovoGr67TUBYbnY+Z0IKoJbbmRmB8fCyirUGHavNDtD91CiGyHHSA2hDG9r9T3NjUKFi6egL3RbgTwhhcVDwUAAACLeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ==" http-equiv="origin-trial"/>
+  <script async="" src="https://securepubads.g.doubleclick.net/gpt/pubads_impl_2022102701.js">
+  </script>
+  <link as="script" href="https://adservice.google.com.tw/adsid/integrator.js?domain=www.bcc.com.tw" rel="preload"/>
+  <script src="https://adservice.google.com.tw/adsid/integrator.js?domain=www.bcc.com.tw" type="text/javascript">
+  </script>
+  <link as="script" href="https://adservice.google.com/adsid/integrator.js?domain=www.bcc.com.tw" rel="preload"/>
+  <script src="https://adservice.google.com/adsid/integrator.js?domain=www.bcc.com.tw" type="text/javascript">
+  </script>
+  <style data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget css:fb.css.customer_chat_plugin_iframe" type="text/css">
+   .fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:15px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://connect.facebook.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://connect.facebook.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:19px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:13px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:13px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:17px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://connect.facebook.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://connect.facebook.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}@keyframes fb_mpn_landing_page_slide_out{0%{margin:0 12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;margin:0 24px;width:60px}}@keyframes fb_mpn_landing_page_slide_out_from_left{0%{left:12px;width:100% - 24px}60%{border-radius:18px}100%{border-radius:50%;left:12px;width:60px}}@keyframes fb_mpn_landing_page_slide_up{0%{bottom:0;opacity:0}100%{bottom:24px;opacity:1}}@keyframes fb_mpn_bounce_in{0%{opacity:.5;top:100%}100%{opacity:1;top:0}}@keyframes fb_mpn_fade_out{0%{bottom:30px;opacity:1}100%{bottom:0;opacity:0}}@keyframes fb_mpn_bounce_out{0%{opacity:1;top:0}100%{opacity:.5;top:100%}}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_from_left{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50%{transform:scale(1.03, 1.03);transform-origin:bottom left}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_from_left{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}@keyframes slideInFromBottom{0%{opacity:.1;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}@keyframes slideInFromBottomDelay{0%{opacity:0;transform:translateY(100%)}97%{opacity:0;transform:translateY(100%)}100%{opacity:1;transform:translateY(0)}}
+  </style>
+ </head>
+ <body style="zoom: 1;">
+  <div class="fb_reset" id="fb-root">
+   <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
+    <div>
+    </div>
+   </div>
+  </div>
+  <script>
+   (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=651190948230813";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+  </script>
+  <title>
+   中國廣播公司全球資訊網
+  </title>
+  <script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53306565-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script type="text/javascript">
+   $(function(){
+	$('#block_url').change(function(){
+		var i = $(this).val();
+		 //window.open($("#url_"+i).attr('href'),'_blank');
+		 if (i != ''){
+			 window.location.replace($('#url_'+i).attr('href'));
+		 }else{
+		 	window.location.replace('https://www.bcc.com.tw/');
+		 }
+	});
+});
+  </script>
+  <div class="m1">
+   <div id="msg" style=" position:fixed; font:13px/18px '微軟正黑體'; color:#333; position:fixed; left:-0px; display:none">
+    總寬：1200
+    <br/>
+    Left:null, Right:null
+    <br/>
+    wrapper寬:null, .m4寬：null, .m10寬：1200, .a3寬null, bod寬1200
+   </div>
+   <div class="a1">
+    <div class="lg h_800 s_680">
+     <a href="index.asp">
+      <img border="0" src="images/0225/lg3.png"/>
+     </a>
+    </div>
+    <div class="hd">
+     <div class="lgs h_5000 s_800 h_680">
+      <a href="index.asp">
+       <img border="0" src="images/0225/lg2.png"/>
+      </a>
+     </div>
+     <div class="hdlk" style="display:none">
+      <a href="https://zh-tw.facebook.com/bccevent.fans?ref=stream&amp;hc_location=stream" target="_blank">
+       <img border="0" class="img_over" src="images/fb.png"/>
+      </a>
+     </div>
+     <div class="hdlk hdlk2">
+      <a href="bccapp" target="_blank">
+       <img src="images/0306/ic2.png"/>
+      </a>
+     </div>
+     <div class="hdlk hdlk2">
+      <a href="https://www.intw.com.tw/" target="_blank">
+       <img border="0" src="images/0306/ic1.png"/>
+      </a>
+     </div>
+     <!--<div class="hdlk hdlk2"><a href="https://www.youtube.com/user/iradiofm96" target="_blank"><img src="images/1004/ir.png" /></a></div> 2018/12/24 DEL-->
+     <div class="hdlk hdlk2">
+      <a href="https://www.youtube.com/user/iLikeRadioFM103" target="_blank">
+       <img src="images/1004/ilr.png"/>
+      </a>
+     </div>
+     <div class="hdlk hdlk2">
+      <a href="https://www.youtube.com/channel/UCkqrvXuqW7dN3E2_4v8Ha5Q" target="_blank">
+       <img class="img_over" src="images/ytnews.png"/>
+      </a>
+     </div>
+     <div class="hdlk" style="display:none">
+      <a href="https://www.youtube.com/results?search_query=%E4%B8%AD%E5%BB%A3&amp;oq=%E4%B8%AD%E5%BB%A3&amp;gs_l=youtube.3..0l2.53979.57478.0.57929.13.12.1.0.0.0.79.545.12.12.0...0.0...1ac.1j4.11.youtube.fELzRvd0J2Q" target="_blank">
+       <img border="0" class="img_over" src="images/yt.png"/>
+      </a>
+     </div>
+     <div class="sh h_680">
+      <form action="https://www.google.com/search" id="cref_iframe" target="_blank">
+       <input name="cx" type="hidden" value="008018144696462401269:me1ymmokvnu"/>
+       <input name="cof" type="hidden" value="FORID:11"/>
+       <input class="bx" id="q" name="q" onblur="if (this.value == '') {this.value = ' 搜尋'; this.style.color='#000'}" onfocus="if (this.value == ' 搜尋') 
+{this.value = ''; this.style.color='#000'}" size="16" type="text" value=" 搜尋"/>
+       <div class="z">
+        <input border="0" class="img_over" src="images/z.png" type="image"/>
+       </div>
+      </form>
+     </div>
+     <div class="sch h_5000 s_680">
+      <div class="zm">
+       <img class="img_over" src="images/0306/z.png"/>
+      </div>
+      <input class="box2" name="" type="text"/>
+     </div>
+     <div class="tplk h_5000 s_680">
+      <select class="box" id="block_url">
+       <option value="">
+        請選擇
+       </option>
+       <option value="1">
+        中廣新聞網
+       </option>
+       <option value="2">
+        中廣流行網
+       </option>
+       <option selected="selected" value="3">
+        中廣音樂網
+       </option>
+       <!--<option value="5" >中廣寶島網</option>-->
+       <option value="6">
+        中廣鄉親網
+       </option>
+       <option value="4">
+        I go 531
+       </option>
+       <option value="7">
+        中廣培訓營
+       </option>
+      </select>
+     </div>
+     <div class="tp h_680">
+      <div class="lk2">
+       <a href="https://www.bcccourse.com/" id="url_7" target="_blank">
+        <img border="0" class="img_over" src="images/0225/lbt7.png"/>
+       </a>
+      </div>
+      <div class="lk2">
+       <a href="news4_program.asp" id="url_4">
+        <img border="0" class="img_over" src="images/0225/lbt4.png"/>
+       </a>
+      </div>
+      <div class="lk2">
+       <a href="news6_program.asp" id="url_6">
+        <img border="0" class="img_over" src="images/0225/lbt6.png"/>
+       </a>
+      </div>
+      <!--<div class="lk2"><a id="url_5" href="news5_program.asp"><img src="images/0225/lbt5.png" border="0" class='img_over' /></a></div>-->
+      <div class="lk2">
+       <a href="news3_index.asp" id="url_3">
+        <img border="0" src="images/0225/lbt3_over.png"/>
+       </a>
+      </div>
+      <div class="lk2">
+       <a href="news2_index.asp" id="url_2">
+        <img border="0" class="img_over" src="images/0225/lbt2.png"/>
+       </a>
+      </div>
+      <div class="lk2">
+       <a href="https://bccnews.com.tw" id="url_1" target="_blank">
+        <img border="0" class="img_over" src="images/0225/lbt1.png"/>
+       </a>
+      </div>
+      <div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div id="topx" style="z-index: 99999; top: 400px; right: 20px; position: fixed; cursor: pointer;">
+   <div class="abgne_gotoheader">
+    <img border="0" class="img_over" src="images/gotop.png"/>
+   </div>
+  </div>
+  <div class="m9 m9_cl">
+   <div class="a9">
+    <div class="tt30">
+     <a href="news3_index.asp">
+      首頁
+     </a>
+     <a href="news3_list.asp">
+      節目表
+     </a>
+     <a href="news3_list2.asp">
+      DJ介紹
+     </a>
+     <a href="http://203.69.33.151/bccvote/index/" target="_blank" title="i radio FM96 金曲榜">
+      金曲榜
+     </a>
+     <a class="checked" href="news3_search.asp">
+      曲目查詢
+     </a>
+    </div>
+   </div>
+  </div>
+  <div class="m10" style="background:url(images/ns3/bg2.jpg) top center  no-repeat #a48be7;">
+   <!--豆豆龍-->
+   <div class="gd2">
+    <div class="gdt">
+     <a href="index.asp">
+      官網首頁
+     </a>
+     &gt;
+     <a href="news3_index.asp">
+      中廣音樂網 i radio
+     </a>
+     &gt; 曲目查詢
+    </div>
+   </div>
+   <!--左半邊 -->
+   <div class="a10">
+    <!--曲目查詢-->
+    <div class="ma9">
+     <style>
+      .m12 .a14 #calendar_marquee_2 .tt46_2 a{ width:58px; padding:5px 20px;}
+     </style>
+     <script type="text/javascript">
+      $(document).ready(function(){
+	$('#calendar_marquee_2').jCarouselLite({
+		btnNext		:"#bn",
+        btnPrev		:"#bp",
+		auto        :0,
+		speed       :800,
+		circular    :false,	//是否循环滚动
+		vertical    :false,	//是否垂直滚动
+		start       :0,	//开始的地方
+		scroll      :1,	//每次滚动的li数量
+		visible     :3		
+	});
+});
+     </script>
+     <script type="text/javascript">
+      $(document).ready(function(){
+	
+	$('#calendar_marquee').jCarouselLite({
+		btnNext		:"#bn",
+        btnPrev		:"#bp",
+		auto        :0,
+		speed       :800,
+		circular    :false,	//是否循环滚动
+		vertical    :false,	//是否垂直滚动
+		start       :0,	//开始的地方
+		scroll      :1,	//每次滚动的li数量
+		visible     :5		
+	});
+	
+	var w = $(window).width();
+	if (w < 1024){
+		$('#calendar_marquee').hide();
+		$('#calendar_marquee_2').show();
+	}else{
+		$('#calendar_marquee').show();
+		$('#calendar_marquee_2').hide();
+	}
+		
+	$(window).resize(function(){
+		var w = $(window).width();
+		if (w < 1024){
+			$('#calendar_marquee').hide();
+			$('#calendar_marquee_2').show();
+		}else{
+			$('#calendar_marquee').show();
+			$('#calendar_marquee_2').hide();
+		}
+	});
+	
+});
+     </script>
+     <div class="m12">
+      <div class="a14">
+       <div class="tt47">
+        <a class="checked" href="news3_search.asp">
+         今 日
+        </a>
+       </div>
+       <div class="bt3" id="bp">
+        <a style="cursor:pointer;">
+         ＜
+        </a>
+       </div>
+       <div id="calendar_marquee_2" style="height: 45px; visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 297px; display: none;">
+        <ul style="margin: 0px; padding: 0px; position: relative; list-style-type: none; z-index: 1; width: 693px; left: 0px;">
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=1">
+           一天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=2">
+           二天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=3">
+           三天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=4">
+           四天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=5">
+           五天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=6">
+           六天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=7">
+           七天前
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div id="calendar_marquee" style="height: 45px; visibility: visible; overflow: hidden; position: relative; z-index: 2; left: 0px; width: 520px;">
+        <ul style="margin: 0px; padding: 0px; position: relative; list-style-type: none; z-index: 1; width: 728px; left: 0px;">
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=1">
+           一天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=2">
+           二天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=3">
+           三天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=4">
+           四天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=5">
+           五天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=6">
+           六天前
+          </a>
+         </li>
+         <li class="tt46_2" style="overflow: hidden; float: left;">
+          <a href="?dt=7">
+           七天前
+          </a>
+         </li>
+        </ul>
+       </div>
+       <div class="bt3" id="bn">
+        <a style="cursor:pointer;">
+         ＞
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="ls17">
+      <div class="bxa">
+       <div class="btx1">
+        日期
+       </div>
+       <div class="btx1">
+        播出時間
+       </div>
+       <div class="btx2">
+        歌曲名稱
+       </div>
+       <div class="btx0">
+        演唱(奏)者
+       </div>
+       <div class="btx2">
+        專輯
+       </div>
+       <div class="btx1 btx1-2">
+        出版者
+       </div>
+       <div class="btx1 btx1-2" style="display:none;">
+        CD編號
+       </div>
+      </div>
+      <div class="pg">
+      </div>
+     </div>
+    </div>
+    <!--右半邊 -->
+    <div class="ma10">
+     <!--
+      <div class="tt35 tt35_2">
+        <div class="tta6">收聽頻率</div>
+        <img src="images/ns2/en7.png" /> </div>
+      <div class="ar7">
+        <div class="ls15 ls15_2">
+          <div class="tt36">FM96.3</div>
+          <div class="tt37">台北、基隆、桃園、台中、台南、高雄、屏東、花蓮、台東</div>
+        </div>
+        <div class="ls15 ls15_2">
+          <div class="tt36">FM96.1</div>
+          <div class="tt37">宜蘭、新竹、苗栗、雲林、嘉義</div>
+        </div>
+      </div>
+-->
+     <div class="ar7">
+      <script type="text/javascript">
+       var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  (function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') +
+      '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+  })();
+      </script>
+      <script type="text/javascript">
+       googletag.cmd.push(function() {
+    googletag.defineSlot('/100126004/BCC_formosa_channel_300x600', [300, 600], 'div-gpt-ad-1445320397320-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().collapseEmptyDivs();
+    googletag.enableServices();
+  });
+      </script>
+      <!-- /100126004/BCC_formosa_channel_300x600 -->
+      <div align="center" data-google-query-id="CNn0m6GtjfsCFUdZKgodhrwEJw" id="div-gpt-ad-1445320397320-0" style="height: 600px; width: 300px; text-align: center; display: none;">
+       <script type="text/javascript">
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1445320397320-0'); });
+       </script>
+       <iframe src="https://a81b1a652d9dc8ef8f949ba51be3c7cc.safeframe.googlesyndication.com/safeframe/1-0-39/html/container.html" style="visibility: hidden; display: none;">
+       </iframe>
+       <div id="google_ads_iframe_/100126004/BCC_formosa_channel_300x600_0__container__" style="border: 0pt none; width: 300px; height: 0px;">
+       </div>
+      </div>
+     </div>
+     <div class="ar7">
+      <iframe allowtransparency="true" frameborder="0" scrolling="no" src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Ffm96iradio&amp;width=442&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true" style="border:none; overflow:hidden; width:442px; height:588px; background:#fff">
+      </iframe>
+     </div>
+    </div>
+   </div>
+  </div>
+  <style>
+   .mxa a{ font:14px/18px}
+  </style>
+  <div class="m5">
+   <div class="a5">
+    <div class="lg2">
+     <img src="images/lg2.png"/>
+    </div>
+    <div class="tt8">
+     本網站內容屬於中國廣播公司全球資訊網所有，非經允許，不得轉載 All Rights Reserved.
+     <br class="h_5000 s_800 h_480"/>
+     台北市中山區松江路375號
+     <span class="block_mail mxa" style="margin-right:40px;">
+      <span style="margin:0 5px 0 10px">
+       <img src="images/0114/mail.png"/>
+      </span>
+      <a href="contact_view.asp">
+       廣告業務聯絡
+      </a>
+     </span>
+     <span class="block_mail mxa">
+      <span style="margin:0 5px 0 10px">
+       <img src="images/0114/mail.png"/>
+      </span>
+      <a href="mailto:bccservice@ms1.bcc.com.tw">
+       客服信箱
+      </a>
+     </span>
+     <span class="block_mail mxa">
+      <span style="margin:0 5px 0 10px;">
+       <img src="images/0124/ic.png"/>
+      </span>
+      <a href="aa_1.asp">
+       關於中廣
+      </a>
+     </span>
+     <br class="h_800 s_480"/>
+     TEL：886-2-25019688
+     <br class="h_5000 s_800"/>
+     Broadcasting Corporation of China No.375, Song Jiang Rd., Taipei, Taiwan, R.O.C.
+    </div>
+    <div class="tt9">
+     Design by NEWMEDIAMAX
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

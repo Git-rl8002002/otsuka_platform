@@ -1,0 +1,13 @@
+<!-- 即時查詢 -->
+<table class="table table-hover table-bordered table-striped">
+    <tr class="text-center">
+      <th>操作項目</th>
+      <th>操作時間</th>
+    </tr>
+    {% for val in show_login_out_record_query_operation_search %}
+    <tr class="text-center">
+      <td>{{ val[0] }}</td>
+      <td>{{ val[1] }}</td>
+    </tr>
+    {% endfor %}
+</table>

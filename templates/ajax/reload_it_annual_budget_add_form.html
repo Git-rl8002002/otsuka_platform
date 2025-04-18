@@ -1,0 +1,84 @@
+<!-- 日期 -->
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">建立日期</span>
+    </div>
+    <input class="form-control" id="it_annual_budget_date"  placeholder="" data-toggle="tooltip" data-placement="bottom" title="建立日期" required>
+</div>
+
+<!-- 預算年度 -->
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">預算年度</span>
+    </div>
+    <input class="form-control" id="it_annual_budget_build_year"  placeholder="" data-toggle="tooltip" data-placement="bottom" title="預算年度" required>
+</div>
+
+<!-- 資訊類別 -->
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">資訊種類</span>
+    </div>
+    <input class="form-control" id="it_annual_budget_kind"  placeholder="" data-toggle="tooltip" data-placement="bottom" title="資訊種類" required>
+    <select class="form-control" id="it_annual_budget_select_kind" onchange="select_it_annual_budget_kind()">
+        <option></option>
+        {% for item in it_annual_budget_select_kind %}
+        <option>{{ item[0] }}</option>
+        {% endfor %}
+    </select>
+</div>
+<!-- 預算項目 -->
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">預算項目</span>
+    </div>
+    <input class="form-control" id="it_annual_budget_title"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="預算項目" required>
+</div>
+<!-- Otsuka Holdings -->
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">Otsuka Holdings</span>
+    </div>
+    <input class="form-control" id="it_annual_budget_otsuka_holdings"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="Otsuka Holdings" required>
+    <select class="form-control" id="it_annual_budget_select_otsuka_holdings" onchange="select_it_annual_budget_otsuka_holdings()">
+        <option></option>
+        {% for item in it_annual_budget_select_otsuka_holdings %}
+        <option>{{ item[0] }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+<!-- 預定預算 -->
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">預定預算</span>
+    </div>
+    <input class="form-control" id="it_annual_budget_year"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="預定預算" required>
+</div>
+<!-- 目前剩餘費用 -->
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">目前剩餘費用</span>
+    </div>
+    <input class="form-control" id="it_annual_budget_remaining_now"  placeholder=""   data-toggle="tooltip" data-placement="bottom" title="目前剩餘費用" required>
+</div>
+
+<!-- 備註 -->
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">備註</span>
+    </div>
+    <textarea class="form-control" rows="10" id="it_annual_budget_comment"  placeholder=""  data-toggle="tooltip" data-placement="bottom" title="備註" required></textarea>
+</div>
+
+<script>
+    $("#it_annual_budget_date").flatpickr();   
+    $("#it_annual_budget_build_year").flatpickr({
+        dateFormat: "Y",
+        allowInput: true,
+        mode: "single",
+    });     
+    //CKEDITOR.replace('content');
+</script>
+
+   

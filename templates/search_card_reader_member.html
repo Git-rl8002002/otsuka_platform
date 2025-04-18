@@ -1,0 +1,81 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            
+            <div id="main_content" class="col-md-2">
+                
+                <!----------------- 
+                -
+                - 人員紀錄查詢
+                -
+                -------------------->
+                <!--
+                <ul class="list-group my-1">
+                    <div class="list-group-item list-group-item-action active"><i class="bi bi-chat-left-text"></i> 工廠人員刷卡紀錄查詢</div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">姓名</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="name" onkeyup="search_card_reader_list(this.value)">
+                    </div>
+                </ul>
+                -->
+                
+                <!----------------- 
+                -
+                - 人員位置查詢
+                -
+                -------------------->
+                <ul class="list-group my-1">
+                    <div class="list-group-item list-group-item-action active"><i class="bi bi-chat-left-text"></i> 工廠各門刷卡紀錄</div>
+                    {% for val in card_reader_res %}
+                        <li class="list-group-item list-group-item-action" id="{{ val[0] }}" onclick="load_card_reader_list(id)"><i class="bi bi-arrow-right-short"></i> {{ val[0] }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!--------------
+            -
+            - 門禁刷卡
+            -
+            ---------------->
+            <div id="card_reader_dep_list" class="col-md-5 my-1"></div>
+            
+            <!--------------
+            -
+            - 門禁刷卡清單
+            -
+            ---------------->
+            <div id="card_reader_detail_list" class="col-md-5 my-1"></div>
+
+        </div>
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+
+{% endblock content %}
+
+{% block script %}
+  <!-- 
+    date picker & rich editor-->
+  <script>
+    $("#a_date").flatpickr();  
+    //CKEDITOR.replace('content');
+</script>
+{% endblock script %}

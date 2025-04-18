@@ -1,0 +1,80 @@
+<!-- title -->
+<div id="add_work_form">
+<div class="text-center"><h4>新增帳號</h4></div>
+<div>
+    <form>
+        <!-- 日期 -->
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text">日期</span>
+            </div>
+            <!-- date  param : data-enable-time="true" data-enable-seconds="true" -->
+            <input type="text" class="form-control" id="a_date" value="{{ r_date }}" placeholder="日期" readonly/>
+        </div>
+        
+        <!-- 帳號 -->
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text">帳號</span>
+            </div>
+            <input type="text" class="form-control" id="a_user" required="required">
+        </div>
+
+        <!-- 工號 -->
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text">工號</span>
+            </div>
+            <input type="text" class="form-control" id="a_work_no" required>
+        </div>
+        
+        <!-- 姓名 -->
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text">姓名</span>
+            </div>
+            <input type="text" class="form-control" id="a_name" required>
+        </div>
+        
+        <!-- 部門 -->
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text">部門</span>
+            </div>
+            <select id="a_position" class="form-control" required>
+                <option></option>
+                {% for positon in factory_work_position %}
+                <option>{{ positon[0] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- 狀態 -->
+        <div class="input-group">
+            <div class="input-group-append">
+                <span class="input-group-text">狀態</span>
+            </div>
+            <select id="a_status" class="form-control" required>
+                <option></option>
+                <option>使用</option>
+                <option>停用</option>
+            </select>
+        </div>
+
+        <div class="text-center my-2">
+            <div class="btn-group">
+                <button  class="btn btn-primary" onclick="submit_add_account_form()"><i class="bi bi-pencil-square"></i> 新增</button>
+                <button  class="btn btn-danger" onclick="cancel_add_work_record_form()"><i class="bi bi-x-circle-fill"></i> 取消</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+    <!-- show msg -->
+    <div id="show_msg" class="text-center"></div>
+
+<!-- date picker & rich editor-->
+<script>
+    $("#date").flatpickr();  
+    //CKEDITOR.replace('content');
+</script>

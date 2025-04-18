@@ -1,0 +1,249 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - main content
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            
+            <!------------------------ 
+            -
+            - HR - 360 考核項目設定
+            -
+            -------------------------->    
+            <div id="main_content" class="col-md-3">
+                <div class="card my-2">
+                    <div class="card-header"><i class="bi bi-person-plus"></i> {{ operation_record_title }}</div>
+                    <div class="card-body">
+                    <!-----------
+                    -
+                    - Nav tabs 
+                    -
+                    ------------->
+                    <ul class="nav nav-tabs my-2">
+                        <li class="nav-item">
+                            <!----------------- 
+                            - 360 考評項目設定 
+                            -------------------> 
+                            <a class="nav-link active" data-bs-toggle="tab" href="#360_content_setup"><i class="bi bi-gear"></i> 360 考評項目設定</a>
+                        </li>
+
+                        <!-------------- 
+                        - 360 員工設定 
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#360_member_setup"><i class="bi bi-gear"></i> 360 員工設定 </a>
+                        </li>
+                        ---------------> 
+                        
+                    </ul>
+                    
+                    <!------------
+                    - 
+                    - Tab panes 
+                    -
+                    -------------->
+                    <div class="tab-content">
+                        <!----------------- 
+                        - 360 考評項目設定
+                        ------------------->
+                        <div class="tab-pane container active" id="360_content_setup">
+                            <div class="card">
+                              <div class="card-header"><i class="bi bi-pen"></i> 360 考評項目設定</div>
+                              
+                              <div class="card-body">
+                                
+                                <div id="alter_hr_360_setup_data">
+
+                                    <!-- 部門 -->
+                                    <div class="input-group my-1">
+                                      <span class="input-group-text text-success">部門</span>
+                                      <select class="form-control" id="hr_360_manager_dep" onchange="select_dep_name()">
+                                        <option></option>
+                                        {% for val in hr_360_dep %}
+                                        <option>{{ val[0] }}</option>
+                                        {% endfor %}
+                                      </select>
+                                    </div>
+                                    
+                                    <div id="load_hr_360_query_data_name">
+                                      <!-- 姓名 -->
+                                      <div class="input-group my-1" >
+                                        <span class="input-group-text text-success">姓名</span>
+                                        <select class="form-control" id="hr_360_manager_name">
+                                          <option></option>             
+                                        </select>
+                                      </div>
+                                    </div>
+
+                                    <div id="load_erp_realtime_query_data2">
+                                      <!-- 主管考核 -->
+                                      <div class="input-group my-1">
+                                        <span class="input-group-text text-success">考核主管</span>
+                                        <input type="text" class="form-control" id="hr_360_check_manager_name" onkeyup="keyin_hr_name_1()">
+                                        <div id="show_hr_360_name_data_1"></div>
+                                        
+                                      </div>
+                                    </div>
+
+                                    <div id="load_erp_realtime_query_data3">
+                                      <!-- 平行 1 考核 -->
+                                      <div class="input-group my-1" >
+                                        <span class="input-group-text text-success">考核平行 1</span>
+                                        <input type="text" class="form-control" id="hr_360_check_peer_1_name" onkeyup="keyin_hr_name_2()">
+                                        <div id="show_hr_360_name_data_2"></div>
+                                      </div>
+                                    </div>
+
+                                    <div id="load_erp_realtime_query_data3">
+                                      <!-- 平行 2 考核 -->
+                                      <div class="input-group my-1" >
+                                        <span class="input-group-text text-success">考核平行 2</span>
+                                        <input type="text" class="form-control" id="hr_360_check_peer_2_name" onkeyup="keyin_hr_name_3()">
+                                        <div id="show_hr_360_name_data_3"></div>
+                                      </div>
+                                    </div>
+
+                                    <div id="load_erp_realtime_query_data3">
+                                      <!-- 下屬 1 考核-->
+                                      <div class="input-group my-1" >
+                                        <span class="input-group-text text-success">考核下屬 1</span>
+                                        <input type="text" class="form-control" id="hr_360_check_subordinate_1_name" onkeyup="keyin_hr_name_4()">
+                                        <div id="show_hr_360_name_data_4"></div>
+                                      </div>
+                                    </div>
+
+                                    <div id="load_erp_realtime_query_data3">
+                                      <!-- 下屬 2 考核-->
+                                      <div class="input-group my-1" >
+                                        <span class="input-group-text text-success">考核下屬 2</span>
+                                        <input type="text" class="form-control" id="hr_360_check_subordinate_2_name" onkeyup="keyin_hr_name_5()">
+                                        <div id="show_hr_360_name_data_5"></div>
+                                      </div>
+                                    </div>
+
+                                </div>
+                                
+                                <!-- submit -->
+                                <div class="btn-group text-center">
+                                  <button type="button" class="btn btn-primary my-1" onclick="submit_hr_360_manager_setup_data()">
+                                    <i class="bi bi-send"></i> 設定
+                                  </button>
+                                  <button type="button" class="btn btn-success my-1" onclick="load_hr_360_manager_setup_person_list()">
+                                    <i class="bi bi-card-text"></i> 主管清單
+                                  </button>
+                                </div>   
+
+                                
+
+                              </div>
+                            </div>
+                        </div>
+                        
+                        <!-------------- 
+                        - 360 員工設定 
+                        ---------------->
+                        <div class="tab-pane container" id="360_member_setup">
+                          <!-- 部門 -->
+                          <!--
+                          <ul class="list-group my-2">
+                            <li class="list-group-item list-group-item-action active">{{ dep_id }} (已結案)</li>
+                            {% for val in bpm_statistics_list %}
+                            <li class="list-group-item list-group-item-action" id="{{ dep_id }}/{{ val[0] }}" onclick="bpm_expenditure_detail(id)"><i class="bi bi-arrow-right-short"></i> {{ val[0] }} ({{ val[1] }})</li>
+                            {% endfor %}
+                          </ul>
+                          -->
+                        </div>
+
+                      </div>    
+                    </div>
+                </div>
+                
+            </div>
+
+            <!----------------------- 
+            -
+            - HR 360 考核設定清單
+            -
+            ------------------------->    
+            <div class="col-md-9 my-2">
+                <div class="card">
+                    <div class="card-header"><i class="bi bi-person-plus"></i> {{ operation_record_title }}</div>
+                    
+                    <div class="card-body" id="query_content">
+                        
+                        <!--------------------
+                        - 
+                        - HR 360 考核設定清單
+                        -
+                        ---------------------->
+                        <div class="tab-pane container active" id="hr_360_setup_list">
+                            
+                            <!-- 考核人員清單 --> 
+                            <table class="table  table-bordered table-striped table-hover">
+                              <tr class="text-center align-middle">
+                                <th colspan="2">功能</th>
+                                <th>部門</th>
+                                <th>姓名</th>
+                                <th>考核主管</th>
+                                <th>考核平行 1</th>
+                                <th>考核平行 2</th>
+                                <th>考核下屬 1</th>
+                                <th>考核下屬 2</th>
+                              </tr>
+                              {% for val in  show_hr_360_person_1_data %}
+                              <tr class="text-center align-middle">
+                                <td colspan="2">
+                                  <div class="btn-group">
+                                    <button class="btn btn-danger" id="{{val[0]}}/{{val[1]}}" onclick="del_hr_360_setup_data(id)"><i class="bi bi-x-circle"></i> 刪</button>
+                                    <button class="btn btn-success" id="{{val[0]}}/{{val[1]}}" onclick="alter_hr_360_setup_data(id)"><i class="bi bi-pen"></i> 改</button>
+                                  </div>
+                                </td>
+                                <td>{{ val[0] }}</td>
+                                <td>{{ val[1] }}</td>
+                                <td>{{ val[2] }}</td>
+                                <td>{{ val[3] }}</td>
+                                <td>{{ val[4] }}</td>
+                                <td>{{ val[5] }}</td>
+                                <td>{{ val[6] }}</td>
+                              </tr>
+                              {% endfor %}
+                            </table>
+
+                        </div>
+                        
+                    </div>
+             </div>
+        </div>
+
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+{% endblock content %}
+
+{% block script %}    
+    <!-- date picker & rich editor-->
+    <script>
+        $("#o_c_date").flatpickr();    
+        $("#query_start_date").flatpickr();    
+        $("#query_end_date").flatpickr();    
+        //CKEDITOR.replace('content');
+        </script>
+{% endblock script %}
+    

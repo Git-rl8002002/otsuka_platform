@@ -1,0 +1,72 @@
+{% extends "bootstrap/base.html" %}
+
+{% block content %}
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
+    <div class="container-fluid text-primary m-auto">
+        
+        <div class="row my-4">
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+        
+        <div class="row my-5">
+            <!---------------------------------------------------------------------------------------------------- 
+             -
+             - lv 3 - normal user
+             -   
+             ----------------------------------------------------------------------------------------------------->
+            <!-- 部門姓名 -->
+            <div id="main_content" class="col-md-3">
+                <ul class="list-group my-2">
+                    <li class="list-group-item list-group-item active"><i class="bi bi-chat-left-text"></i> {{ operation_record_title }}
+                    <!-- search by device number -->
+                    <li class="list-group-item list-group-item-action">
+                        <input class="form-control" id="department_name"  placeholder="名字" onkeyup="department_name_search()"><br>
+                        <div id="search_val"></div>
+                    </li>
+                    
+                </ul>
+            </div>
+
+            <!-- 部門清單 -->
+            <div class="col-md-5 my-2">
+                <table class="table table-bordered table-striped table-hover">
+                    <tr class="bg-primary text-white">
+                        <th>部門</th>
+                        <th>部門代號</th>
+                        <th>部門人數</th>
+                    </tr>
+                    {% for val in  department_list %}
+                    <tr>
+                        <td id="{{ val[1] }}" onclick="department_list_detail(id)">{{ val[0] }}</td>
+                        <td>{{ val[1] }}</td>
+                        <td>{{ val[3] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <!-- 部門清單 -->
+            <div class="col-md-4 my-2">
+                <div id="department_list_detail"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- go top -->
+    <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+{% endblock content %}
+
+{% block script %}
+    <!-- date picker & rich editor-->
+    <script>
+    $("#a_date").flatpickr();    
+    //CKEDITOR.replace('content');
+    </script>
+{% endblock script %}

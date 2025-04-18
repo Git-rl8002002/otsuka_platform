@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-12 my-2">
+        {% for val in reload_it_annual_budget_year_total %}
+        <div class="card my-2">
+            <div class="card-header">{{ val[0] }} 總預算</div>
+            <div class="card-body">
+                <li>預算費用總計 {{ val[1] }} 元 </li>
+                <li><span id="{{ val[0] }}" onclick="annual_budget_year_detail(id)">明細內容</span></li>
+                <div id="{{ val[0] }}_detail"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+   

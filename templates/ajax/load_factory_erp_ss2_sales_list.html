@@ -1,0 +1,69 @@
+<!-- 銷售實績 -->
+<div class="table-responsive my-2">
+  <table class="table table-striped table-bordered my-2">
+    <tr>
+      <td>銷售日期 <span class="text-primary">{{ q_s_date }} ~ {{ q_e_date }} {{ q_c_name }} {{ q_p_name }}</span>
+          共 <span class="text-primary">{{ f_ss2_query_res_total }}</span> 筆</td>
+    </tr> 
+    <tr>
+      <td class="text-center align-middle">
+        <ul style="display: flex; flex-wrap: wrap; justify-content: center; padding: 0; list-style-type: none;">
+          {% for val in f_ss2_query_res_total2 %}
+            <li style="list-style-type: none; display: inline-block; width: 16%;" class="list-inline-item mouse_hover rounded">
+              <span class="text-primary">{{ val[0] }}</span> ({{ val[1] }}) 
+            </li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+<div class="table-responsive my-2">
+    <table class="table table-hover table-striped table-bordered my-2">
+          <tr class="text-center align-middle">
+            <th>交易日期</th>
+            <th>客戶代號</th>
+            <th>客戶名稱</th>
+            <th>地址</th>
+            <th>舊產品代號</th>
+            <th>產品代號</th>
+            <th>產品名稱</th>
+            <th>ERP 產品代碼</th>
+            <th>批號</th>
+            <th>淨數量</th>
+            <th>淨金額</th>
+            <th>經銷商</th>
+            <th>庫別</th>
+            <th>數量</th>
+            <th>折扣</th>
+            <th>QTY</th>
+            <th>TAX</th>
+          </tr>
+        {% for val in f_ss2_query_res %}
+          <tr class="text-center align-middle">
+            <td>{{ val[0] }}</td>
+            <td>{{ val[1] }}</td>
+            <td class="text-primary">{{ val[2] }}</td>
+            <td>{{ val[3] }}</td>
+            <td>{{ val[4] }}</td>
+            <td>{{ val[5] }}</td>
+            <td class="text-primary">{{ val[6] }}</td>
+            <td>{{ val[7] }}</td>
+            <td>{{ val[8] }}</td>
+            <td>{{ val[9] }}</td>
+            <td>{{ val[10] }}</td>
+            <td>{{ val[11] }}</td>
+            <td>{{ val[15] }}</td>
+            <td>{{ val[16] }}</td>
+            <td>{{ val[17] }}</td>
+            <td>{{ val[19] }}</td>
+            <td>{{ val[21] }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+</div>
+
+
+

@@ -1,0 +1,1047 @@
+{% for val in res %}    
+            <!------------------------------------------------------------------------------------------------------ 
+            -
+            - 一.責任及態度
+            -
+            -------------------------------------------------------------------------------------------------------->
+            <div class="row">
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">一.責任及態度</div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center">項目</th>
+                                    <th class="text-center">配分</th>
+                                    <th class="text-center">自我評分</th>
+                                    <th class="text-center">他人評分</th>
+                                    <th class="text-center">主管評分</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>是否主動積極</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num1_1" value="{{ val[0] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num1_1" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num1_1" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>主管交代是否配合</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num1_2" value="{{ val[1] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num1_2" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num1_2" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>專注力</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num1_3" value="{{ val[2] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num1_3" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num1_3" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>不浮誇 , 不欺騙</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num1_4" value="{{ val[3] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num1_4" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num1_4" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------------ 
+                -
+                - 二.工作能力
+                -
+                -------------------------------------------------------------------------------------------------------->
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">二.工作能力</div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center">項目</th>
+                                    <th class="text-center">配分</th>
+                                    <th class="text-center">自我評分</th>
+                                    <th class="text-center">他人評分</th>
+                                    <th class="text-center">主管評分</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>對自身工作是否嚴謹</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num2_1" value="{{ val[4] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num2_1" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num2_1" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>對專業技能是否專精</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num2_2" value="{{ val[5] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num2_2" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num2_2" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>對產品與技術是否全盤了解</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num2_3" value="{{ val[6] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num2_3" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num2_3" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------------------------------ 
+            -
+            - 三.學習狀況
+            -
+            -------------------------------------------------------------------------------------------------------->
+            <div class="row">
+                <div class="col-md-6 my-1">
+                        <div class="card">
+                            <div class="card-header">三.學習狀況</div>
+                            <div class="card-body">
+                                <table class="table table-bordered table-hover">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th class="text-center">項目</th>
+                                        <th class="text-center">配分</th>
+                                        <th class="text-center">自我評分</th>
+                                        <th class="text-center">他人評分</th>
+                                        <th class="text-center">主管評分</th>
+                                    </tr>
+                                    </thead>
+                                    <tr>
+                                        <td>是否願接受新事務及挑戰</td>
+                                        <td class="text-center">5</td>
+                                        <td>
+                                            <input class="form-control" id="self_num3_1" value="{{ val[7] }}" readonly>
+                                        </td>
+                                        <td>
+                                            {% if a_job_title == "課長" %}
+                                            <select class="form-control" id="other_num3_1" onchange="auto_plus_other_num()">
+                                                <option></option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if a_job_title == "經理" %}
+                                            <select class="form-control" id="sir_num3_1" onchange="auto_plus_sir_num()" required>
+                                                <option></option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>進入新事務的快慢</td>
+                                        <td class="text-center">5</td>
+                                        <td>
+                                            <input class="form-control" id="self_num3_2" value="{{ val[8] }}" readonly>
+                                        </td>
+                                        <td>
+                                            {% if a_job_title == "課長" %}
+                                            <select class="form-control" id="other_num3_2" onchange="auto_plus_other_num()">
+                                                <option></option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if a_job_title == "經理" %}
+                                            <select class="form-control" id="sir_num3_2" onchange="auto_plus_sir_num()" required>
+                                                <option></option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>對學習專業是否認真</td>
+                                        <td class="text-center">5</td>
+                                        <td>
+                                            <input class="form-control" id="self_num3_3" value="{{ val[9] }}" readonly>
+                                        </td>
+                                        <td>
+                                            {% if a_job_title == "課長" %}
+                                            <select class="form-control" id="other_num3_3" onchange="auto_plus_other_num()">
+                                                <option></option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if a_job_title == "經理" %}
+                                            <select class="form-control" id="sir_num3_3" onchange="auto_plus_sir_num()" required>
+                                                <option></option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------------ 
+                -
+                - 四.自主行為
+                -
+                -------------------------------------------------------------------------------------------------------->
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">四.自主行為</div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center">項目</th>
+                                    <th class="text-center">配分</th>
+                                    <th class="text-center">自我評分</th>
+                                    <th class="text-center">他人評分</th>
+                                    <th class="text-center">主管評分</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>服裝儀容及衛生管理</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num4_1" value="{{ val[10] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num4_1" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num4_1" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>對品質觀念是否落實</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num4_2" value="{{ val[11] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num4_2" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num4_2" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>對清潔設備是否落實</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num4_3" value="{{ val[12] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num4_3" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num4_3" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>對器材機具是否愛護</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num4_4" value="{{ val[13] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num4_4" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num4_4" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------------------------------------------------------------------------------------------ 
+            -
+            - 五.工作狀態
+            -
+            -------------------------------------------------------------------------------------------------------->
+            <div class="row">
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">五.工作狀態</div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center">項目</th>
+                                    <th class="text-center">配分</th>
+                                    <th class="text-center">自我評分</th>
+                                    <th class="text-center">他人評分</th>
+                                    <th class="text-center">主管評分</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>成本意識(不浪費)</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num5_1" value="{{ val[14] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num5_1" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num5_1" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>動作是否俐落</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num5_2" value="{{ val[15] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num5_2" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num5_2" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>對SOP是否遵從</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num5_3" value="{{ val[16] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num5_3" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num5_3" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------------ 
+                -
+                - 六.團隊默契
+                -
+                -------------------------------------------------------------------------------------------------------->
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">六.團隊默契</div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center">項目</th>
+                                    <th class="text-center">配分</th>
+                                    <th class="text-center">自我評分</th>
+                                    <th class="text-center">他人評分</th>
+                                    <th class="text-center">主管評分</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>對同儕及上級相處</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num6_1" value="{{ val[17] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num6_1" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num6_1" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>主動協助</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num6_2" value="{{ val[18] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num6_2" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num6_2" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>溝通協調</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        <input class="form-control" id="self_num6_3" value="{{ val[19] }}" readonly>
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "課長" %}
+                                        <select class="form-control" id="other_num6_3" onchange="auto_plus_other_num()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num6_3" onchange="auto_plus_sir_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------------------------------------------------------ 
+            -
+            - 七.出勤與加班貢獻
+            -
+            -------------------------------------------------------------------------------------------------------->
+            <div class="row">
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">七.出勤與加班貢獻</div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center">項目</th>
+                                    <th class="text-center">配分</th>
+                                    <th class="text-center">加權分數</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>遲到或早退(一次)★</td>
+                                    <td class="text-center">-1</td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num7_1" onchange="auto_plus_other_plus_num()" required>
+                                            <option></option>
+                                            <option>-1</option>
+                                            <option>-2</option>
+                                            <option>-3</option>
+                                            <option>-4</option>
+                                            <option>-5</option>
+                                            <option>-7</option>
+                                            <option>-8</option>
+                                            <option>-9</option>
+                                            <option>-10</option>
+                                            <option>-11</option>
+                                            <option>-12</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>請假(預請)(一天)★</td>
+                                    <td class="text-center">-1</td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num7_2" onchange="auto_plus_other_plus_num()" required>
+                                            <option></option>
+                                            <option>-1</option>
+                                            <option>-2</option>
+                                            <option>-3</option>
+                                            <option>-4</option>
+                                            <option>-5</option>
+                                            <option>-7</option>
+                                            <option>-8</option>
+                                            <option>-9</option>
+                                            <option>-10</option>
+                                            <option>-11</option>
+                                            <option>-12</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>請假(無預請)(一天)★</td>
+                                    <td class="text-center">-5</td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num7_3" onchange="auto_plus_other_plus_num()" required>
+                                            <option></option>
+                                            <option>-5</option>
+                                            <option>-10</option>
+                                            <option>-15</option>
+                                            <option>-20</option>
+                                            <option>-25</option>
+                                            <option>-30</option>
+                                            <option>-35</option>
+                                            <option>-40</option>
+                                            <option>-45</option>
+                                            <option>-50</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>加班貢獻(5分/每15Hr)★</td>
+                                    <td class="text-center">20</td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num7_4" onchange="auto_plus_other_plus_num()" required>
+                                            <option></option>
+                                            <option>5</option>
+                                            <option>10</option>
+                                            <option>15</option>
+                                            <option>20</option>
+                                            <option>25</option>
+                                            <option>30</option>
+                                            <option>35</option>
+                                            <option>40</option>
+                                            <option>45</option>
+                                            <option>50</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!------------------------------------------------------------------------------------------------------ 
+                -
+                - 八.其他(特殊)
+                -
+                -------------------------------------------------------------------------------------------------------->
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">八.其它(特殊)</div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center">項目</th>
+                                    <th class="text-center">配分</th>
+                                    <th class="text-center">加權分數</th>
+                                </tr>
+                                </thead>
+                                <tr>
+                                    <td>簡化作業流程★</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num8_1" onchange="auto_plus_other_plus_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>勇於突破現況或危機處理★</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num8_2" onchange="auto_plus_other_plus_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>傳承經驗或技術★</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num8_3" onchange="auto_plus_other_plus_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>支援其他部門★</td>
+                                    <td class="text-center">5</td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <select class="form-control" id="sir_num8_4" onchange="auto_plus_other_plus_num()" required>
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>獎勵與懲戒(備註說明)★</td>
+                                    <td class="text-center">備註</td>
+                                    <td>
+                                        {% if a_job_title == "經理" %}
+                                        <input class="form-control" id="sir_num8_5" required>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------------------------------------------------------------------------------------------ 
+            -
+            - 註記說明 , 備註
+            -
+            -------------------------------------------------------------------------------------------------------->
+            <div class="row">
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">註記說明</div>
+                        <div class="card-body">
+                                註一：評分方式為加總第一至第六項之分數。<br>						
+                                註二：★屬於加權分數，不由個人進行評分。<br>													
+                                註三：獎懲位階嘉獎與申誡為±5分、記功過為±15分。<br>													
+                                註四：出勤與加班貢獻針對排程貢獻度，不受假別之影響。<br>													
+                                註五：出勤與加班貢獻之計算結果如小於-20，則以-20計。<br>													
+                                註六：他人評價採匿名制，由主管另尋第三人給予評核。<br>													
+                                註七：最終總分為主管評分與加權總分加總。<br>													
+                        </div>
+                    </div>
+                </div>    
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">備註</div>
+                        <div class="card-body">
+                            {% if a_job_title == "經理" %}
+                            <textarea class="form-control" rows="6" id="comment" required></textarea>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>    
+            </div>
+
+            <!------------------------------------------------------------------------------------------------------ 
+            -
+            - 分數統計
+            -
+            -------------------------------------------------------------------------------------------------------->
+            <div class="row">
+                <div class="col-md-6 my-1">
+                    <div class="card">
+                        <div class="card-header">分數統計</div>
+                        <div class="card-body">
+                            <table class="table table-hover table-bordered">
+                                <tr>
+                                    <td class="text-center">自我評分</td>
+                                    <td class="text-center"><input class="form-control" id="self_total" value="{{ val[20] }}" readonly></td>
+                                    <td class="text-center">他人評分</td>
+                                    <td class="text-center"><input class="form-control" id="other_total" readonly></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">主管評分</td>
+                                    <td class="text-center"><input class="form-control" id="sir_total" readonly></td>
+                                    <td class="text-center">加權分數</td>
+                                    <td class="text-center"><input class="form-control" id="other_plus_total" readonly></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">最終總分</td>
+                                    <td class="text-center"><input class="form-control" id="final_total" readonly></td>
+                                    <td class="text-center">評價</td>
+                                    <td class="text-center">
+                                        {% if a_job_title == "經理" %}
+                                        <input class="form-control" id="final_comment" required>
+                                        {% endif %}
+                                    </td>
+                                </tr> 
+                            </table>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+
+{% endfor %}
+  
+
+
+  

@@ -1,0 +1,157 @@
+<div class="card">
+    <div class="card-header"><i class="bi bi-card-list"></i> {{ vm_name }}</div>
+    <div class="card-body">
+        
+        <div class="row">
+            <!-- vm information -->
+            <div class="col-md-6">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <td colspan="4" class="text-primary"><i class="bi bi-card-list"></i> VM information</td>
+                    </tr>
+                    <tr>
+                        <td>系統</td><td colspan="3">{{ vm_item_os[0] }}</td>
+                    </tr>
+                    <tr>
+                        {% if vm_item_state[0] == 'running' %}
+                        <td>狀態</td><td colspan="3"><i class="bi bi-check-circle text-success"></i> {{ vm_item_state[0] }}</td>
+                        {% else %}
+                        <td>狀態</td><td colspan="3"><i class="bi bi-x-circle text-danger"></i> {{ vm_item_state[0] }}</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td>開機</td><td colspan="3">{{ vm_item_boot[0] }}</td>
+                    </tr>
+                    <tr>
+                        <td>IP</td><td colspan="3">{{ vm_item_ip[0] }}</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- vm boot time -->
+            <div class="col-md-6">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <td colspan="2" class="text-primary"><i class="bi bi-card-list"></i> Boot time</td>
+                    </tr>
+                    <tr>
+                        <td>檢查</td>
+                        <td>開機</td>
+                    </tr>
+                    {% for val in vm_name_boot %}
+                    <tr>
+                        <td>{{ val[0] }}</td>
+                        <td>{{ val[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="row my-2">
+            <!-- vm_name_cpu -->
+            <div class="col-md-6">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <td colspan="3" class="text-primary"><i class="bi bi-card-list"></i> CPU</td>
+                    </tr>
+                    <tr>
+                        <td>檢查</td>
+                        <td>CPU</td>
+                        <td>次數</td>
+                    </tr>
+                    {% for val in vm_name_cpu %}
+                    <tr>
+                        <td>{{ val[0] }}</td>
+                        <td>{{ val[1] }}</td>
+                        <td>{{ val[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <!-- vm_name_ram -->
+            <div class="col-md-6">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <td colspan="3" class="text-primary"><i class="bi bi-card-list"></i> RAM</td>
+                    </tr>
+                    <tr>
+                        <td>檢查</td>
+                        <td>RAM</td>
+                        <td>次數</td>
+                    </tr>
+                    {% for val in vm_name_ram %}
+                    <tr>
+                        <td>{{ val[0] }}</td>
+                        <td>{{ val[1] }}</td>
+                        <td>{{ val[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="row my-2">
+            <!-- vm_name_hdd -->
+            <div class="col-md-6">
+                <table class="table table-striped table-bordered table-hover">
+                    <tr>
+                        <td colspan="3" class="text-primary"><i class="bi bi-card-list"></i> HDD</td>
+                    </tr>
+                    <tr>
+                        <td>檢查</td>
+                        <td>HDD</td>
+                        <td>次數</td>
+                    </tr>
+                    {% for val in vm_name_hdd %}
+                    <tr>
+                        <td>{{ val[0] }}</td>
+                        <td>{{ val[1] }}</td>
+                        <td>{{ val[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        
+        <div class="row my-2">
+            <!-- detail  -->
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <td colspan="10" class="text-primary"><i class="bi bi-card-list"></i> Detail</td>
+                </tr>
+                <tr>
+                    <td>地點</td>
+                    <td>檢查</td>
+                    <td>系統</td>
+                    <td>運作</td>
+                    <td>狀態</td>
+                    <td>開機時間</td>
+                    <td>IP</td>
+                    <td>CPU</td>
+                    <td>RAM</td>
+                    <td>HDD</td>
+                </tr>
+                {% for val in vm_name_detail%}
+                <tr>
+                    <td>{{ val[4] }}</td>
+                    <td>{{ val[3] }}</td>
+                    <td>{{ val[7] }}</td>
+                    {% if val[8] == 'running' %}
+                        <td><i class="bi bi-check-circle text-success"></i> {{ val[8] }}</td>
+                    {% else %}
+                        <td><i class="bi bi-x-circle text-danger"></i> {{ val[8] }}</td>
+                    {% endif%}
+                    <td>{{ val[9] }}</td>
+                    <td>{{ val[10] }}</td>
+                    <td>{{ val[11] }}</td>
+                    <td>{{ val[12] }}</td>
+                    <td>{{ val[13] }}</td>
+                    <td>{{ val[14] }}</td>
+                </tr>
+                {% endfor%}
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
