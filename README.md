@@ -1,1 +1,3 @@
-20250418 update add files
+otsuka platform
+
+update : 20250418
